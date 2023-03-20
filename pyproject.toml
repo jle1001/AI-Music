@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "ai-music"
+version = "0.1.0"
+description = "Repository exploring the intersection of music and artificial intelligence, containing various machine learning models, algorithms, and datasets for music analysis."
+authors = ["José Ángel <jle1001@alu.ubu.es>"]
+readme = "README.md"
+packages = [{include = "ai_music"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
