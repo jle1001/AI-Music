@@ -1,7 +1,6 @@
 import pandas as pd
 
 # Preprocessing track genres
-############################
 tracks = pd.read_csv('data/tracks.csv', delimiter=',', header=[0, 1])
 
 # raw_genres file to map each genre with genre_id
