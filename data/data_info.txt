@@ -1,0 +1,7 @@
+tracks.csv has metadata information of each song in the dataset. Relevant information at the moment:
+	-> track_id
+	-> genre_top
+	-> genres
+	-> genres_all
+
+The file is going to be processed to drop unused values (at least for the moment).
