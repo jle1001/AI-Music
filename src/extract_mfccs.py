@@ -1,31 +1,37 @@
 import librosa
 import numpy as np
 import pandas as pd
+import pathlib
 
-data = pd.read_csv('data/processed/labels/labels.csv')
-audio_files = data['filename'].values
-print(audio_files)
-genres = data['genre'].values
+data_path = pathlib.Path('data/raw/')
 
-mfccs = []
-mfccs_shape = []
-labels = []
+# Iterate over all files and folders in the directory and its subdirectories
+for item in data_path.glob('**/*'):
+    # Check if the item is a file
+    if item.is_file():
+        print(item.absolute())
 
-for file, genre in zip(audio_files, genres):
-    y, sr = librosa.load(f'data/raw/{file}')
-    mfcc = librosa.feature.mfcc(y=y, sr=sr)
-    print(mfcc.shape)
-    mfccs_shape.append(mfcc.shape)
-    mfccs.append(np.ravel(mfcc)[:4000])
-    labels.append(genre)
+# genres = data['genre'].values
 
-for i in mfccs:
-    print("ITEM: ", i)
-mfccs_array = np.array(mfccs)
-labels_array = np.array(labels)
+# mfccs = []
+# mfccs_shape = []
+# labels = []
 
-print(labels_array)
+# for file, genre in zip(audio_files, genres):
+#     y, sr = librosa.load(f'data/raw/{file}')
+#     mfcc = librosa.feature.mfcc(y=y, sr=sr)
+#     print(mfcc.shape)
+#     mfccs_shape.append(mfcc.shape)
+#     mfccs.append(np.ravel(mfcc)[:4000])
+#     labels.append(genre)
 
-np.save('data/processed/mfccs/mfccs.npy', mfccs_array)
-np.save('data/processed/labels/labels.npy', labels_array)
-np.savetxt('data/processed/shapes/mfccs.csv', mfccs_shape, delimiter=",")
+# for i in mfccs:
+#     print("ITEM: ", i)
+# mfccs_array = np.array(mfccs)
+# labels_array = np.array(labels)
+
+# print(labels_array)
+
+# np.save('data/processed/mfccs/mfccs.npy', mfccs_array)
+# np.save('data/processed/labels/labels.npy', labels_array)
+# np.savetxt('data/processed/shapes/mfccs.csv', mfccs_shape, delimiter=",")

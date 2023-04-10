@@ -13,14 +13,17 @@
                 <h1><a href="{{ url_for('index') }}">Music-AI</a></h1>
                 <ul>
                     <li><a href="{#{ url_for('dataset') }#}">Dataset</a></li>
-                    <li><a href="{#{ url_for('project') }#}">Project</a></li>
+                    <li><a href="https://github.com/jle1001/AI-Music">Project</a></li>
                     <li><a href="{#{ url_for('about') }#}">About</a></li>
                 </ul>
             </nav>
         </header>
         <main>
-            {% block content %}
+            {% block upload_file %}
             {% endblock %}
+            <hr>
+            {% block track_features %}
+            {% endblock %}        
         </main>
         <footer>
             <p>2023 Music-AI | Designed and developed by José Ángel López</p>

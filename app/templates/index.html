@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block upload_file %}
+    <form action="{{ url_for('upload_file') }}" method="post">
+        <label>Input audio file: <input type="file"></label>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
 
+{% block track_features %}
+    <div class="track-information wave">
+        <h2>Waveform</h2>
+    </div>
+    <div class="track-information spectogram">
+        <h2>Spectogram</h2>
+    </div>
+    <div class="track-information chromagram">
+        <h2>Chromagram</h2>
+    </div>
+    <div class="track-information mfcc">
+        <h2>MFCC</h2>
+    </div>
 {% endblock %}
