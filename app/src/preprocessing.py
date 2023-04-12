@@ -15,6 +15,7 @@ processed_tracks_metadata.index.name = 'track_id'
 
 # Map genre_title -> genre_id
 processed_tracks_metadata['genre_top'] = processed_tracks_metadata['genre_top'].apply(lambda x: genres.loc[genres['genre_title'] == x, 'genre_id'].values)
+processed_tracks_metadata['genre_top'] = processed_tracks_metadata['genre_top'].apply(lambda x: int(x) if x.any() else 0)
 print(processed_tracks_metadata.head())
 
 # Save a CSV file with track_id, top_genre, genres and total genres of each track.
