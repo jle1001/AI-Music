@@ -10,12 +10,12 @@ y, sr = librosa.load(UPLOAD_TRACK)
 
 def show_waveform(audio=UPLOAD_TRACK):
     """Display the waveform of an audio file.
-
     Args:
         audio (str): Path to the audio file. Default is 'upload/upload.mp3'.
     Returns:
         str: Base64-encoded image data in PNG format.
     """
+    y, sr = librosa.load(audio)
     fig = plt.figure(figsize=(12, 4))
     librosa.display.waveshow(y=y, sr=sr)
     plt.xlabel('Time (s)')
@@ -34,6 +34,7 @@ def show_spectogram(audio=UPLOAD_TRACK):
     Returns:
         str: Base64-encoded image data in PNG format.
     """
+    y, sr = librosa.load(audio)
     fig = plt.figure(figsize=(12, 4))
     spec = librosa.feature.melspectrogram(y=y, sr=sr)
     spec_db = librosa.power_to_db(spec, ref=np.max)
@@ -52,6 +53,7 @@ def show_chromagram(audio=UPLOAD_TRACK):
     Returns:
         str: Base64-encoded image data in PNG format.
     """
+    y, sr = librosa.load(audio)
     fig = plt.figure(figsize=(12, 4))
     chroma = librosa.feature.chroma_stft(y=y, sr=sr)
     img = librosa.display.specshow(chroma, y_axis='chroma', x_axis='time', cmap='coolwarm')
@@ -69,6 +71,7 @@ def show_MFCC(audio=UPLOAD_TRACK):
     Returns:
         str: Base64-encoded image data in PNG format.
     """
+    y, sr = librosa.load(audio)
     fig = plt.figure(figsize=(12, 4))
     mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20)
     img = librosa.display.specshow(mfccs, x_axis='time')
