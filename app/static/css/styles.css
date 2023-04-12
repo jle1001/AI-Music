@@ -46,7 +46,92 @@ nav li a:hover {
     background-color: #111;
 }
 
-/* Style the main content area */
+/* Content area */
 main {
     margin: 20px;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+label {
+    margin-bottom: 10px;
+}
+  
+input[type="file"] {
+    margin-bottom: 20px;
+}
+  
+button[type="submit"] {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+  
+button[type="submit"]:hover {
+    background-color: #444;
+}
+
+#music_genre {
+    text-align: center;
+    
+}
+
+/* Track features */
+.track-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+  
+.track-information h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+  
+.track-information div {
+    margin-top: 20px;
+}
+  
+.wave img {
+    max-width: 100%;
+    height: auto;
+}
+  
+.spectogram img {
+    max-width: 100%;
+    height: auto;
+}
+  
+.chromagram img {
+    max-width: 100%;
+    height: auto;
+}
+  
+.mfcc img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
