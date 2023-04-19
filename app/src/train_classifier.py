@@ -12,7 +12,7 @@ track_genres_mfcc = pd.read_pickle('data/processed/track_genres_mfcc.pkl')
 X = np.array(track_genres_mfcc['mfcc'])
 y = np.array(track_genres_mfcc['genre_top'])
 
-print(len(np.unique(y)))
+# print(len(np.unique(y)))
 # Normalization
 # scaler = StandardScaler()
 # X = scaler.fit_transform(X)
@@ -47,7 +47,7 @@ X_test = np.vstack(X_test)
 y_test = np.vstack(y_test)
 
 # Training
-model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=100, batch_size=5)
+model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=200, batch_size=5)
 
 # Evaluate model
 loss, acc = model.evaluate(X_test, y_test, verbose=2)
