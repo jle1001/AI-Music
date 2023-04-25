@@ -51,8 +51,15 @@ main {
     margin: 20px;
 }
 
+#upload {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 #upload-div {
-    margin: 0 35% 0 35%;
+    margin: 0 10% 0 10%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -62,6 +69,10 @@ main {
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+
+#landing-image {
+    margin: 0 10% 0 10%;
 }
 
 /* Form */
@@ -82,6 +93,7 @@ input[type="file"] {
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    margin: 0 10px 0 10px;
     transition: background-color 0.2s ease-in-out;
     font-size: 16px;
 }
@@ -94,6 +106,7 @@ button {
     background-color: #222;
     color: #fff;
     padding: 10px 20px;
+    margin: 0 10px 0 10px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -108,6 +121,33 @@ button:hover {
 #music_genre {
     text-align: center;
     
+}
+
+#information {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0 10% 0 10%;
+}
+
+.information-section {
+    margin: 0 5% 0 5%;
+    text-align: center;
+}
+
+#dataset {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#dataset-info {
+    margin: 0 10% 0 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* Track features */

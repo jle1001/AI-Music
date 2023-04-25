@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block genre_classifier %}
+    <div id="music_genre">
+        <h2>Predicted music genre: {{ prediction }}</h2>
+    </div>
+{% endblock %}
+
+{% block track_features %}
+    <div class="track-information wave">
+        <h2>Waveform</h2>
+        <div><img src="{{ waveform_image }}"></div>
+    </div>
+    <div class="track-information spectogram">
+        <h2>Spectogram</h2>
+        <div><img src="{{ spectogram_image }}"></div>
+    </div>
+    <div class="track-information chromagram">
+        <h2>Chromagram</h2>
+        <div><img src="{{ chromagram_image }}"></div>
+    </div>
+    <div class="track-information mfcc">
+        <h2>MFCC</h2>
+        <div><img src="{{ MFCC_image }}"></div>
+    </div>
+{% endblock %}

@@ -1,45 +1,66 @@
 {% extends 'base.html' %}
 
 {% block upload_file %}
-<div id="upload-div">
-    <div id="app-information">
-        <h1>Musical Analysis using artificial intelligence</h1>
-        <h4>Musical analysis using artificial intelligence using computational methods to analyze and classify music based on various musical features</h4>
+<div id="upload">
+    <div id="upload-div">
+        <div id="app-information">
+            <h1>Musical Analysis using artificial intelligence</h1>
+            <h4>Musical analysis using artificial intelligence and computational methods to analyze and classify music based on various musical features</h4>
+        </div>
+        <div id="upload-buttons">
+            <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
+                <label for="file-upload" class="custom-file-upload">
+                    UPLOAD FILE
+                </label>
+                <input type="file" name="upload" id="file-upload" onchange="this.form.submit()"/>
+            </form>
+        <button>LEARN MORE</button>
+        </div>
     </div>
-    <div id="upload-buttons">
-        <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
-            <label for="file-upload" class="custom-file-upload">
-                UPLOAD FILE
-            </label>
-            <input type="file" name="upload" id="file-upload" onchange="this.form.submit()"/>
-        </form>
-    <button>LEARN MORE</button>
+    <div id="landing-image">
+        <img src="{{ url_for('static', filename='media/img/placeholder.webp') }}">
     </div>
 </div>
 {% endblock %}
-
-{% block genre_classifier %}
-    <div id="music_genre">
-        <h2>Predicted music genre: {{ prediction }}</h2>
+{% block information %}
+<div id="information">
+    <div class="information-section">
+        <img>
+        <h3>Analysis</h3>
+        <h4>
+            Analyzing music is important in order to determine its genre because different genres of music have distinct characteristics and features.
+        </h4>
     </div>
+    <div class="information-section">
+        <img>
+        <h3>Classification</h3>
+        <h4>
+            After having analysed the music, Artificial Intelligence algorithm will automatically classify the song into a musical style. 
+        </h4>        
+    </div>
+    <div class="information-section">
+        <img>
+        <h3>Insights</h3>
+        <h4>
+            Data and graphs will be displayed to understand the classification process.
+            This information will be useful to understand the structure and characteristics of a piece of music in a visual and intuitive way.
+        </h4>        
+    </div>
+</div>
 {% endblock %}
-
-
-{% block track_features %}
-    <div class="track-information wave">
-        <h2>Waveform</h2>
-        <div><img src="{{ waveform_image }}"></div>
+{% block dataset %}
+<div id="dataset">
+    <div id="dataset-info">
+        <div id="dataset-info-text">
+            <h1>Musical Analysis using artificial intelligence</h1>
+            <h4>Musical analysis using artificial intelligence and computational methods to analyze and classify music based on various musical features</h4>
+        </div>
+        <div id="info-button">
+            <button>LEARN MORE</button>
+        </div>
     </div>
-    <div class="track-information spectogram">
-        <h2>Spectogram</h2>
-        <div><img src="{{ spectogram_image }}"></div>
+    <div id="landing-image">
+        <img src="{{ url_for('static', filename='media/img/placeholder.webp') }}">
     </div>
-    <div class="track-information chromagram">
-        <h2>Chromagram</h2>
-        <div><img src="{{ chromagram_image }}"></div>
-    </div>
-    <div class="track-information mfcc">
-        <h2>MFCC</h2>
-        <div><img src="{{ MFCC_image }}"></div>
-    </div>
+</div>
 {% endblock %}
