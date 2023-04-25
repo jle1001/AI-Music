@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 
 {% block upload_file %}
-    <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
-        <label>Input audio file: <input type="file" name="upload" id="upload"></label>
-        <button type="submit">Submit</button>
-    </form>
+<div id="upload-div">
+    <div id="app-information">
+        <h1>Musical Analysis using artificial intelligence</h1>
+        <h4>Musical analysis using artificial intelligence using computational methods to analyze and classify music based on various musical features</h4>
+    </div>
+    <div id="upload-buttons">
+        <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
+            <label for="file-upload" class="custom-file-upload">
+                UPLOAD FILE
+            </label>
+            <input type="file" name="upload" id="file-upload" onchange="this.form.submit()"/>
+        </form>
+    <button>LEARN MORE</button>
+    </div>
+</div>
 {% endblock %}
 
 {% block genre_classifier %}
