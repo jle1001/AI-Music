@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block upload_file %}
+<div id="upload">
+    <div id="upload-div">
+        <div id="app-information">
+            <h1>Musical Analysis using artificial intelligence</h1>
+            <h4>Musical analysis using artificial intelligence and computational methods to analyze and classify music based on various musical features</h4>
+        </div>
+        <div id="upload-buttons">
+            <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
+                <label for="file-upload" class="custom-file-upload">
+                    UPLOAD FILE
+                </label>
+                <input type="file" name="upload" id="file-upload" onchange="this.form.submit()"/>
+            </form>
+        <button>LEARN MORE</button>
+        </div>
+    </div>
+
+    <div id="music-player">
+        <div id="algorithm-selector">
+            <form>
+                <select name="algorithm-selection" id="algorithm-seleciton">
+                    <option value="1">Algorithm 1</option>
+                    <option value="2">Algorithm 2</option>
+                    <option value="3">Algorithm 3</option>
+                </select>
+                <input type="checkbox">Option 1
+                <input type="checkbox">Option 2
+                <input type="checkbox">Option 3
+                <input type="submit">
+            </form>
+
+        </div>
+        <div id="upload-information">
+            <h1>Information</h1>
+            <h4>Sample rate: </h4>
+            <h4>Format: </h4>
+            <h4>Duration: </h4>
+        </div>
+        <audio controls>
+            <source src="upload/upload.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+{% endblock %}
+{% block information %}
+<div id="information">
+    <div class="information-section">
+        <img>
+        <h3>Analysis</h3>
+        <h4>
+            Analyzing music is important in order to determine its genre because different genres of music have distinct characteristics and features.
+        </h4>
+    </div>
+    <div class="information-section">
+        <img>
+        <h3>Classification</h3>
+        <h4>
+            After having analysed the music, Artificial Intelligence algorithm will automatically classify the song into a musical style. 
+        </h4>        
+    </div>
+    <div class="information-section">
+        <img>
+        <h3>Insights</h3>
+        <h4>
+            Data and graphs will be displayed to understand the classification process.
+            This information will be useful to understand the structure and characteristics of a piece of music in a visual and intuitive way.
+        </h4>        
+    </div>
+</div>
+{% endblock %}
+{% block dataset %}
+<div id="dataset">
+    <div id="dataset-info">
+        <div id="dataset-info-text">
+            <h1>FMA Dataset</h1>
+            <h4>FMA dataset is a publicly available large-scale dataset  for evaluating several tasks in Music Information Retrieval.
+                FMA has been the basis on which the model has been trained.</h4>
+        </div>
+        <div id="info-button">
+            <button>LEARN MORE</button>
+        </div>
+    </div>
+    <div id="landing-image">
+        <img src="{{ url_for('static', filename='media/img/placeholder.webp') }}">
+    </div>
+</div>
+{% endblock %}

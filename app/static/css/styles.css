@@ -1,3 +1,12 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
@@ -25,6 +34,11 @@ nav h1 a {
     color: White;
 }
 
+h4 {
+    font-weight: normal;
+    margin: 10px 0 10px 0;
+}
+
 nav ul {
     display: flex;
     justify-content: flex-end;
@@ -48,7 +62,7 @@ nav li a:hover {
 
 /* Content area */
 main {
-    margin: 20px;
+    margin: 20px 10% 20px 10%;
 }
 
 #upload {
@@ -61,7 +75,7 @@ main {
 #upload-div {
     margin: 0 10% 0 10%;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     flex-direction: column;
 }
 
@@ -69,6 +83,7 @@ main {
     display: flex;
     align-items: center;
     flex-direction: row;
+    margin: 10px
 }
 
 #landing-image {
@@ -129,6 +144,7 @@ button:hover {
     flex-direction: row;
     align-items: flex-start;
     margin: 0 10% 0 10%;
+    padding: 100px;
 }
 
 .information-section {
@@ -141,13 +157,31 @@ button:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 100px;
 }
 
 #dataset-info {
     margin: 0 10% 0 10%;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+}
+
+/* Music player */
+#music-player {
+    display: flex;
+    background-color: #888;
+    margin: 0 10% 0 10%;
+    align-items: center;
+}
+
+#algorithm-selector {
+    margin: 10px;
+}
+
+#upload-information {
+    margin: 10px;
 }
 
 /* Track features */
