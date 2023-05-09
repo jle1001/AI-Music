@@ -20,7 +20,7 @@
 
     <div id="music-player">
         <div id="algorithm-selector">
-            <form>
+            <form enctype="multipart/form-data" action="{{ url_for('analysis') }}" method="post">
                 <select name="algorithm-selection" id="algorithm-seleciton">
                     <option value="1">Algorithm 1</option>
                     <option value="2">Algorithm 2</option>
@@ -31,7 +31,6 @@
                 <input type="checkbox">Option 3
                 <input type="submit">
             </form>
-
         </div>
         <div id="upload-information">
             <h1>Information</h1>

@@ -16,4 +16,8 @@ def predict(audio=UPLOAD_TRACK):
 
     # Predict output
     print(model.predict(mfcc)[0])
-    return np.argmax(model.predict(mfcc)[0])
+    print(np.argmax(model.predict(mfcc)[0]))
+    print(f"{np.argsort(model.predict(mfcc)[0])[-3:][::-1]}")
+    return np.argsort(model.predict(mfcc)[0])[-3:][::-1]
+
+predict()

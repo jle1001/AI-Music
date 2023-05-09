@@ -18,12 +18,17 @@ mfccs = dict()
 for item in data_path.glob('**/*'):
     # Check if the item is a file
     if item.is_file():
-        # print(item)
-        y, sr = librosa.load(item)
-        y = y[:(25 * sr)]
-        mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
-        mfccs[int(item.stem)] = mfcc.ravel()
-        # print(mfccs)
+        try:
+            y, sr = librosa.load(item)
+            if librosa.get_duration(y=y, sr=sr) < 25:
+                continue
+            y = y[:(25 * sr)]
+            mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
+            mfccs[int(item.stem)] = mfcc.ravel()
+            # print(mfccs)
+        except Exception as e:
+            print(f"Error loading file: {e}")
+            continue
 
 track_genres_mfcc = pd.DataFrame({'track_id': mfccs.keys(), 'mfcc': mfccs.values()})
 track_genres_mfcc = pd.merge(track_genres, track_genres_mfcc, on='track_id', how='inner')

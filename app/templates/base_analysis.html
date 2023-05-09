@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ title }}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Exploring the intersection of music and artificial intelligence, containing various machine learning models, algorithms, and datasets for music analysis.">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1><a href="{{ url_for('index') }}">AI-Music</a></h1>
+                <ul>
+                    <li><a href="https://github.com/mdeff/fma">Dataset</a></li>
+                    <li><a href="https://github.com/jle1001/AI-Music">Project</a></li>
+                    <li><a href="{#{ url_for('about') }#}">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {% block genre_classifier %}
+            {% endblock %}
+            <hr>
+            {% block track_features %}
+            {% endblock %}      
+        </main>
+        <footer>
+            <p>2023 - AI-Music - José Ángel López</p>
+            <p>LinkedIn - GitHub - Email</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+Authentication
+----------
+UC-1: Authentication
+Actors: User
+Goal: Allow the user to authenticate.
+Description: The user must authenticate to access certain features and save their processed tracks. 
+ If the user is not authenticated, they will not be able to save their tracks and will need to upload them each time they access the application.
+ 
+Steps:
+	1. The user clicks on the "Login" button on the application's homepage.
+	2. The system presents the user with a login screen where they can enter their username and password.
+	3. The user enters their credentials and clicks the "Login" button.
+	4. The system validates the user's credentials and logs them in.
+	5. The user can now access all authenticated features of the application.
+
+Preconditions: The user must have a valid account and the application must have a login feature.
+Postconditions: The user is logged in and their progress is saved. They can access authenticated features and their progress will be maintained between sessions.
+
+Exceptions:
+	- If the user enters invalid credentials, they will be presented with an error message and asked to try again.
+	- If the user forgets their password, they can click on the "Forgot Password" link and follow the password recovery process.
+	- If the user does not have an account, they can click on the "Sign Up" link to create a new account.
+	
+__________________________________________________________________________________________________________________________________________________________________
+User registration
+-----------------
+UC-1.1: Registration
+Actors: User
+Goal: Allow a user to create a new account and access the application's features
+Description: A new user must register to access all the application's features. 
+ The registration process requires the user to provide their personal information and create a username and password.
+
+Steps:
+	1. The user navigates to the application's registration page.
+	2. The system presents the user with a registration form where they can enter their personal information, including their name and email.
+	3. The user selects a username and password for their account.
+	4. The system validates the username and password and checks if the username is available.
+	5. If the username and password are valid and the username is available, the system creates a new account for the user and logs them in.
+	6. The user can now access all features of the application.
+	
+Preconditions: The user must not have an existing account in the application.
+Postconditions: The user has a new account in the application and can access all features.
+
+Exceptions:
+	- If the user enters invalid information, such as an invalid email, they will be presented with an error message and asked to correct their information.
+	- If the user selects a username that is already taken, they will be presented with an error message and asked to choose a different username.
+	- If the user does not provide all required information, they will be presented with an error message and asked to complete the form.
+	- If the system encounters an error during the registration process, the user will be presented with an error message and asked to try again.
+__________________________________________________________________________________________________________________________________________________________________
+
+Track upload
+-------------
+UC-2: Track upload
+Actors: User
+Goal: Allow the user to upload a track and play it in the application with basic information displayed.
+Description: The user can upload a song file and it will be stored in the application's database if authenticated. 
+ The user can then select the song to play it and basic information about the song will be displayed.
+
+Steps:
+	1. The user clicks on the "Upload file" button in the application.
+	2. The system presents the user with a file selection dialog where they can choose a song file to upload.
+	3. The user selects a song file and clicks the "Upload" button.
+	4. The system validates the file and stores it in the application's database.
+	5. The user can now play the uploaded song.
+	6. The application displays basic information such as duration, sample rate, etc. 
+
+Preconditions: The application must have a file upload feature.
+Postconditions: The song file is uploaded and stored in the application's database. The user can select and play the song, and basic information about the song is displayed.
+
+Exceptions:
+
+	- If the user tries to upload a file that is not a valid audio file, they will be presented with an error message and asked to choose a valid audio file.
+	- If the user's internet connection is lost during the upload, the upload will fail and the user will need to try again when their connection is restored.
+	- If the uploaded file is corrupted or unreadable, the application will display an error message and ask the user to try again with a different file.
+
+__________________________________________________________________________________________________________________________________________________________________
+
+Analyze track
+--------------
+UC-3: Track analysis
+Actors: User
+Goal: Allow the user to analyze a song uploaded in the application and obtain information about its genre, spectrogram, waveplot, etc.
+Description: The user can select a song from their uploaded tracks and request the system to analyze it. 
+ An AI algorithm will process the song and extract relevant information such as genre, spectrogram, waveplot, etc. 
+ The user can view and interact with this information in the application.
+
+Steps:
+	1. The user selects the song they want to analyze.
+	2. The user clicks on the "Analyze" button to initiate the music analysis process.
+	3. The system sends the selected song to an AI algorithm for processing.
+	4. The AI algorithm analyzes the song and extracts relevant information such as genre, spectrogram, waveplot, etc.
+	5. The system displays the analysis results in the application for the user to view and interact with.
+	6. The user can interact with the analysis results.
+
+Preconditions: The user must have a valid account and at least one song uploaded in the application. The AI algorithm for music analysis must also be integrated into the system.
+Postconditions: The user can view and interact with the analysis results of the selected song in the application.
+
+Exceptions:
+
+	- If the AI algorithm fails to analyze the song due to technical issues, an error message will be displayed and the user can try again later.
