@@ -3,11 +3,14 @@ from flask_login import current_user, login_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import LoginForm, RegisterForm, Security, SQLAlchemySessionUserDatastore, UserMixin, RoleMixin, roles_required, login_required
 from app.src import plot_features, predict_genre
+import secrets
 import os
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SECURITY_PASSWORD_SALT'] = os.environ.get('SECURITY_PASSWORD_SALT')
 
 db = SQLAlchemy(app)
 roles_users = db.Table('roles_users',
@@ -93,18 +96,24 @@ def upload_file():
 
 @app.route('/analysis', methods=['POST', 'GET'])
 def analysis():
+    if request.method == 'POST':
+        n_model = request.form['algorithm-selection']
+
+    print(n_model)
     waveform_img_src = plot_features.show_waveform()
     spectogram_img_src = plot_features.show_spectogram()
     chromagram_img_src = plot_features.show_chromagram()
     MFCC_img_src = plot_features.show_MFCC()
 
-    prediction = predict_genre.predict()
+    prediction = predict_genre.predict(n_model=n_model)
+    model_name = predict_genre.get_model(n_model=n_model)
     
     return render_template('analysis.html', 
                            waveform_image=waveform_img_src,
                            spectogram_image=spectogram_img_src,
                            chromagram_image=chromagram_img_src,
                            MFCC_image=MFCC_img_src,
+                           model_name=model_name,
                            prediction=prediction)
 
 if __name__ == "__main__":

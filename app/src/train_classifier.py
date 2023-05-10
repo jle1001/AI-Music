@@ -111,8 +111,9 @@ def train(model=initial_model):
     optimizer_name = model.optimizer.__class__.__name__
     optimizer_name_short = optimizer_name[:3]
     uuid_string = uuid.uuid4().hex
-    uuid_short = uuid_string[:8]
-    model_name = f'model_{layer_count}L_{optimizer_name_short}_{uuid_short}'
+    # uuid_short = uuid_string[:8]
+    # model_name = f'model_{layer_count}L_{optimizer_name_short}_{uuid_short}'
+    model_name = f'model_{layer_count}L_{optimizer_name_short}'
     print(model_name)
 
     # Save model
