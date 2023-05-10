@@ -1,3 +1,5 @@
+import time
+import uuid
 import tensorflow as tf
 import numpy as np
 import pandas as pd
@@ -31,31 +33,30 @@ X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.
 # print(X_train)
 # print(y_train)
 
-# TF model (first version, change later)
-# model = tf.keras.Sequential([
-#     tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
-#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
-#     tf.keras.layers.MaxPooling1D((2)),
-#     tf.keras.layers.Conv1D(128, (3), activation='relu'),
-#     tf.keras.layers.MaxPooling1D((2)),
-#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
-#     tf.keras.layers.MaxPooling1D((2)),
-#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
-#     tf.keras.layers.MaxPooling1D((2)),
-#     tf.keras.layers.Flatten(),
-#     tf.keras.layers.Dense(1640, activation='softmax')
-# ])
+initial_model = tf.keras.Sequential([
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(164, activation='softmax')
+])
 
-# model = tf.keras.Sequential([
-#     tf.keras.layers.Dense(128, activation='relu'),
-#     tf.keras.layers.Dropout(0.2),
-#     tf.keras.layers.Dense(128, activation='relu'),
-#     tf.keras.layers.Dropout(0.2),
-#     tf.keras.layers.Dense(64, activation='relu'),
-#     tf.keras.layers.Dense(16400, activation='softmax')
-# ])
+simple_conv_model = tf.keras.Sequential([
+    tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
+    tf.keras.layers.Conv1D(64, (3), activation='relu'),
+    tf.keras.layers.MaxPooling1D((2)),
+    tf.keras.layers.Conv1D(128, (3), activation='relu'),
+    tf.keras.layers.MaxPooling1D((2)),
+    tf.keras.layers.Conv1D(64, (3), activation='relu'),
+    tf.keras.layers.MaxPooling1D((2)),
+    tf.keras.layers.Conv1D(64, (3), activation='relu'),
+    tf.keras.layers.MaxPooling1D((2)),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(164, activation='softmax')
+])
 
-model = tf.keras.Sequential([
+conv_model = tf.keras.Sequential([
     tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
     tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
     tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
@@ -84,9 +85,6 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(164, activation="softmax")
 ])
 
-# Compilation
-model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-
 # Traning and test set to tensor
 X_train = np.vstack(X_train)
 y_train = np.vstack(y_train)
@@ -96,13 +94,28 @@ y_val = np.vstack(y_val)
 X_test = np.vstack(X_test)
 y_test = np.vstack(y_test)
 
-# Training
-model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=1, batch_size=15)
+def train(model=initial_model):
+    # Compilation
+    model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-# Evaluate model
-loss, acc = model.evaluate(X_test, y_test, verbose=2)
-print(f'Loss: {loss}')
-print(f'Accuracy: {acc}')
+    # Training
+    model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=1, batch_size=15)
 
-# Save model
-model.save('app/models/initial_model.h5')
+    # Evaluate model
+    loss, acc = model.evaluate(X_test, y_test, verbose=2)
+    print(f'Loss: {loss}')
+    print(f'Accuracy: {acc}')
+
+    # Generate model name
+    layer_count = len(model.layers)
+    optimizer_name = model.optimizer.__class__.__name__
+    optimizer_name_short = optimizer_name[:3]
+    uuid_string = uuid.uuid4().hex
+    uuid_short = uuid_string[:8]
+    model_name = f'model_{layer_count}L_{optimizer_name_short}_{uuid_short}'
+    print(model_name)
+
+    # Save model
+    model.save(f'app/models/{model_name}.h5')
+
+train(conv_model)
