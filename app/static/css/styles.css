@@ -223,6 +223,31 @@ button:hover {
     height: auto;
 }
 
+#login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c8c8c8;
+    font-weight: bold;
+}
+
+#register_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c8c8c8;
+    font-weight: bold;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+
 /* Footer */
 footer {
     background-color: #333;

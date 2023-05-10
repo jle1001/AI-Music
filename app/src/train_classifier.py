@@ -32,28 +32,28 @@ X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.
 # print(y_train)
 
 # TF model (first version, change later)
-model = tf.keras.Sequential([
-    tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
-    tf.keras.layers.Conv1D(64, (3), activation='relu'),
-    tf.keras.layers.MaxPooling1D((2)),
-    tf.keras.layers.Conv1D(128, (3), activation='relu'),
-    tf.keras.layers.MaxPooling1D((2)),
-    tf.keras.layers.Conv1D(64, (3), activation='relu'),
-    tf.keras.layers.MaxPooling1D((2)),
-    tf.keras.layers.Conv1D(64, (3), activation='relu'),
-    tf.keras.layers.MaxPooling1D((2)),
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(1640, activation='softmax')
-])
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
+#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
+#     tf.keras.layers.MaxPooling1D((2)),
+#     tf.keras.layers.Conv1D(128, (3), activation='relu'),
+#     tf.keras.layers.MaxPooling1D((2)),
+#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
+#     tf.keras.layers.MaxPooling1D((2)),
+#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
+#     tf.keras.layers.MaxPooling1D((2)),
+#     tf.keras.layers.Flatten(),
+#     tf.keras.layers.Dense(1640, activation='softmax')
+# ])
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dropout(0.2),
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dropout(0.2),
-    tf.keras.layers.Dense(64, activation='relu'),
-    tf.keras.layers.Dense(16400, activation='softmax')
-])
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Dense(128, activation='relu'),
+#     tf.keras.layers.Dropout(0.2),
+#     tf.keras.layers.Dense(128, activation='relu'),
+#     tf.keras.layers.Dropout(0.2),
+#     tf.keras.layers.Dense(64, activation='relu'),
+#     tf.keras.layers.Dense(16400, activation='softmax')
+# ])
 
 model = tf.keras.Sequential([
     tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
@@ -97,7 +97,7 @@ X_test = np.vstack(X_test)
 y_test = np.vstack(y_test)
 
 # Training
-model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=15)
+model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=1, batch_size=15)
 
 # Evaluate model
 loss, acc = model.evaluate(X_test, y_test, verbose=2)

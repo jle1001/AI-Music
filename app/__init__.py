@@ -1,9 +1,83 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
+from flask_login import current_user, login_user, logout_user
+from flask_sqlalchemy import SQLAlchemy
+from flask_security import LoginForm, RegisterForm, Security, SQLAlchemySessionUserDatastore, UserMixin, RoleMixin, roles_required, login_required
 from app.src import plot_features, predict_genre
 import os
-import librosa
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+
+db = SQLAlchemy(app)
+roles_users = db.Table('roles_users',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+
+class Role(db.Model, RoleMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(32), unique=True)
+    description = db.Column(db.String(128))
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(48), unique=True)
+    password = db.Column(db.String(16))
+    active = db.Column(db.Boolean())
+    confirmed_at = db.Column(db.DateTime())
+    roles = db.relationship('Role', secondary=roles_users, backref=db.backref('users', lazy='dynamic'))
+
+user_datastore = SQLAlchemySessionUserDatastore(db, User, Role)
+security = Security(app, user_datastore)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        user_datastore.create_user(
+            email=form.email.data,
+            password=form.password.data
+        )
+        db.session.commit()
+        return redirect(url_for('login'))
+
+    return render_template('register.html', form=form)
+
+@app.route('/user_login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = user_datastore.get_user(form.email.data)
+        login_user(user, remember=form.remember_me.data)
+        return redirect(url_for('index'))
+
+    return render_template('login.html', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.route('/admin')
+@roles_required('admin')
+def admin():
+    email = current_user.email
+    return render_template('admin.html', email=email)
+
+@app.route('/user')
+@login_required
+def user():
+    email = current_user.email
+    return render_template('user.html', email=email)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
