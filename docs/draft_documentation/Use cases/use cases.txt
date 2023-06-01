@@ -98,3 +98,13 @@ Postconditions: The user can view and interact with the analysis results of the 
 Exceptions:
 
 	- If the AI algorithm fails to analyze the song due to technical issues, an error message will be displayed and the user can try again later.
+
+__________________________________________________________________________________________________________________________________________________________________
+
+UC-3.1: (MFCC Extraction)
+Actors: System
+Goal: Obtain MFCC (Mel-frequency cepstral coefficients) information.
+Description: The system analyzes the song using librosa library to obtain MFCC features.
+// complete
+
+__________________________________________________________________________________________________________________________________________________________________

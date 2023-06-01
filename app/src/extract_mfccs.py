@@ -24,6 +24,10 @@ for item in data_path.glob('**/*'):
                 continue
             y = y[:(25 * sr)]
             mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
+
+            # Normalize MFCC features
+            mfcc_normalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)
+
             mfccs[int(item.stem)] = mfcc.ravel()
             # print(mfccs)
         except Exception as e:
