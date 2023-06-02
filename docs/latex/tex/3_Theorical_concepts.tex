@@ -1,0 +1,174 @@
+\capitulo{3}{Theorical Concepts}
+
+Before starting with the project development, it is necessary to explain a series of theoretical concepts.
+
+\section{Sound}
+
+Sound is a mechanical vibration propagating through an elastic medium, such as air, water or any other material. These vibrations generate some pressure differences in the medium, which are taken by our ears and perceived as sound.
+
+Mathematically, sound can be represented by a mathematical function $f(t)$, where $t$ represents time. This function describes how the pressure of particles in the medium varies as time passes.
+
+\subsection{Mathematical Representation of Sound}
+
+The most common mathematical representation of sound is the sine wave. A sine wave can be described by the following equation:
+
+\begin{equation}
+f(t) = A \sin(2\pi ft + \phi)
+\end{equation}
+
+Donde:
+\begin{itemize}
+\item $A$ is wave amplitude, which represents the maximum deviation of the wave from its equilibrium position.
+\item $f$ is wave frequency, which determines the number of complete cycles the wave makes in one second.
+\item $t$ is the time.
+\item $\phi$ is the initial wave phase, which determines the horizontal displacement of the wave over time.
+\end{itemize}
+
+\section{Music recognition}
+
+Music recognition is an area that aims on the analysis of audio features in order to extract relevant information. For example, songs identification, musical genres, or artists.
+
+\subsection{Sound features}
+
+Music recognition is based on the analysis of diverse sound features. Some of the most common are:
+
+\begin{itemize}
+\item \textbf{Rythm}: Rhythm is a fundamental property of music and refers to the temporal organization of sound events. In music recognition it can involve tempo detection and analysis of musical patterns.
+
+\item \textbf{Frequency}: Musical frequency is the number of vibrations or oscillations in the sound, per second. In music recognition, frequency spectrums can be analyzed to identify the musical notes.
+
+\item \textbf{Timbre}: Refers to the tonal and harmonic characteristics that distinguish different instruments and voices. Music recognition can examine the timbre of an audio signal to identify the instruments used in a song for example.
+
+\item \textbf{Music structure}: Music structure refers to the organization of a musical composition. In music recognition, structure analysis can detect changes and repetitions in the different parts of a song and identify specific musical styles.
+\end{itemize}
+
+\subsection{Musical Styles and Recognition}
+Different musical styles often have distinctive characteristics that can be discovered in musical recognition. For example, certain genres have characteristic rhythms and harmonic patterns. 
+These features can be identified using machine learning algorithms trained on a wide variety of labeled audio samples.
+
+\subsection{Applications of Music Recognition}
+Music recognition has several applications, some of which are:
+
+\begin{itemize}
+\item \textbf{Music recommendation}: Music recognition algorithms are used to recommend music to users based on their preferences and listening patterns. These systems analyze the features of the songs listened by the user and create a recommendation model based on their tastes.
+
+\item \textbf{Genre classification}: Music recognition is used to automatically classify songs into different music genres, making it easier to organize and search for music in large digital libraries.
+\end{itemize}
+
+\section{Theorical examples of music features extractions}
+
+\subsection{Spectrogram}
+A spectrogram is a visual representation of the frequency spectrum of an audio signal as a function of time. It provides detailed information about how the sound is distributed over the different frequencies.
+
+The process for obtaining a spectrogram of a song is explained below.
+
+\begin{itemize}
+\item \textbf{Audio signal preprocessing}: Audio signal is divided into segments, in a process called windowing. In this way, it is possible to analyze the spectral variation at different points of the signal over time.
+
+\item \textbf{Short Time Fourier Transform (STFT)}: Each segment of the signal is applied to a short time Fourier transform (STFT). STFT divides the signal into multiple time segments and calculates the sum of different frequencies in each segment.  
+This is accomplished by applying a time window to each segment and then calculating the Fourier transform of each window.
+
+\item \textbf{Spectrum magnitude calculation}: The STFT provides various information about the phases and amplitudes of the frequencies in each time segment. However, to construct a spectrogram, only the magnitude of the spectrum (absolute amplitude of the frequencies) is taken.
+
+\item \textbf{Visual representation}: Spectrum magnitude is represented visually in a 2D graph, where the horizontal axis represents time and the vertical axis represents frequencies. The intensity of the color or brightness at each point on the graph indicates the energy or amplitude of the corresponding frequency.
+\end{itemize}
+
+\imagen{example_spectrogram}{Audio track spectrogram.}{.5}
+
+\subsection{Mel Frequency Cepstral Cepstral Coefficients (MFCC)}
+Mel frequency cepstral coefficients (MFCCs) are widely used features in audio signal processing and speech recognition. 
+These coefficients represent the spectral characteristics of an audio signal as a function of the Mel scale, which is a frequency scale based on the response of human ear.
+
+The process for obtaining the MFCC coefficients of a song is explained below.
+
+\begin{enumerate}
+\item \textbf{Pre-emphasis}: Audio signal is normalized with a pre-emphasis filter, which highlights high-frequency frequencies and compensates for the attenuation of lower frequencies. This helps to improve the signal-to-noise ratio and enhance relevant features in the spectrum.
+
+\item \textbf{Splitting}: Pre-emphasis signal is split into short, overlapping frames or segments over time. This is done to capture the spectral variation at different points in the signal over time.
+
+\item \textbf{Short Time Fourier Transform (STFT)}: To each frame of the signal, the Short Time Fourier Transform (STFT) is applied, which calculates the contribution of different frequencies in each frame. The STFT provides various information about the phases and amplitudes of the frequencies in each time segment.
+
+\item \textbf{Mel filter bank}: A Mel filter bank is applied, which consists of a series of triangularly spaced filters on the Mel scale. These filters are used to represent the spectrum in terms of Mel frequency bands.
+
+\item \textbf{Logarithm of the energy}: This is done to include nonlinear response of the human ear to frequencies.
+
+\item \textbf{Transformada de Coseno Discreta}: Discrete Cosine Transform (DCT) is applied to the values obtained above.
+
+\item \textbf{Extraction of the MFCC coefficients}: Finally, the most significant cepstral coefficients are selected to represent the spectral information of the audio signal. These coefficients are the ones used as features for audio processing and recognition applications.
+\end{enumerate}
+
+MFCC coefficients are widely used in applications such as speech recognition, speaker identification and voice synthesis.
+
+\imagen{example_MFCC}{Audio track MFCC.}{.5}
+
+\section{Artificial Intelligence}
+
+Artificial intelligence (AI) is the ability of a computer system to mimic human cognitive functions such as learning and problem solving.
+
+Artificial intelligence systems can analyze large amounts of data, recognize patterns and make decisions based on that information. They can learn from experience and improve their performance.
+
+There are different approaches to AI, including \textit{machine learning}, \textit{natural language processing}, \textit{computer vision} and robotics, among others.
+
+AI is used in a wide variety of applications such as recommendation systems, data analysis or medical diagnostics, for example.
+
+\subsection{Aprendizaje automático (Machine Learning)}
+\textit{Machine learning} is a subfield of artificial intelligence that focuses on the development of algorithms and models that allow systems to learn and extract information from data, without being explicitly programmed to do so.
+There are several types of machine learning:
+
+\begin{itemize}
+\item \textbf{Supervised learning}: A set of labeled training data is provided as input to the algorithms. The model learns to make predictions or decisions based on these labeled examples. Supervised learning is commonly used in classification or regression tasks.
+
+\item \textbf{Unsupervised learning}: Algorithms work with unlabeled data sets, i.e. with no known class. The goal is to find hidden patterns or structures in the data. Unsupervised learning is used in tasks such as (\textit{clustering}).
+
+\item \textbf{Reinforcement learning}: In this type of learning, an intelligent agent interacts with its environment and learns to make decisions according to a series of rewards or penalties. The goal is to find a policy that maximizes the rewards received. Reinforcement learning is used to train agents in video games or robotics.
+
+\item \textbf{Semi-supervised learning}: In this type of learning the dataset is not completely labeled, therefore, the objective is to maximize the performance of the model from known data.
+\end{itemize}
+
+\section{Example of supervised learning}
+
+In this project an AI approach using supervised learning is going to be used. Therefore, an example will be detailed in more detail:
+
+\subsection{Objective}
+Build a machine learning model to classify emails as "spam" or "non-spam".
+
+\subsection{Dataset}
+Labeled dataset containing 1000 emails, where each email has features such as the frequency of certain words suspected to belong to spam, message length, presence of links or images, for example. \textbf{In addition to including the class to which it belongs: "Spam" or "Not Spam"}.
+
+\subsection{Data preparation}
+The data must be prepared for model training. 
+A suitable option is to represent each e-mail as a feature vector.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Email} & \textbf{Suspected spam words} & \textbf{Lenght} & \textbf{Links} & \textbf{Class} \\ \hline
+1 & 1 & 120 & 0 & Not spam \\
+2 & 4 & 56 & 1 & Spam \\
+3 & 1 & 352 & 2 & Not spam \\
+4 & 9 & 174 & 0 & Spam \\
+\hline
+\end{tabular}
+\caption{Example of training data in a supervised learning problem}
+\end{table}
+
+\subsection{Model training}
+Once the data is processed in a suitable format, it is fed into a supervised learning algorithm creating a machine learning model. For example, Artificial Neural Networks, Support Vector Machines or Decision Trees.
+
+\subsection{Prediction}
+Once the model is trained, it is fed with external data and predictions are made.
+
+\begin{figure}[ht]
+  \centering
+  \setlength{\unitlength}{0.8cm}
+  \begin{picture}(12,8)
+    \put(4,7){\oval(5,2){\makebox(0,0){Email}}}
+    \put(4,4.9){\oval(5,2){\makebox(0,0){Preprocessing}}}
+    \put(4,2.8){\oval(5,2){\makebox(0,0){Feature vector}}}
+    \put(4,0.7){\oval(5,2){\makebox(0,0){Training}}}
+    \put(4,-1.4){\oval(5,2){\makebox(0,0){Prediction}}}
+  \end{picture}
+  \vspace{2cm}
+  \caption{Example of supervised learning process}
+\end{figure}

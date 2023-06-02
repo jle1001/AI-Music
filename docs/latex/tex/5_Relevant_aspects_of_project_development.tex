@@ -1,0 +1,242 @@
+\capitulo{5}{Relevant aspects of the project development}
+
+\section{Project Development}
+
+The development of this project has been conducted using an agile methodology based on Scrum. This approach provides flexibility to adapt to changes in requirements and to iteratively improve the project during its development.
+Agile methodologies are based on the idea of splitting the project into iterative cycles called "sprints", where planning, development, testing and review activities are done.
+Sprints usually have a fixed duration, in this case they have been 1 week each, with some justified exceptions.
+
+\subsection{Scrum Methodology}
+The project development process is explained in detail in the document \textit{Annexes}.
+
+In summary, the development consisted of the following iterative steps:
+
+\begin{enumerate}
+\item \textbf{Initial Phase}: Definition of the project's general objectives. Creation of the Product Backlog.
+
+\item \textbf{Sprint planning meetings}: At the beginning of each sprint, a small meeting is held to review the tasks performed and select the tasks to be developed.
+
+\item \textbf{Sprint development}: During the sprint, work is done on each of the assigned tasks.
+
+\item \textbf{Continuous improvement}: Agile methodology promote continuous improvement throughout the development of the project.
+\end{enumerate}
+
+\subsection{Analysis}
+
+The objective of the project is to apply Artificial Intelligence (AI) and Machine Learning (ML) techniques for classification of musical styles.
+During the analysis phase, several ML models were studied, to finally choosing the Convolutional Neural Network (CNN) due to its higher efficiency.
+
+Another factor to take into account in an AI project is the dataset. Various datasets have been thought of to train the model such as:
+\begin{itemize}
+
+\item \textbf{GTZAN Dataset}: dataset widely used in music classification. Compiled by George Tzanetakis in 2002, it consists of \textbf{1000 audio fragments} of \textbf{30 seconds}, distributed in \textbf{10 musical styles}.
+
+\item \textbf{Million Song Dataset}: dataset formed of \textit{musical features and metadata} of one million popular songs. It does not include audio tracks.
+
+\item \textbf{MagnaTagATune}: dataset consisting of \textbf{25863 audio fragments} of \textbf{29 seconds}.
+
+\item \textbf{FMA (Free Music Archive)}: royalty-free music dataset formed of \textbf{106574 audio fragments} of \textbf{30 seconds}. 
+
+\end{itemize}
+
+Finally, \textbf{FMA (Free Music Archive) dataset of 7.2 GiB}, with 8000 audio fragments has been chosen to perform the training of the model. This is because it offers a large amount of royalty-free music tracks. 
+In addition, by including the music tracks (unlike Million Song Dataset for example) it is possible to extract the features manually using librosa or other tools.
+
+\subsection{Design}
+
+Regarding the design of the application, at first the development of a desktop application was considered. However, this idea was abandoned and it was opted to develop a web application due to the following reasons:
+
+\begin{itemize}
+\item \textbf{Technological evolution}: It is a reality that web applications are leading the current technological moment, so making the project on the web is a good way learn about this technology.
+
+\item \textbf{Accessibility}: The web application is accessible from any device with an internet connection, regardless of the operating system. In this way, the scope of the application is extended.
+
+\item \textbf{Updates}: When a web application is updated, users automatically receive the latest version available in production, avoiding the need to download and install updates manually. 
+
+\item {Maintenance}: It is generally easier to maintain a web application than a desktop application, as factors such as the user's hardware or operating system disappear.
+\end{itemize}
+
+The framework chosen for the implementation of the web application was:
+
+\begin{itemize}
+
+\item \textbf{Backend}:For the backend the selected option is Flask, a Python framework, designed for web applications and APIs.
+
+\item \textbf{Frontend}: For the frontend, HTML and CSS have been chosen. HTML is a markup language that defines the structure and contents of the web pages that form the application. CSS is used to define the styles of HTML documents and add attractive elements for the user.
+
+\end{itemize}
+
+\newpage
+
+\section{Extraction of audio features}
+
+This section will discuss the audio feature extraction process.
+
+\subsection{MFCC extraction using Python and librosa}
+
+MFCC extraction method is designed to loop through all files in a specified directory and extract the MFCC features of each audio file it finds. The explanation of the relevant details is as follows:
+
+\begin{verbatim}
+	y, sr = librosa.load(item)
+
+	if librosa.get_duration(y=y, sr=sr) < 25:
+		continue
+
+	y = y[:(25 * sr)]
+	mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
+	mfcc_normalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)
+
+	mfccs[int(item.stem)] = mfcc_normalized.ravel()
+\end{verbatim}
+
+\begin{enumerate}
+\item \textbf{y, sr = librosa.load(item)}: Load audio file. Returns both the audio signal (y) and the sample rate (sr).
+
+\item \textbf{if librosa.get\textunderscore duration (y=y, sr=sr) < 25}: Audio length check. If the audio is shorter than 25 seconds, the file is skipped.
+
+\item \textbf{y = y[:(25 * sr)]}: Trims the audio signal to the first 25 seconds.
+
+\item\textbf{mfcc = librosa.feature.mfcc(y=y, sr=sr, n\textunderscore mfcc =10)}: Extraction of 10 MFCC coefficients.
+
+\item \textbf{mfcc\textunderscore normalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)}: Normalization of MFCC coefficients by subtracting the mean and dividing by the standard deviation.
+
+\item\textbf{mfccs[int(item.stem)] = mfcc\textunderscore normalized.ravel()}: The normalized MFCC coefficients are flattened into a 1D matrix and stored in a dictionary.
+\end{enumerate}
+
+\subsection{Extraction of other characteristics}
+
+To compare performance and select the best possible set of audio features to perform the classification, the process was repeated with:
+
+\begin{enumerate}
+\item \textbf{Spectrograms}: librosa.feature.melspectrogram(y=y, sr=sr)
+
+\item \textbf{Chromagrams}: librosa.feature.chroma\textunderscore stft(y=y, sr=sr)
+\end{enumerate}
+
+\newpage
+
+\section{Implementation of neural networks}
+
+In this section we will study the neural networks used in the project and their effectiveness.
+
+\subsection{Initial Neural Network Model}
+
+\begin{verbatim}
+initial_model = tf.keras.Sequential([
+        tf.keras.layers.Dense(512, activation='relu'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(512, activation='relu'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(512, activation='relu'),
+        tf.keras.layers.Dense(164, activation='softmax')
+])
+\end{verbatim}
+
+First generic model used to study the quality of training and its predictions.
+This specific model is an example of a fully connected neural network, which is configured as a sequence of layers.
+
+\texttt{tf.keras.layers.Dense(512, activation='relu')}
+
+First layer of the model. Each neuron in this layer is connected to all neurons in the previous layer. It has 512 neurons and uses the ReLU (Rectified Linear Unit) activation function. The \textbf{ReLU} function is a non-linear activation function so the model can learn complex patterns.
+
+\texttt{tf.keras.layers.Dropout(0.2)}
+
+Dropout Layer. Dropout is a regularization technique used to avoid overfitting. During training, some neurons are randomly deactivated to avoid overfitting to the training data. In this case, 20\% of the neurons are deactivated.
+
+\texttt{tf.keras.layers.Dense(512, activation='relu')} 
+
+\texttt{tf.keras.layers.Dropout(0.2)}:
+
+These are the second hidden layer and the second Dropout layer, respectively.
+
+\texttt{tf.keras.layers.Dense(512, activation='relu')}
+
+This is the third hidden layer of the model. Like the first two hidden layers, it has 512 neurons and uses the ReLU activation function.
+
+\texttt{tf.keras.layers.Dense(164, activation='softmax')}
+
+Output layer of the model. It has 164 neurons, matching the number of musical styles present in the dataset. The activation function \textbf{Softmax} produces a probability distribution among the different classes.
+
+TODO: ENTER GRAPHS WITH TRAINING RESULTS AND LAYER REPRESENTATION
+
+\newpage
+
+\subsection{1D Convolutional Neural Network Model (1D CNN)}
+
+\begin{verbatim}
+conv_model = tf.keras.Sequential([
+    tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
+    tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
+
+    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
+
+    tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
+
+    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
+
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(512, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(512, activation='relu'),
+    tf.keras.layers.Dense(164, activation="softmax")
+])
+\end{verbatim}
+
+Convolutional neural networks are particularly effective for music classification due to local pattern recognition, in the context of music it is especially relevant as it can translate into the ability to identify patterns such as rhythm or tones efficiently in the different parts of the songs.
+
+\texttt{tf.keras.layers.Reshape((10770, 1), input\_shape=(None, 10770))}
+
+First layer of the model. Input data is reshaped to a format accepted by the proposed convolutional layers. In this case, the input data is reshaped to a 2D matrix of 10770 rows and 1 column.
+
+\texttt{tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu')}
+\texttt{tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu')}
+
+First convolutional layers. The convolution is performed with \text{64 filters} and a \text{kernel size of 3}. The activation function is the ReLU (Rectified Linear Unit).
+
+\texttt{tf.keras.layers.BatchNormalization()}
+
+Batch normalization layer. Important step involved in the stabilization and acceleration of the training process. The operation consists of applying a transformation that keeps the mean output close to 0 and the standard deviation close to 1.
+
+\texttt{tf.keras.layers.MaxPooling1D(pool\_size=2)}
+
+Pooling layer. Reduces the spatial dimension of the input by extracting the most important features and preventing overfitting.
+
+Subsequently, the same steps are performed with different layers of 128 neurons, 256 neurons and finally another 128 neurons. Until the last layers are reached.
+
+\texttt{tf.keras.layers.Flatten()}
+
+This layer reduces the dimensionality of the input to a 1D input. \textbf{Is the bridge between the convolutional layers and the dense layers}.
+
+\texttt{tf.keras.layers.Dense(512, activation='relu')}
+
+Fully connected layer of 512 neurons with a ReLU activation function.
+
+\texttt{tf.keras.layers.Dropout(0.5)}
+
+Dropout layer that randomly deactivates 50\% of the neurons to avoid overfitting.
+
+\texttt{tf.keras.layers.Dense(512, activation='relu')}
+
+Fully connected layer of 512 neurons with a ReLU activation function.
+
+\texttt{tf.keras.layers.Dense(164, activation="softmax")}
+
+Output layer of the model. It has 164 neurons, matching the number of musical styles present in the dataset. The activation function \textbf{Softmax} produces a probability distribution among the different classes.
+
+This model is a 1D CNN with a structure formed by a series of blocks of convolutional layers followed by normalization and pooling, followed by a series of dense layers.
+
+The first part of the model (the convolutional layers) is responsible for learning local features in small windows of the input data, while the second part of the model, fully connected layers, learns to combine these features to make predictions.
+
+TODO: ENTER GRAPHS WITH TRAINING RESULTS AND LAYER REPRESENTATION

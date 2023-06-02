@@ -161,6 +161,3 @@ cython_debug/
 
 # DB
 users.db
-
-# Documentation (temporal)
-/docs

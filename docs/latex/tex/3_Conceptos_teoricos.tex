@@ -1,0 +1,176 @@
+\capitulo{3}{Conceptos teóricos}
+
+Antes de empezar con el desarrollo del proyecto, es necesario explicar una serie de conceptos teóricos.
+
+\section{Sonido}
+
+El sonido es una vibración mecánica que se propaga a través de un medio elástico, como el aire, el agua o cualquier otro material. Estas vibraciones generan diferencias de presión en el medio, que son captadas por nuestros oídos y percibidas como sonido.
+
+Matemáticamente, el sonido se puede representar mediante una función matemática $f(t)$, donde $t$ representa el tiempo. Esta función describe cómo varía la presión o desplazamiento de partículas en el medio a medida que pasa el tiempo.
+
+\subsection{Representación Matemática del Sonido}
+
+La representación matemática más común del sonido es la onda sinusoidal. Una onda sinusoidal se puede describir mediante la siguiente ecuación:
+
+\begin{equation}
+f(t) = A \sin(2\pi ft + \phi)
+\end{equation}
+
+Donde:
+\begin{itemize}
+\item $A$ es la amplitud de la onda, que representa la máxima desviación de la onda desde su posición de equilibrio.
+\item $f$ es la frecuencia de la onda, que determina la cantidad de ciclos completos que la onda realiza en un segundo.
+\item $t$ es el tiempo.
+\item $\phi$ es la fase inicial de la onda, que determina el desplazamiento horizontal de la onda en el tiempo.
+\end{itemize}
+
+
+\section{Reconocimiento musical}
+
+El reconocimiento musical es un área que se centra en el análisis de las características del audio, para así, extraer información relevante. Por ejemplo la identificación de canciones, géneros musicales, o artistas.
+
+\subsection{Características del Sonido}
+
+El reconocimiento musical se basa en el análisis de diversas características del sonido. Algunas de las características más comunes son:
+
+\begin{itemize}
+\item \textbf{Ritmo}: El ritmo es una propiedad fundamental de la música y se refiere a la organización temporal de los eventos sonoros. En el reconocimiento musical puede involucrar la detección del tempo y el análisis de los patrones rítmicos.
+
+\item \textbf{Frecuencia}: La frecuencia musical es el número de vibraciones u oscilaciones por segundo en el sonido. En el reconocimiento musical, se pueden analizar los espectros de frecuencia de una señal de audio para identificar las notas musicales presentes en una canción.
+
+\item \textbf{Timbre}: El timbre se refiere a las características tonales y armónicas que distinguen diferentes instrumentos y voces. El reconocimiento musical puede examinar el timbre de una señal de audio para identificar los instrumentos utilizados en una canción y distinguir diferentes elementos sonoros.
+
+\item \textbf{Estructura Musical}: La estructura musical se refiere a la organización global de una composición musical. En el reconocimiento musical, el análisis de la estructura, puede detectar cambios y repeticiones en las diferentes partes de una canción y así identificar estilos musicales concretos por ejemplo.
+\end{itemize}
+
+\subsection{Estilos Musicales y Reconocimiento}
+Los diferentes estilos musicales a menudo tienen características distintivas que se pueden aprovechar en el reconocimiento musical. Por ejemplo, ciertos géneros tienen ritmos y patrones armónicos característicos. 
+Estas características pueden ser identificadas mediante algoritmos de aprendizaje automático que se entrenan con una amplia variedad de muestras de audio etiquetadas.
+
+\subsection{Aplicaciones del Reconocimiento Musical}
+El reconocimiento musical tiene diversas aplicaciones prácticas y de gran uso en la actualidad, algunas de las cuales son:
+
+\begin{itemize}
+\item \textbf{Recomendación de música}: Los algoritmos de reconocimiento musical se utilizan para recomendar música a los usuarios en función de sus preferencias y patrones de escucha. Estos sistemas analizan las características de las canciones más escuchadas por el usuario y crean un modelo de recomendación basado en sus gustos.
+
+\item \textbf{Clasificación de géneros musicales}: El reconocimiento musical se utiliza para clasificar automáticamente las canciones en diferentes géneros musicales, lo que facilita la organización y la búsqueda de música en grandes bibliotecas digitales.
+\end{itemize}
+
+\section{Ejemplo teórico de extracción de características musicales}
+
+\subsection{Espectrograma}
+Un espectrograma es una representación visual del espectro de frecuencia de una señal de audio en función del tiempo. Proporciona información detallada sobre cómo se distribuye la energía del sonido en diferentes frecuencias a lo largo del tiempo.
+
+A continuación se explica el proceso para obtener un espectrograma de una canción.
+
+\begin{itemize}
+\item \textbf{Preprocesamiento de la señal de audio}: La señal de audio de la canción se divide en segmentos. De esta manera es posible analizar la variación espectral en diferentes puntos de la señal a lo largo del tiempo.
+
+\item \textbf{Transformada de Fourier de tiempo corto (STFT)}: Cada segmento de la señal se somete a una transformada de Fourier de tiempo corto (STFT). La STFT divide la señal en múltiples segmentos de tiempo y calcula la suma de diferentes frecuencias en cada segmento. 
+Esto se logra mediante la aplicación de una ventana temporal a cada segmento y luego calculando la transformada de Fourier de cada ventana.
+
+\item \textbf{Cálculo de la magnitud del espectro}: La STFT proporciona diversa información sobre las fases y amplitudes de las frecuencias en cada segmento de tiempo. Sin embargo, para construir un espectrograma, generalmente se toma la magnitud del espectro (amplitud absoluta de las frecuencias).
+
+\item \textbf{Representación visual}: La magnitud del espectro se representa visualmente en un gráfico 2D, donde el eje horizontal representa el tiempo y el eje vertical representa las frecuencias. La intensidad del color o brillo en cada punto del gráfico indica la energía o amplitud de la frecuencia correspondiente.
+\end{itemize}
+
+\imagen{example_spectrogram}{Espectrograma de una pista de audio.}{.5}
+
+\subsection{Coeﬁcientes Cepstrales de Frecuencias de Mel (MFCC)}
+Los coeficientes cepstrales de frecuencias de Mel (MFCC) son características ampliamente utilizadas en el procesamiento de señales de audio y el reconocimiento de voz. 
+Estos coeficientes representan las características espectrales de una señal de audio en función de la escala de Mel, que es una escala perceptual de frecuencia basada en la respuesta del oído humano.
+
+A continuación se explica el proceso para obtener los coeficientes MFCC de una canción.
+
+\begin{enumerate}
+\item \textbf{Preénfasis}: La señal de audio se normaliza con un filtro de preénfasis, que resalta las frecuencias de alta frecuencia y compensa la atenuación de las frecuencias más bajas. Esto ayuda a mejorar la relación señal-ruido y realzar las características relevantes en el espectro.
+
+\item \textbf{División en tramas}: La señal preénfasis se divide en tramas o segmentos cortos y superpuestos en el tiempo. Esto se hace para capturar la variación espectral en diferentes puntos de la señal a lo largo del tiempo.
+
+\item \textbf{Cálculo de la Transformada de Fourier de tiempo corto (STFT)}: A cada trama de la señal se le aplica la Transformada de Fourier de tiempo corto (STFT), que calcula la contribución de diferentes frecuencias en cada trama. La STFT proporciona diversa información sobre las fases y amplitudes de las frecuencias en cada segmento de tiempo.
+
+\item \textbf{Banco de filtros de Mel}: Se aplica un banco de filtros de Mel, que consiste en una serie de filtros triangularmente espaciados en la escala de Mel. Estos filtros se utilizan para representar el espectro en términos de bandas de frecuencia de Mel.
+
+\item \textbf{Logaritmo de la energía}: Se calcula el logaritmo de la después de aplicar el banco de filtros de Mel. Esto se hace para tener en cuenta la respuesta no lineal del oído humano a las frecuencias.
+
+\item \textbf{Transformada de Coseno Discreta}: Se aplica la Transformada de Coseno Discreta (DCT) a los valores obtenidos anteriormente.
+
+\item \textbf{Extracción de los coeficientes MFCC}: Finalmente, se seleccionan los coeficientes cepstrales más significativos para representar la información espectral de la señal de audio. Estos coeficientes son los utilizados como características para aplicaciones de procesamiento y reconocimiento de audio.
+\end{enumerate}
+
+Los coeficientes MFCC son ampliamente utilizados en aplicaciones como el reconocimiento de voz, la identificación de hablantes y la síntesis de voz.
+
+\imagen{example_MFCC}{MFCC de una pista de audio.}{.5}
+
+\section{Inteligencia Artificial}
+
+La inteligencia artificial (IA) es la capacidad de un sistema informático de imitar funciones cognitivas humanas, como el aprendizaje y la solución de problemas
+
+Los sistemas de inteligencia artificial pueden analizar grandes cantidades de datos, reconocer patrones y tomar decisiones basadas en esa información. Pueden aprender de la experiencia y mejorar su rendimiento con el tiempo. 
+
+Hay diferentes enfoques en la IA, incluyendo el aprendizaje automático (\textit{machine learning}), el procesamiento del lenguaje natural (\textit{natural language processing}), la visión por computador (\textit{computer vision}) y la robótica, entre otros.
+
+La IA se utiliza en una amplia variedad de aplicaciones cómo en sistemas de recomendación, análisis de datos o diagnósticos médicos por ejemplo.
+
+\subsection{Aprendizaje automático (Machine Learning)}
+El aprendizaje automático (\textit{machine learning}) es un subcampo de la inteligencia artificial que se centra en el desarrollo de algoritmos y modelos que permiten a los sistemas aprender y extraer información a partir de datos, sin ser explícitamente programados para ello.
+Existen diversos tipos de aprendizaje automático:
+
+\begin{itemize}
+\item \textbf{Aprendizaje supervisado}: Se proporciona como entrada a los algoritmos un conjunto de datos de entrenamiento etiquetados. El modelo aprende a realizar predicciones o tomar decisiones basadas en estos ejemplos etiquetados. El aprendizaje supervisado se utiliza en tareas de clasificación o regresión.
+
+\item \textbf{Aprendizaje no supervisado}: Los algoritmos trabajan con conjuntos de datos no etiquetados, es decir, sin clase conocida. El objetivo es encontrar patrones u estructuras ocultas en los datos. El aprendizaje no supervisado se utiliza en tareas como el (\textit{clustering}).
+
+\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una seríe de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica.
+
+\item \textbf{Aprendizaje semi-supervisado}: En este tipo de aprendizaje el conjunto de datos no está completamente etiquetado, por lo tanto, el objetivo es maximizar el rendimiento del modelo a partir de los datos con clase conocida.
+\end{itemize}
+
+\section{Ejemplo de aprendizaje supervisado}
+
+En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado. Por lo que se va a detallar más en profundidad un ejemplo:
+
+\subsection{Objetivo}
+Construir un modelo de aprendizaje automático para clasificar correos electrónicos como "spam" o "no spam".
+
+\subsection{Conjunto de datos}
+Conjunto de datos etiquetados que contiene 1000 correos electrónicos, donde cada correo tiene características como la frecuencia de ciertas palabras sospechosas de pertenecer a spam, la longitud del mensaje, la presencia de enlaces o imágenes, entre otros. \textbf{Además de incluir la clase a la que pertenece: "Spam" o "No Spam"}.
+
+\subsection{Preparación de los datos}
+Se deben preparar los datos para el entrenamiento del modelo. 
+Una opción adecuada es representar cada correo electrónico como un vector de características.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Correo} & \textbf{Palabras sospechosas} & \textbf{Longitud} & \textbf{Enlaces} & \textbf{Etiqueta} \\ \hline
+1 & 1 & 120 & 0 & No spam \\
+2 & 4 & 56 & 1 & Spam \\
+3 & 1 & 352 & 2 & No spam \\
+4 & 9 & 174 & 0 & Spam \\
+\hline
+\end{tabular}
+\caption{Ejemplo de datos de entrenamiento en un problema de aprendizaje supervisado}
+\end{table}
+
+\subsection{Entrenamiento del modelo}
+Una vez preparados los datos en un formato adecuado, estos son introducidos en un algoritmo de aprendizaje supervisado formando un modelo de aprendizaje automático. Por ejemplo Redes Neuronales Artificiales, Máquinas de Soporte Vectorial o Árboles de decisión.
+
+\subsection{Predicción}
+Una vez entrenado el modelo, se alimenta con datos externos y se realizan predicciones.
+
+
+\begin{figure}[ht]
+  \centering
+  \setlength{\unitlength}{0.8cm}
+  \begin{picture}(12,8)
+    \put(4,7){\oval(5,2){\makebox(0,0){Correo electrónico}}}
+    \put(4,4.9){\oval(5,2){\makebox(0,0){Preprocesado}}}
+    \put(4,2.8){\oval(5,2){\makebox(0,0){V. de características}}}
+    \put(4,0.7){\oval(5,2){\makebox(0,0){Entrenamiento}}}
+    \put(4,-1.4){\oval(5,2){\makebox(0,0){Predicción}}}
+  \end{picture}
+  \vspace{2cm}
+  \caption{Ejemplo del proceso de aprendizaje supervisado}
+\end{figure}
