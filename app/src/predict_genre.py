@@ -5,18 +5,20 @@ import librosa
 UPLOAD_TRACK = './app/upload/upload.mp3'
 
 # Load trained model
-initial_model = tf.keras.models.load_model('app/models/model_6L_RMS.h5')
-simple_conv_model = tf.keras.models.load_model('app/models/model_11L_RMS.h5')
-conv_model = tf.keras.models.load_model('app/models/model_22L_RMS.h5')
+# initial_model = tf.keras.models.load_model('app/models/model_6L_RMS.h5')
+# simple_conv_model = tf.keras.models.load_model('app/models/model_11L_RMS.h5')
+# conv_model = tf.keras.models.load_model('app/models/model_7L_RMS.h5')
 
-def predict(audio=UPLOAD_TRACK, n_model=1):
-    model = []
-    if n_model == "1":
-        model = initial_model
-    elif n_model == "2":
-        model = simple_conv_model
-    elif n_model == "3":
-        model = conv_model
+def predict(audio=UPLOAD_TRACK, n_model=3):
+    # model = []
+    # if n_model == "1":
+    #     model = initial_model
+    # elif n_model == "2":
+    #     model = simple_conv_model
+    # elif n_model == "3":
+    #     model = conv_model
+
+    model = tf.keras.models.load_model('app/models/model_6L_RMS.h5')
 
     # Extract MFCC of uploaded track
     y, sr = librosa.load(audio)

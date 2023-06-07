@@ -102,4 +102,4 @@ def extract_chromagrams():
     # Save as object. CSV files converts lists to str and loses precision.
     track_genres_chromagrams.to_pickle('data/processed/track_genres_chromagrams.pkl')
 
-# extract_chromagrams()
+extract_mfccs()
