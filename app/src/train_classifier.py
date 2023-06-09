@@ -7,81 +7,94 @@ from sklearn.model_selection import train_test_split
 # from keras.optimizers import Adam
 
 # Load MFCC features
-track_genres_mfcc = pd.read_pickle('data/processed/track_genres_mfcc.pkl')
+track_genres_mfcc = pd.read_pickle('data/processed/track_genres_mfcc-LARGE.pkl')
 
 # Obtain X and y sets
 X = np.array(track_genres_mfcc['mfcc'])
 # y = np.array(track_genres_mfcc['genre_top'])
+
 y = np.array(track_genres_mfcc['genres'])
-converted_y = []
+# print(np.unique(y, return_counts=True))
+processed_y = []
 for i in y:
     if i == "[]":
-        converted_y.append(0)
+        processed_y.append(0)
         continue
     converted_list = [int(num) for num in i.strip('[]').split(',')]
-    converted_y.append(converted_list[0])
-print(converted_y)
+    processed_y.append(converted_list[0])
+print(np.unique(processed_y, return_counts=True))
+
+# y = np.array(track_genres_mfcc['genres'])
+converted_x = []
+converted_y = []
+for i, j in zip(X, processed_y):
+    if j not in [38, 15, 12, 10, 17, 25, 21]:
+        continue
+    converted_y.append(j)
+    converted_x.append(i)
+print(np.unique(converted_y, return_counts=True))
+print(converted_x)
 
 # print(len(np.unique(y)))
 
 # Split data into train, validation and test.
-X_train, X_test, y_train, y_test = train_test_split(X, converted_y, test_size=0.3, random_state=42)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(converted_x, converted_y, test_size=0.2, random_state=42)
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.5, random_state=42)
 
 # print(X_train)
 # print(y_train)
 
-initial_model = tf.keras.Sequential([
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dense(1236, activation='softmax')
-])
+# initial_model = tf.keras.Sequential([
+#         tf.keras.layers.Dense(512, activation='relu'),
+#         tf.keras.layers.Dropout(0.2),
+#         tf.keras.layers.Dense(512, activation='relu'),
+#         tf.keras.layers.Dropout(0.2),
+#         tf.keras.layers.Dense(512, activation='relu'),
+#         tf.keras.layers.Dense(39, activation='softmax')
+# ])
 
 # simple_conv_model = tf.keras.Sequential([
 #     tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
-#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
+#     tf.keras.layers.Conv1D(512, (3), activation='relu'),
 #     tf.keras.layers.MaxPooling1D((2)),
-#     tf.keras.layers.Conv1D(128, (3), activation='relu'),
-#     tf.keras.layers.MaxPooling1D((2)),
-#     tf.keras.layers.Conv1D(64, (3), activation='relu'),
+#     tf.keras.layers.Conv1D(256, (3), activation='relu'),
 #     tf.keras.layers.MaxPooling1D((2)),
 #     tf.keras.layers.Conv1D(64, (3), activation='relu'),
+#     tf.keras.layers.MaxPooling1D((2)),
+#     tf.keras.layers.Conv1D(16, (3), activation='relu'),
 #     tf.keras.layers.MaxPooling1D((2)),
 #     tf.keras.layers.Flatten(),
-#     tf.keras.layers.Dense(164, activation='softmax')
+#     tf.keras.layers.Dense(1236, activation='softmax')
 # ])
 
-# conv_model = tf.keras.Sequential([
-#     tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
-#     tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-#     tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-#     tf.keras.layers.BatchNormalization(),
-#     tf.keras.layers.MaxPooling1D(pool_size=2),
+conv_model = tf.keras.Sequential([
+    tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
+    tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
 
-#     tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-#     tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-#     tf.keras.layers.BatchNormalization(),
-#     tf.keras.layers.MaxPooling1D(pool_size=2),
+    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
 
-#     tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
-#     tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
-#     tf.keras.layers.BatchNormalization(),
-#     tf.keras.layers.MaxPooling1D(pool_size=2),
+    tf.keras.layers.Conv1D(32, 3, padding='same', activation='relu'),
+    tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling1D(pool_size=2),
 
-#     tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-#     tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-#     tf.keras.layers.BatchNormalization(),
-#     tf.keras.layers.MaxPooling1D(pool_size=2),
+    # tf.keras.layers.LSTM(128),
+    # tf.keras.layers.LSTM(128),
+    # tf.keras.layers.BatchNormalization(),
+    # tf.keras.layers.MaxPooling1D(pool_size=2),
 
-#     tf.keras.layers.Flatten(),
-#     tf.keras.layers.Dense(64, activation='relu'),
-#     tf.keras.layers.Dropout(0.5),
-#     tf.keras.layers.Dense(128, activation='relu'),
-#     tf.keras.layers.Dense(1235, activation="softmax")
-# ])
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(32, activation='relu'),
+    tf.keras.layers.Dense(39, activation="softmax")
+])
 
 # Look to the dimensionality about the conv and simple conv models.
 
@@ -116,12 +129,12 @@ def train(model):
     model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     # Training
-    # model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size)
+    # model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=18)
 
     # Dataset generation
-    train_data = 2048
-    test_data = 512
-    val_data = 512
+    train_data = 4
+    test_data = 2
+    val_data = 2
     train_dataset = tf.data.Dataset.from_generator(
         lambda: generator(X_train, y_train, train_data), 
         output_signature=(
@@ -148,13 +161,14 @@ def train(model):
 
     # Model fit with generators
     model.fit(train_dataset, 
-              steps_per_epoch=128,
+              steps_per_epoch=64,
               validation_data=val_dataset,
-              validation_steps=12,
-              epochs=3)
+              validation_steps=8,
+              epochs=50)
     
     # Model evaluation with generators
     loss, acc = model.evaluate(test_dataset, steps=X_test.shape[0] // 100, verbose=2)
+    # loss, acc = model.evaluate(X_test, y_test)
     print(f'Loss: {loss}')
     print(f'Accuracy: {acc}')
 
@@ -169,7 +183,8 @@ def train(model):
     print(model_name)
 
     # Save model
-    # model.save(f'app/models/{model_name}.h5')
+    model.save(f'app/models/{model_name}.h5')
 
-# train(conv_model)
+train(conv_model)
 # train(initial_model)
+# train(simple_conv_model)

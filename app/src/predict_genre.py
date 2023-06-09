@@ -1,8 +1,10 @@
 import tensorflow as tf
 import numpy as np
+import pandas as pd
 import librosa
 
 UPLOAD_TRACK = './app/upload/upload.mp3'
+GENRES_LIST = './data/raw_genres.csv'
 
 # Load trained model
 # initial_model = tf.keras.models.load_model('app/models/model_6L_RMS.h5')
@@ -18,7 +20,7 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     # elif n_model == "3":
     #     model = conv_model
 
-    model = tf.keras.models.load_model('app/models/model_6L_RMS.h5')
+    model = tf.keras.models.load_model('app/models/model_18L_RMS.h5')
 
     # Extract MFCC of uploaded track
     y, sr = librosa.load(audio)
@@ -30,7 +32,7 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     print(model.predict(mfcc)[0])
     print(np.argmax(model.predict(mfcc)[0]))
     print(f"{np.argsort(model.predict(mfcc)[0])[-3:][::-1]}")
-    return np.argsort(model.predict(mfcc)[0])[-3:][::-1]
+    return get_genre_name(np.argmax(model.predict(mfcc)[0]))
 
 def get_model(n_model=1):
     model = []
@@ -43,4 +45,9 @@ def get_model(n_model=1):
 
     return model
 
+def get_genre_name(genre_number):
+    genres_list = pd.read_csv(GENRES_LIST)
+    return genres_list[genres_list["genre_id"] == genre_number]["genre_handle"].item()
+
+# print(get_genre_name(12))
 # predict()
