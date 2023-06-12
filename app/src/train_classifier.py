@@ -132,9 +132,9 @@ def train(model):
     # model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=18)
 
     # Dataset generation
-    train_data = 4
-    test_data = 2
-    val_data = 2
+    train_data = 8
+    test_data = 3
+    val_data = 3
     train_dataset = tf.data.Dataset.from_generator(
         lambda: generator(X_train, y_train, train_data), 
         output_signature=(
@@ -161,7 +161,7 @@ def train(model):
 
     # Model fit with generators
     model.fit(train_dataset, 
-              steps_per_epoch=64,
+              steps_per_epoch=128,
               validation_data=val_dataset,
               validation_steps=8,
               epochs=50)
@@ -185,6 +185,6 @@ def train(model):
     # Save model
     model.save(f'app/models/{model_name}.h5')
 
-train(conv_model)
+# train(conv_model)
 # train(initial_model)
 # train(simple_conv_model)

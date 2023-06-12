@@ -12,6 +12,7 @@ GENRES_LIST = './data/raw_genres.csv'
 # conv_model = tf.keras.models.load_model('app/models/model_7L_RMS.h5')
 
 def predict(audio=UPLOAD_TRACK, n_model=3):
+    # TODO: Documentate this function
     # model = []
     # if n_model == "1":
     #     model = initial_model
@@ -35,6 +36,7 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     return get_genre_name(np.argmax(model.predict(mfcc)[0]))
 
 def get_model(n_model=1):
+    # TODO: Documentate this function
     model = []
     if n_model == "1":
         model = f'Initial'
@@ -50,4 +52,4 @@ def get_genre_name(genre_number):
     return genres_list[genres_list["genre_id"] == genre_number]["genre_handle"].item()
 
 # print(get_genre_name(12))
-# predict()
+predict()

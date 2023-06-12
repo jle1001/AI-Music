@@ -2,26 +2,46 @@
 
 {% block genre_classifier %}
     <div id="music_genre">
-        <h3>Using model: {{ model_name }}</h3>
+        <h3>Model: {{ model_name }}</h3>
         <h2>Predicted music genre: {{ prediction }}</h2>
     </div>
 {% endblock %}
 
 {% block track_features %}
-    <div class="track-information wave">
-        <h2>Waveform</h2>
-        <div><img src="{{ waveform_image }}"></div>
+<div class="track-information">
+    <h2>Track Features</h2>
+    <div class="features-tab">
+        <ul>
+            <li><a id="defaultOpen" onclick="openFeature(event, 'waveform')">Waveform</a></li>
+            <li><a onclick="openFeature(event, 'spectogram')">Spectogram</a></li>
+            <li><a onclick="openFeature(event, 'chromagram')">Chromagram</a></li>
+            <li><a onclick="openFeature(event, 'mfcc')">MFCC</a></li>
+        </ul>
     </div>
-    <div class="track-information spectogram">
-        <h2>Spectogram</h2>
-        <div><img src="{{ spectogram_image }}"></div>
+    <div id="waveform" class="features-content">
+        <img src="{{ waveform_image }}">
     </div>
-    <div class="track-information chromagram">
-        <h2>Chromagram</h2>
-        <div><img src="{{ chromagram_image }}"></div>
+    <div id="spectogram" class="features-content" style="display:none">
+        <img src="{{ spectogram_image }}">
     </div>
-    <div class="track-information mfcc">
-        <h2>MFCC</h2>
-        <div><img src="{{ MFCC_image }}"></div>
+    <div id="chromagram" class="features-content" style="display:none">
+        <img src="{{ chromagram_image }}">
     </div>
+    <div id="mfcc" class="features-content" style="display:none">
+        <img src="{{ MFCC_image }}">
+    </div>
+    <div id="waveformDesc" class="features-description">
+        <p>Visual representation of the audio's amplitude over time.</p>
+    </div>
+    <div id="spectogramDesc" class="features-description" style="display:none">
+        <p>Visual representation of the spectrum of frequencies in the audio as it varies with time.</p>
+    </div>
+    <div id="chromagramDesc" class="features-description" style="display:none">
+        <p>Visual representation of the intensity of different pitches in the audio changes over time.</p>
+    </div>
+    <div id="mfccDesc" class="features-description" style="display:none">
+        <p>Mel Frequency Cepstral Coefficients represent the short-term power spectrum of a sound, based on a nonlinear mel scale of frequency.</p>
+    </div>
+</div>
+
 {% endblock %}
