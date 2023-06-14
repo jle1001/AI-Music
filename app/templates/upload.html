@@ -2,21 +2,20 @@
 
 {% block upload_file %}
 <div id="upload">
-    <div id="upload-div">
+    <div id="upload-content">
         <div id="app-information">
-            <h1>Musical Analysis using artificial intelligence</h1>
-            <h4>Musical analysis using artificial intelligence and computational methods to analyze and classify music based on various musical features</h4>
+            <h1>Musical Analysis Using Artificial Intelligence</h1>
+            <p>Using computational algorithms to analyze and classify music based on diverse musical features</p>
         </div>
         <div id="upload-buttons">
             <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
-                <label for="file-upload" class="custom-file-upload">
-                    UPLOAD FILE
-                </label>
+                <label for="file-upload" class="custom-file-upload">Upload File</label>
                 <input type="file" name="upload" id="file-upload" onchange="this.form.submit()"/>
             </form>
-        <button>LEARN MORE</button>
+            <button class="learn-more-btn">Learn More</button>
         </div>
     </div>
+</div>
 
     <div id="music-player">
         <div id="algorithm-selector">
@@ -74,18 +73,19 @@
 {% endblock %}
 {% block dataset %}
 <div id="dataset">
-    <div id="dataset-info">
-        <div id="dataset-info-text">
+    <div id="dataset-content">
+        <div id="dataset-info">
             <h1>FMA Dataset</h1>
-            <h4>FMA dataset is a publicly available large-scale dataset  for evaluating several tasks in Music Information Retrieval.
-                FMA has been the basis on which the model has been trained.</h4>
+            <p>A publicly accessible, large-scale dataset tailored for evaluating various tasks in Music Information Retrieval. The model training leverages the extensive resources of the FMA dataset.</p>
+            <div id="info-button">
+                <a target="_blank" href="https://github.com/mdeff/fma">
+                    <button class="learn-more-btn">Learn More</button>
+                </a>
+            </div>
         </div>
-        <div id="info-button">
-            <button>LEARN MORE</button>
+        <div id="dataset-landing-image">
+            <img>
         </div>
-    </div>
-    <div id="landing-image">
-        <img src="{{ url_for('static', filename='media/img/placeholder.webp') }}">
     </div>
 </div>
 {% endblock %}

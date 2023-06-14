@@ -163,11 +163,21 @@ button:hover {
     background-color: #444;
 }
 
+/* Music genre */
 #music_genre {
     text-align: center;
-    margin-bottom: 10px;
+    padding: 20px;
+    margin: 50px;
+    background-color: #444;
+    border-radius: 8px;
+    color: White;
 }
 
+#music_genre h2, h3 {
+    font-weight: normal;
+}
+
+/* Information */
 #information {
     font-family: Arial, sans-serif;
 }
@@ -311,14 +321,8 @@ hr {
 }
 
 .features-tab ul li a:hover {
-    background-color: #ddd;
+    background-color: #666666;
 }
-
-/* .features-content {
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-} */
 
 .features-content img {
     width: 100%;
@@ -333,7 +337,6 @@ hr {
     border-radius: 4px;
     font-size: 1.2em;
     line-height: 1.4;
-    color: #333;
 }
 
 .features-description p {
