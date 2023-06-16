@@ -26,11 +26,10 @@ def extract_mfccs():
                 y = y[:(25 * sr)]
                 mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
 
-                # Normalize MFCC features
-                mfcc_normalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)
+                # Normalize MFCC features for the entire song
+                mfcc_normalized = (mfcc - np.mean(mfcc, axis=1, keepdims=True)) / np.std(mfcc, axis=1, keepdims=True)
 
-                mfccs[int(item.stem)] = mfcc_normalized.ravel()
-                # print(mfccs)
+                mfccs[int(item.stem)] = mfcc_normalized
             except Exception as e:
                 print(f"Error loading file: {e}")
                 continue
@@ -40,7 +39,7 @@ def extract_mfccs():
     print(track_genres_mfcc.head())
 
     # Save as object. CSV files converts lists to str and loses precision.
-    track_genres_mfcc.to_pickle('data/processed/track_genres_mfcc.pkl')
+    track_genres_mfcc.to_pickle('data/processed/track_genres_mfcc-SMALL.pkl')
 
 def extract_spectograms():
     spectograms = dict()
