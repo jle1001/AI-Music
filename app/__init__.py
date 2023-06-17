@@ -3,6 +3,7 @@ from flask_login import current_user, login_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import LoginForm, RegisterForm, SQLAlchemyUserDatastore, Security, current_user, SQLAlchemySessionUserDatastore, UserMixin, RoleMixin, roles_required, login_required
 from app.src import plot_features, predict_genre
+import librosa
 import os
 
 app = Flask(__name__)
@@ -91,9 +92,13 @@ def index():
 def upload_file():
     if request.method == 'POST':
         track = request.files['upload']
-        track.save(f'./app/upload/upload{os.path.splitext(track.filename)[1]}')
+        track.save(f'./app/static/upload/upload{os.path.splitext(track.filename)[1]}')
     
-    return render_template('upload.html')
+    y, sr = librosa.load(f'./app/static/upload/upload{os.path.splitext(track.filename)[1]}')
+    sample_rate = sr
+    format = os.path.splitext(track.filename)[1]
+    duration = librosa.get_duration(y=y)
+    return render_template('upload.html', sample_rate=sample_rate, format=format, duration=duration)
 
 @app.route('/analysis', methods=['POST', 'GET'])
 def analysis():

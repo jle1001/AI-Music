@@ -1,45 +1,39 @@
 {% extends 'base.html' %}
 
 {% block upload_file %}
-<div id="upload">
-    <div id="upload-content">
-        <div id="app-information">
-            <h1>Musical Analysis Using Artificial Intelligence</h1>
-            <p>Using computational algorithms to analyze and classify music based on diverse musical features</p>
-        </div>
-        <div id="upload-buttons">
-            <form enctype="multipart/form-data" action="{{ url_for('upload_file') }}" method="post">
-                <label for="file-upload" class="custom-file-upload">Upload File</label>
-                <input type="file" name="upload" id="file-upload" onchange="this.form.submit()"/>
-            </form>
-            <button class="learn-more-btn">Learn More</button>
-        </div>
-    </div>
-</div>
 
-    <div id="music-player">
-        <div id="algorithm-selector">
-            <form enctype="multipart/form-data" action="{{ url_for('analysis') }}" method="post">
-                <select name="algorithm-selection" id="algorithm-seleciton">
-                    <option value="1">Initial Model</option>
-                    <option value="2">Simple Convolutional</option>
-                    <option value="3">Convolutional</option>
-                </select>
-                <input type="checkbox">Option 1
-                <input type="checkbox">Option 2
-                <input type="checkbox">Option 3
-                <input type="submit">
-            </form>
-        </div>
-        <div id="upload-information">
-            <h1>Information</h1>
-            <h4>Sample rate: </h4>
-            <h4>Format: </h4>
-            <h4>Duration: </h4>
-        </div>
+<script src="{{ url_for('static', filename='js/audioPlayer.js') }}"></script>
+
+<div id="music-player">
+    <div id="algorithm-selector" class="card">
+        <h2>Select your algorithm</h2>
+        <form enctype="multipart/form-data" action="{{ url_for('analysis') }}" method="post">
+            <select name="algorithm-selection" id="algorithm-selection" class="form-input">
+                <option value="1">Initial Model</option>
+                <option value="2">Simple Convolutional</option>
+                <option value="3">Convolutional</option>
+            </select>
+            <div id="options" class="options">
+                <input type="checkbox" id="option1" name="option1">
+                <label for="option1">Option 1</label>
+                <input type="checkbox" id="option2" name="option2">
+                <label for="option2">Option 2</label>
+                <input type="checkbox" id="option3" name="option3">
+                <label for="option3">Option 3</label>
+            </div>
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
+    </div>
+    <div id="upload-information" class="card">
+        <h2>Information</h2>
+        <p><strong>Sample rate: {{ sample_rate }}</strong></p>
+        <p><strong>Format: {{ format }}</strong></p>
+        <p><strong>Duration: {{ duration }}</strong></p>
+    </div>
+    <div id="player">
         <audio controls>
-            <source src="upload/upload.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
+            <source src="{{ url_for('static', filename='upload/upload.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
         </audio>
     </div>
 </div>
