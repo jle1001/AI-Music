@@ -76,11 +76,13 @@ Esto se logra mediante la aplicación de una ventana temporal a cada segmento y 
 
 \imagen{example_spectrogram}{Espectrograma de una pista de audio.}{.5}
 
+\newpage
+
 \subsection{Coeﬁcientes Cepstrales de Frecuencias de Mel (MFCC)}
 Los coeficientes cepstrales de frecuencias de Mel (MFCC) son características ampliamente utilizadas en el procesamiento de señales de audio y el reconocimiento de voz. 
 Estos coeficientes representan las características espectrales de una señal de audio en función de la escala de Mel, que es una escala perceptual de frecuencia basada en la respuesta del oído humano.
 
-A continuación se explica el proceso para obtener los coeficientes MFCC de una canción.
+A continuación se explica el proceso para obtener los coeficientes MFCC de una pista de audio.
 
 \begin{enumerate}
 \item \textbf{Preénfasis}: La señal de audio se normaliza con un filtro de preénfasis, que resalta las frecuencias de alta frecuencia y compensa la atenuación de las frecuencias más bajas. Esto ayuda a mejorar la relación señal-ruido y realzar las características relevantes en el espectro.
@@ -128,7 +130,7 @@ Existen diversos tipos de aprendizaje automático:
 
 \section{Ejemplo de aprendizaje supervisado}
 
-En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado. Por lo que se va a detallar más en profundidad un ejemplo:
+En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado. Por lo que se va a detallar un ejemplo simple para entender su funcionamiento:
 
 \subsection{Objetivo}
 Construir un modelo de aprendizaje automático para clasificar correos electrónicos como "spam" o "no spam".
@@ -160,17 +162,178 @@ Una vez preparados los datos en un formato adecuado, estos son introducidos en u
 \subsection{Predicción}
 Una vez entrenado el modelo, se alimenta con datos externos y se realizan predicciones.
 
+\textit{El algoritmo utilizado en el proyecto es más complejo y será explicado en detalle en las siguientes secciones.}
 
-\begin{figure}[ht]
-  \centering
-  \setlength{\unitlength}{0.8cm}
-  \begin{picture}(12,8)
-    \put(4,7){\oval(5,2){\makebox(0,0){Correo electrónico}}}
-    \put(4,4.9){\oval(5,2){\makebox(0,0){Preprocesado}}}
-    \put(4,2.8){\oval(5,2){\makebox(0,0){V. de características}}}
-    \put(4,0.7){\oval(5,2){\makebox(0,0){Entrenamiento}}}
-    \put(4,-1.4){\oval(5,2){\makebox(0,0){Predicción}}}
-  \end{picture}
-  \vspace{2cm}
-  \caption{Ejemplo del proceso de aprendizaje supervisado}
+\newpage
+
+\section{Redes neuronales}
+Para realizar el entrenamiento del modelo de aprendizaje automático se han utilizado redes neuronales. 
+Las redes neuronales son una categoría de modelos de aprendizaje automático inspirados en la estructura biológica del cerebro humano. Se componen de nodos interconectados, o "neuronas", organizadas en capas, que trabajan juntas para procesar información y hacer predicciones.
+
+Las redes neuronales se componen de los siguientes elementos:
+\begin{itemize}
+\tightlist
+\item \textbf{Neuronas}: entidad matemática inspirada en la neurona biológica. Es el componente básico de una red neuronal. 
+\item \textbf{Capas}: las neuronas están organizadas por capas. Capa se refiere a un conjunto de neuronas que procesan información al mismo tiempo. Existen tres tipos de capas: capa de entrada, capas ocultas y capa de salida. Cada neurona en una capa está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
+\item \textbf{Proceso de entrenamiento}: el proceso de entrenamiento de una red neuronal consiste en ajustar los pesos y sesgos de las neuronas de tal manera que el error entre las predicciones y los valores reales sea lo más pequeño posible. Existen diversos algoritmos para realizar este cálculo iterativo de los valores de cada neurona.
+\end{itemize}
+
+\subsection{Neuronas artificiales}
+Una neurona artificial es una entidad matemática inspirada en una neurona biológica. Se utilizan para modelar la información que una red recibe, procesa y luego utiliza para tomar decisiones.
+Al igual que las neuronas en el cerebro humano, una neurona artificial toma una serie de entradas y produce una salida. Cada entrada tiene un peso asociado, que ajusta el valor de esa entrada para la salida final. Los pesos y valores se ajustan durante el proceso de entrenamiento para mejorar el rendimiento de la red.
+
+La neurona artificial suma las entradas ponderadas y luego aplica una función de activación para producir la salida. Las funciones de activación son necesarias para introducir no linealidad en la red, lo que permite que la red aprenda a partir de datos más complejos.
+
+Hay varios tipos de neuronas diferenciadas por su función de activación. Algunos ejemplos podrían ser:
+
+\textbf{Neurona umbral}: esta neurona aplica una función de umbral a las entradas. Si la suma ponderada de las entradas supera un cierto umbral, la neurona se activa.
+
+La función de activación umbral se define de la siguiente manera:
+
+\[
+f(x) = \begin{cases}
+    0, & \text{si } x < \text{umbral} \\
+    1, & \text{si } x \geq \text{umbral}
+\end{cases}
+\]
+
+Donde \text{umbral} es el valor de umbral que determina el punto de corte para la activación de la neurona.
+
+\textbf{Neurona sigmoidal}: la neurona sigmoidal aplica una función sigmoide a las entradas
+
+La función de activación sigmoidal se define de la siguiente manera:
+
+\[
+f(x) = \frac{1}{1 + e^{-x}}
+\]
+
+Donde $x$ es el valor de entrada de la neurona.
+
+\textbf{Neurona ReLU \textit{(Rectified Linear Unit)}}: este tipo de neurona utiliza la función ReLU como su función de activación.
+Este tipo de función de activación introduce no linealidad sin los problemas que pueden surgir con otras funciones de activación.
+
+La función de activación ReLU se define de la siguiente manera:
+
+\[
+f(x) = \begin{cases}
+    0, & \text{si } x < 0 \\
+    x, & \text{si } x \geq 0
+\end{cases}
+\]
+
+Donde $x$ es el valor de entrada de la neurona.
+
+\textbf{Neurona softmax}: esta neurona se utiliza en la capa de salida para problemas de clasificación multiclase. La función Softmax toma un vector de entradas y produce un vector de salidas, cada una de las cuales está entre 0 y 1 y la suma total es 1. 
+Cada salida puede interpretarse como la probabilidad de que la entrada pertenezca a una clase particular.
+
+\[
+f(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{N} e^{x_j}}
+\]
+
+Donde $x_i$ es el valor de entrada de la neurona y $N$ es el número total de entradas.
+
+\subsection{Capas}
+Una red neuronal artificial está compuesta por un conjunto de capas neuronales interconectadas. 
+Cada capa consiste en un conjunto de neuronas las cuales reciben información de la capa anterior y envía su salida a las neuronas en la capa siguiente.
+
+\textbf{Capa de entrada}: es la primera capa de la red. Cada neurona en la capa de entrada corresponde a una característica en el conjunto de datos de entrada.
+
+\textbf{Capas ocultas}: capas que se encuentran entre la capa de entrada y la capa de salida. Su número varía dependiendo de la profundidad de la red. 
+En estas capas es donde se produce la mayor parte del cálculo de la red. Los pesos de las conexiones entre las neuronas en las capas ocultas se ajustan durante el entrenamiento.
+
+\textbf{Capa de salida}: última capa de la red. Es la capa donde se devuelve la información. El número de neuronas en la capa de salida suele estar determinado por el tipo de problema que se está resolviendo. Por ejemplo, en un problema de clasificación binaria, solo se necesitaría una neurona de salida. En un problema de clasificación de varias clases, el número de neuronas de salida sería igual al número de clases.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1.1]
+  % Capa de entrada
+  \foreach \x in {1,...,4}
+    \node[circle, draw=black, fill=blue!20] (input\x) at (0,\x) {x\x};
+
+  % Capa oculta 1
+  \foreach \x in {1,...,5}
+    \node[circle, draw=black, fill=green!20] (hidden1\x) at (2,\x) {h1\x};
+
+  % Capa oculta 2
+  \foreach \x in {1,...,3}
+    \node[circle, draw=black, fill=green!20] (hidden2\x) at (4,\x+0.5) {h2\x};
+
+  % Capa de salida
+  \foreach \x in {1,...,2}
+    \node[circle, draw=black, fill=red!20] (output\x) at (6,\x) {y\x};
+
+  % Conexiones
+  \foreach \i in {1,...,4}
+    \foreach \j in {1,...,5}
+      \draw[->] (input\i) -- (hidden1\j);
+
+  \foreach \i in {1,...,5}
+    \foreach \j in {1,...,3}
+      \draw[->] (hidden1\i) -- (hidden2\j);
+
+  \foreach \i in {1,...,3}
+    \foreach \j in {1,...,2}
+      \draw[->] (hidden2\i) -- (output\j);
+
+  % Etiquetas de capas
+  \node[align=center] at (0,-1) {Capa\\de entrada};
+  \node[align=center] at (2,-1) {Capa\\oculta 1};
+  \node[align=center] at (4,-1) {Capa\\oculta 2};
+  \node[align=center] at (6,-1) {Capa\\de salida};
+
+\end{tikzpicture}
+\caption{Red neuronal con dos capas ocultas}
 \end{figure}
+
+\subsection{Tipos de capas}
+
+\textbf{Capas densas o totalmente conectadas}: cada neurona está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
+
+\textbf{Capas convolucionales}: capas formadas por redes neuronales convolucionales. En lugar de conectarse a todas las neuronas de la capa anterior, una neurona en una capa convolucional está conectada a un pequeño subconjunto de las neuronas en la capa anterior.
+
+\textbf{Capas recurrentes}: capas formadas por redes neuronales recurrentes. En una capa recurrente, las neuronas tienen conexiones de retroalimentación con ellas mismas a lo largo del tiempo.
+
+\textbf{Capas de pooling}: capas utilizadas para reducir la dimensionalidad de los datos. Una capa de pooling toma un subconjunto de las entradas y produce una sola salida, que es una medida estadística resumida de sus entradas (por ejemplo, el máximo o el promedio).
+
+\textbf{Capas de normalización}: capas utilizadas para normalizar las entradas a una red o las salidas de una capa anterior. La normalización ayuda con el proceso de entrenamiento de la red.
+
+\section{Proceso de entrenamiento}
+El entrenamiento de una red neuronal implica un proceso que, de forma iterativa, ajusta los pesos de cada una de las neuronas para minimizar la diferencia entre las salidas predichas y las salidas reales del conjunto de datos de entrenamiento. Este proceso se puede clasificar en varios pasos:
+
+\textbf{Inicialización de pesos}: el primer paso en el entrenamiento es inicializar los pesos de las neuronas de la red. Normalmente se inicializan de manera aleatoria.
+
+\textbf{Propagación hacia adelante}: la propagación hacia adelante es el proceso por el cual la red neuronal transmite la información desde la capa de entrada hasta la capa de salida mediante la información calculada en cada función de activación neuronal.
+
+\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}.
+
+\textbf{Backpropagation}: proceso de ajuste de los pesos de la red neuronal en función al error calculado en la función de perdida. El objetivo es minimizar iterativamente la función de perdida propagando los errores desde la capa de salida hacia las capas ocultas por medio de la regla de la cadena. De esta manera se puede descubrir que número de neuronas deben actualizar sus pesos.
+
+\textbf{Iteración}: todo este proceso se repite N veces. Cada proceso completo de inicialización, propagación hacia adelante, función de coste y backpropagation se llama época (\textit{epoch}). Normalmente se ejecutan varias epocas hasta que la función de perdida se estabiliza.
+
+\section{Evaluación del modelo}
+La evaluación de un modelo de red neuronal es el proceso donde se determina la efectividad del modelo. Este proceso debe realizarse durante y después del entrenamiento.
+
+\textbf{Evaluación con el conjunto de prueba}: tras entrenar el modelo es imprescindible realizar una evaluación final con el conjunto de prueba. Esta evaluación da como resultado una evaluación más precisa de como se comportará el modelo con datos externos.
+
+\subsection{Cálculo de métricas de rendimiento}
+Existen diversas métricas de rendimiento que indican como de bueno es el entrenamiento del modelo. Algunas de las más usadas son:
+
+\textbf{Accuracy}: proporción de predicciones correctas que hace el modelo en relación con todas las predicciones que hace.
+\begin{equation}
+\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{FP} + \text{FN} + \text{TN}}
+\end{equation}
+
+\textbf{Recall}: recall es la proporción de instancias positivas que el modelo predice correctamente en relación con todas las instancias positivas reales.
+\begin{equation}
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{equation}
+
+\textbf{F1-Score}: media armónica de precisión y recall.
+\begin{equation}
+\text{F1-Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+\textbf{MSE}: es una métrica comúnmente usada para problemas de regresión. Es el promedio de los cuadrados de las diferencias entre las predicciones del modelo y las clases verdaderas.
+\begin{equation}
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y_i})^2
+\end{equation}

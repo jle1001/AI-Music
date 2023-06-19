@@ -1,21 +1,20 @@
 \capitulo{2}{Objetivos del proyecto}
-El objetivo general de este proyecto es diseñar y desarrollar un sistema de reconocimiento automático de estilos musicales mediante inteligencia artificial.
+\section{Objetivos principales}
+\begin{itemize}
+\tightlist
+\item Desarrollar un sistema de reconocimiento de estilos musicales utilizando inteligencia artificial.
+\item Diseñar e implementar una aplicación web que permita usar el modelo de una forma sencilla.
+\item Obtener conclusiones y conocimiento a partir de los datos.
+\end{itemize}
 
-Para alcanzar este fin, se plantean los siguientes objetivos:
-
-\subsection{Recogida de datos}
-El proceso de recogida de datos consiste en recopilar y organizar diversos tipos de información relacionada con los datos que queremos estudiar. En este proyecto, se incluyen las pistas de audio y los metadatos obtenidos del conjunto de datos FMA (Free Music Archive).
-\subsection{Preprocesamiento de datos}
-El preprocesamiento de datos implica una serie de pasos destinados a limpiar, transformar y preparar los datos para asegurarque presentan un formato adecuado.
-\subsection{Procesamiento de datos}
-El procesamiento de datos en este proyecto significa extraer características relevantes para obtener información para realizar la clasificación. Características como MFCCs o espectogramas son adecuadas para esta tarea.
-\subsection{Selección e implementación de modelos}
-La selección e implementación de modelos implica la elección de los mejores algoritmos adecuados para la tarea.
-\subsection{Evaluación de modelos}
-La evaluación de modelos implica medir el rendimiento de los modelos de aprendizaje automático implementados utilizando métricas como la tasa de acierto, precisión o F1-Score.
-\subsection{Interfaz de usuario}
-El desarrollo de una interfaz de usuario permite al usuario interactuar con el modelo de reconocimiento musical de forma sencilla.
-\subsection{Despliegue}
-Desplegar la aplicación web en un servidor web o en una plataforma en la nube para garantizar que es accesible a los usuarios.
-\subsection{Pruebas y control de calidad}
-Probar la aplicación y la interfaz web para identificar y corregir problemas. Este proceso es crucial en todo el ciclo de vida de la aplicación.
+\section{Objetivos técnicos}
+\begin{itemize}
+\tightlist
+\item Desarrollar un sistema de \textit{aprendizaje automático} que, utilizando pistas de audio, detecte de forma automática el estilo musical basándose en diversas características.
+\item Evaluar el modelo con diversas métricas como \textit{accuracy}, \textit{precision} o \textit{F1}.
+\item Implementar tests unitarios y de integración.
+\item Desarrollar un aplicación web utilizando librerías como Flask.
+\item Desplegar la aplicación con el modelo entrenado a una plataforma online como Heroku.
+\item Utilizar un sistema de control de versiones como Git para poder seguir los cambios en el código.
+\item Seguir una metodología ágil como SCRUM para la gestión del desarrollo del proyecto.
+\end{itemize}
