@@ -34,24 +34,38 @@ El reconocimiento musical es un área que se centra en el análisis de las carac
 El reconocimiento musical se basa en el análisis de diversas características del sonido. Algunas de las características más comunes son:
 
 \begin{itemize}
-\item \textbf{Ritmo}: El ritmo es una propiedad fundamental de la música y se refiere a la organización temporal de los eventos sonoros. En el reconocimiento musical puede involucrar la detección del tempo y el análisis de los patrones rítmicos.
+\item \textbf{Ritmo}: El ritmo es una de las propiedades fundamentales de la música y se refiere a la organización temporal de los eventos sonoros. Su complejidad abarca desde un ritmo repetitivo a un ritmo con notas y silencios complejos.
+El ritmo se puede analizar en términos de su complejidad, regularidad, velocidad y otros aspectos. En algunos géneros de música, como el techno, el ritmo suele ser el aspecto más dominante.
+La importancia del ritmo en el reconocimiento musical puede involucrar la detección del tempo y el análisis de los patrones rítmicos para obtener conclusiones.
 
-\item \textbf{Frecuencia}: La frecuencia musical es el número de vibraciones u oscilaciones por segundo en el sonido. En el reconocimiento musical, se pueden analizar los espectros de frecuencia de una señal de audio para identificar las notas musicales presentes en una canción.
+\item \textbf{Frecuencia}: La frecuencia musical es el número de vibraciones u oscilaciones por segundo en el sonido. 
+La frecuencia de estas vibraciones se mide en ciclos por segundo, o Hertz (Hz). Mientras mayor sea la frecuencia más agudo es el tono, y cuando menor más grave.
+La frecuencia musical se puede utilizar para identificar notas específicas o para determinar la armonía.
 
-\item \textbf{Timbre}: El timbre se refiere a las características tonales y armónicas que distinguen diferentes instrumentos y voces. El reconocimiento musical puede examinar el timbre de una señal de audio para identificar los instrumentos utilizados en una canción y distinguir diferentes elementos sonoros.
+\item \textbf{Timbre}: El timbre se refiere a las características tonales y armónicas que distinguen diferentes instrumentos y voces. 
+Dos instrumentos musicales pueden reproducir la misma nota pero sonar de una manera completamente diferente debido a su timbre.
+El análisis del timbre puede ayudar a reconocer estilos musicales debido a que permite identificar los diferentes instrumentos implicados en una canción.
 
-\item \textbf{Estructura Musical}: La estructura musical se refiere a la organización global de una composición musical. En el reconocimiento musical, el análisis de la estructura, puede detectar cambios y repeticiones en las diferentes partes de una canción y así identificar estilos musicales concretos por ejemplo.
+\item \textbf{Estructura Musical}: La estructura musical se refiere a la organización global de una composición musical.
+Estudiando la estructura musical se pueden distinguir las diferentes partes de una canción como el estribillo, versos o secciones instrumentales. De esta manera se pueden encontrar patrones repetitivos y que se ajusten a estilos musicales concretos.
 \end{itemize}
 
 \subsection{Estilos Musicales y Reconocimiento}
-Los diferentes estilos musicales a menudo tienen características distintivas que se pueden aprovechar en el reconocimiento musical. Por ejemplo, ciertos géneros tienen ritmos y patrones armónicos característicos. 
-Estas características pueden ser identificadas mediante algoritmos de aprendizaje automático que se entrenan con una amplia variedad de muestras de audio etiquetadas.
+Como se ha visto en el apartado anterior, los estilos musicales poseen características que se pueden utilizar para realizar una clasificación.
+Algunos géneros musicales tienen una estructura musical ampliamente establecida. Por ejemplo una gran cantidad de la música pop tiene una estructura definida como:
+
+\begin{center}
+\hfill \textbf{Verso} - \hfill \textbf{Estribillo} - \hfill \textbf{Verso} - \hfill \textbf{Estribillo} - \hfill \textbf{Puente} - \hfill \textbf{Estribillo}
+\end{center}
+
+Este tipo de características o patrones comunes pueden ser utilizados por modelos de aprendizaje automático para aprender de los datos y extraer conclusiones.
 
 \subsection{Aplicaciones del Reconocimiento Musical}
 El reconocimiento musical tiene diversas aplicaciones prácticas y de gran uso en la actualidad, algunas de las cuales son:
 
 \begin{itemize}
-\item \textbf{Recomendación de música}: Los algoritmos de reconocimiento musical se utilizan para recomendar música a los usuarios en función de sus preferencias y patrones de escucha. Estos sistemas analizan las características de las canciones más escuchadas por el usuario y crean un modelo de recomendación basado en sus gustos.
+\item \textbf{Recomendación de música}: Los algoritmos de reconocimiento musical se utilizan para recomendar música a los usuarios en función de sus preferencias y patrones de escucha. 
+Estos sistemas analizan las características de las canciones más escuchadas por el usuario y crean un modelo de recomendación basado en sus gustos.
 
 \item \textbf{Clasificación de géneros musicales}: El reconocimiento musical se utiliza para clasificar automáticamente las canciones en diferentes géneros musicales, lo que facilita la organización y la búsqueda de música en grandes bibliotecas digitales.
 \end{itemize}
@@ -59,11 +73,13 @@ El reconocimiento musical tiene diversas aplicaciones prácticas y de gran uso e
 \section{Ejemplo teórico de extracción de características musicales}
 
 \subsection{Espectrograma}
-Un espectrograma es una representación visual del espectro de frecuencia de una señal de audio en función del tiempo. Proporciona información detallada sobre cómo se distribuye la energía del sonido en diferentes frecuencias a lo largo del tiempo.
+Un espectrograma es una representación visual del espectro de frecuencia de una señal de audio en función del tiempo. 
+Proporciona información detallada sobre cómo se distribuye la energía del sonido en diferentes frecuencias a lo largo del tiempo.
 
 A continuación se explica el proceso para obtener un espectrograma de una canción.
 
 \begin{itemize}
+\tightlist
 \item \textbf{Preprocesamiento de la señal de audio}: La señal de audio de la canción se divide en segmentos. De esta manera es posible analizar la variación espectral en diferentes puntos de la señal a lo largo del tiempo.
 
 \item \textbf{Transformada de Fourier de tiempo corto (STFT)}: Cada segmento de la señal se somete a una transformada de Fourier de tiempo corto (STFT). La STFT divide la señal en múltiples segmentos de tiempo y calcula la suma de diferentes frecuencias en cada segmento. 
@@ -73,6 +89,8 @@ Esto se logra mediante la aplicación de una ventana temporal a cada segmento y 
 
 \item \textbf{Representación visual}: La magnitud del espectro se representa visualmente en un gráfico 2D, donde el eje horizontal representa el tiempo y el eje vertical representa las frecuencias. La intensidad del color o brillo en cada punto del gráfico indica la energía o amplitud de la frecuencia correspondiente.
 \end{itemize}
+
+Los espectrogramas tienen una gran utilidad no solo en el estudio de la música. Por ejemplo, se pueden utilizar para visualizar las señales de un radar y detectar objetos o en lingüistica estudiando los patrones de frecuencia de los sonidos del habla y así estudiar los diferentes fonemas o acentos.
 
 \imagen{example_spectrogram}{Espectrograma de una pista de audio.}{.5}
 
@@ -85,6 +103,7 @@ Estos coeficientes representan las características espectrales de una señal de
 A continuación se explica el proceso para obtener los coeficientes MFCC de una pista de audio.
 
 \begin{enumerate}
+\tightlist
 \item \textbf{Preénfasis}: La señal de audio se normaliza con un filtro de preénfasis, que resalta las frecuencias de alta frecuencia y compensa la atenuación de las frecuencias más bajas. Esto ayuda a mejorar la relación señal-ruido y realzar las características relevantes en el espectro.
 
 \item \textbf{División en tramas}: La señal preénfasis se divide en tramas o segmentos cortos y superpuestos en el tiempo. Esto se hace para capturar la variación espectral en diferentes puntos de la señal a lo largo del tiempo.
@@ -100,9 +119,19 @@ A continuación se explica el proceso para obtener los coeficientes MFCC de una 
 \item \textbf{Extracción de los coeficientes MFCC}: Finalmente, se seleccionan los coeficientes cepstrales más significativos para representar la información espectral de la señal de audio. Estos coeficientes son los utilizados como características para aplicaciones de procesamiento y reconocimiento de audio.
 \end{enumerate}
 
-Los coeficientes MFCC son ampliamente utilizados en aplicaciones como el reconocimiento de voz, la identificación de hablantes y la síntesis de voz.
+Los coeficientes MFCC son ampliamente utilizados en aplicaciones como: 
+
+\begin{itemize}
+\tightlist
+\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y facilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs.
+\item Identificación de hablantes: Los MFCC se pueden utilizar para identificar voces de diferentes hablantes, debido a que cada persona tiene una forma característica de hablar.
+\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos músicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación.
+\end{itemize}
+
 
 \imagen{example_MFCC}{MFCC de una pista de audio.}{.5}
+
+\newpage
 
 \section{Inteligencia Artificial}
 
