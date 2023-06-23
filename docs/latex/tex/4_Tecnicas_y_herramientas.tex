@@ -4,41 +4,61 @@ Esta parte de la memoria tiene como objetivo presentar las técnicas metodológi
 
 \section{Herramientas utilizadas}
 \begin{itemize}
-\item Python: Python es un lenguaje de programación de alto nivel ampliamente utilizado en el campo del aprendizaje automático y la inteligencia artificial. Posee una gran catidad de bibliotecas y frameworks que facilitan el procesamiento de datos y la implementación de algoritmos de inteligencia artificial.
-En este proyecto ha sido utilizado para desarrollar toda la parte del back-end de la aplicación. 
+\tightlist
+\item \textbf{Python}: Python es un lenguaje de programación de alto nivel ampliamente utilizado en el campo del aprendizaje automático y la inteligencia artificial. Esto es debido, en parte, a que posee una gran cantidad de bibliotecas y frameworks que facilitan el procesamiento de datos y la implementación de algoritmos de inteligencia artificial.
+En este proyecto, Python se ha utilizado para la implementación del back-end. Se han aprovechado su conjunto de bibliotecas para realizar el desarrollo Web (Flask), procesamiento de datos (Librosa, NumPy, Pandas) y métodos de aprendizaje automático (TensorFlow y Scikit-learn).
 
-\item librosa: librosa es una biblioteca de Python utilizada para el análisis y procesamiento de audio. Proporciona una amplia gama de métodos para extraer características de audio de forma sencilla. Algunos ejemplos son espectrogramas, coeficientes cepstrales de frecuencia mel (MFCC) o cromagramas.
-En este proyecto ha sido utilizada para procesar y extraer diversas características de audio para alimentar los algoritmos de inteligencia artificial y crear el modelo.
+\item \textbf{librosa}: librosa es una biblioteca de Python utilizada para el análisis y procesamiento de audio. Proporciona de una manera sencilla el acceso a métodos y funciones para realizar análisis, extracción y visualización de características de audio.
 
-\item TensorFlow: TensorFlow es una biblioteca de código abierto utilizada en el campo del aprendizaje automático. Proporciona una interfaz sencilla para la implementación de redes neuronales y otros algoritmos de aprendizaje automático.
-TensorFlow ha sido la opción escogida para entrenar los algoritmos de redes neuronales del proyecto.
+\item \textbf{TensorFlow}: TensorFlow es una biblioteca de código abierto utilizada en el campo del aprendizaje automático. Proporciona la posiblidad de implementar redes neuronales complejas de una forma sencilla con grandes volúmenes de datos.
 
-\item scikit-learn: scikit-learn es una biblioteca de aprendizaje automático de Python que proporciona una amplia gama de algoritmos y herramientas para el análisis de datos y la construcción de modelos. Incluye funciones para la división de conjuntos de datos en conjuntos de entrenamiento (\textit{train} y \textit{prueba}).
+\item \textbf{scikit-learn}: scikit-learn es una biblioteca de aprendizaje automático de Python que proporciona una amplia gama de algoritmos y herramientas para el análisis de datos y la construcción de modelos. Incluye funciones para la división de conjuntos de datos en conjuntos de entrenamiento (\textit{train} y \textit{prueba}) que han sido utilizadas en este proyecto.
 
-\item NumPy: NumPy es una biblioteca de Python utilizada para realizar cálculos numéricos en matrices y matrices multidimensionales. Proporciona una amplia gama de funciones matemáticas y herramientas para el manejo eficiente de datos numéricos.
+\item \textbf{NumPy}: NumPy es una biblioteca de Python utilizada para realizar cálculos numéricos en matrices y matrices multidimensionales. 
 
-\item Pandas: bibliteca de código abierto en Python que proporciona herramientas de análisis de datos. Es ampliamente usada en el mundo de la ciencia de datos.
+\item \textbf{Pandas}: bibliteca de código abierto en Python que proporciona herramientas de análisis de datos.
+
+\item \textbf{Flask}: 
 \end{itemize}
 
-\section{Justificación}
+\section{Justificación de las herramientas utilizadas}
 
-\subsection{Python}
+\subsection{Lenguaje de programación}
+\textbf{Lenguajes de programación planteados}: Python, Go, C
+
+\textbf{Lenguajes de programación elegido}: Python
+
 A continuación se presentan algunas justificaciones que han decantado el desarrollo del proyecto en lenguaje Python en comparación con otros lenguajes de programación.
 
-\textbf{Amplia variedad de bibliotecas y frameworks}: Python cuenta con una amplia gama de bibliotecas y frameworks especializados en aprendizaje automático, como TensorFlow, scikit-learn, PyTorch, Keras y muchos otros. 
-Estas bibliotecas proporcionan herramientas e implementación de los principales algoritmos de inteligencia artificial, lo que facilita enormemente la tarea de desarrollar un proyecto de aprendizaje automático.
+\textbf{Integraciones}: Python cuenta con una completa integración con la mayoría de bibliotecas y frameworks especializados en aprendizaje automático, como TensorFlow, scikit-learn, PyTorch, Keras entre otros. 
+En el caso de C, aunque existen algunas bibliotecas como \textit{mlpack}, \textit{libsvm} o una API para controlar TensorFlow (\textit{libtensorflow}) su comunidad de aprendizaje automático es bastante más pequeña que la de Python, por lo que hay menos soporte y recursos disponibles.
+En cuanto a Go, su implementación en este proyecto hubiera sido muy interesante debido a ser un lenguaje moderno, rápido y muy popular, pero ocurre lo mismo que con C. Su soporte para aprendizaje automático y procesamiento de datos es pequeña por lo que su suporte y recursos son escasos.
+Esto ha sido vital para elegir Python por encima del resto de lenguajes planteados.
 
-\textbf{Integración con otras tecnologías}: Python se integra fácilmente con otras tecnologías existentes en el ámbito del desarrollo del aprendizaje automático. Por ejemplo, se puede combinar con bases de datos (MySQL), herramientas de visualización (matplotlib), análisis de datos (Pandas) o en este caso herramientas de procesamiento musical (librosa).
+\textbf{Rendimiento}: En este apartado los ganadores claros son C y Go, al tratarse de lenguajes compilados, pero en este proyecto el rendimiento bruto no es la prioridad como pueden ser la implementación de algoritmos de aprendizaje automático o el tratamiento de datos.
+Por eso mismo se ha elegido Python teniéndo en cuenta que aunque es el que menor rendimiento tiene, es el que otorga un mayor valor al proyecto.
 
-\subsection{TensorFlow vs scikit-learn}
-La elección de utilizar TensorFlow en lugar de scikit-learn se basa en varias consideraciones.
+\subsection{Biblioteca de aprendizaje automático}
+\textbf{Bibliotecas planteadas}: TensorFlow, Pytorch, Scikit-learn
 
-\textbf{En primer lugar}, TensorFlow es adecuado para proyectos que involucran aprendizaje profundo y redes neuronales. Proporciona una mayor cantidad de herramientas para crear, entrenar y desplegar modelos de aprendizaje profundo que scikit-learn. 
+\textbf{Bibliotecas elegidas}: TensorFlow y Scikit-learn (como herramienta de partición de datos).
 
-\textbf{TensorFlow} permite implementar arquitecturas de redes neuronales complejas, como redes neuronales convolucionales (CNN), las cuales son muy adecuadas para los objetivos del proyecto.
+\textbf{Integraciones}: tanto TensorFlow, Pytorch como Scikit-learn ofrecen excelentes integraciones con Python. Por lo que este apartado no ha sido importante para valorar la elección entre uno u otro.
 
-\textbf{Por último}, TensorFlow tiene soporte para utilizar tarjetas gráficas (GPUs) a la hora de realizar el proceso de entrenamiento. Esto proporciona una ventaja significativa en rendimiento, ya que al poder utilizar la gran cantidad de nucleos de una GPU se pueden realizar cálculos de manera paralela y distribuida lo que resulta en tiempos
-de entrenamiento considerablemente más rápidos en comparación con el uso exclusivo de CPU.
+\textbf{Enfoque y alcance}: Tanto TensorFlow como Pytorch son bibliotecas de aprendizaje automático de propósito general con soporte para aprendizaje profundo y grandes volumenes de datos. En cambio Scikit-learn es una biblioteca de aprendizaje automático centrada en algoritmos tradicionales y no es adecuado para grandes volúmenes de datos.
+Por estas razones se descarta Scikit-learn como una opción viable para entrenar el modelo planteado en este proyecto, aunque se ha utilizado como biblioteca de métodos de procesamiento del conjunto de datos mediante sus herramientas de partición de conjunto de datos (\textit{train\textunderscore test\textunderscore split}).
+
+\textbf{Rendimiento}: tanto TensorFlow como Pytorch poseen soporte para entrenamiento con GPU o TPU, por lo que su rendimiento es muy similar. En este caso la elección ha sido utilizar TensorFlow debido a su mayor documentación y posibilidad de configuración.
+
+\subsection{Framework web}
+\textbf{Frameworks web planteados}: Flask, Django
+
+\textbf{Framework web elegido}: Flask
+
+\textbf{Rendimiento}: Flask y Django poseen un rendimiento similar en la mayoría de ocasiones aunque es posible, que en ciertas ocasiones, Flask sea algo más rápido debido a su naturaleza.
+
+\textbf{Enfoque}: Flask sigue una filosofía más simple y minimalista en su desarrollo. Esto ayuda a que su implementación en el proyecto sea más sencilla y \textit{directa}. En cambio Django sigue un patrón de diseño (MVC) más estricto y con muchas funciones que en este proyecto no han sido necesarias.
+Por estas razones se ha escogido Flask como la opción para implementar la aplicación web.
 
 \section{Técnicas utilizadas}
 
@@ -48,16 +68,13 @@ Se han utilizado diversas técnicas y metodologías para llevar a cabo el desarr
 
 \section{Procesamiento y extracción de características de audio}
 
-Para el procesamiento y extracción de características de audio, se ha utilizado la biblioteca librosa en Python.
-
-\begin{itemize}
-\item MFCC (coeficientes cepstrales de frecuencia mel): Estos coeficientes capturan las características espectrales del audio y se utilizan comúnmente en tareas de reconocimiento de voz y clasificación de audio. Son las características principales que se han utilizado para entrenar el modelo y realizar predicciones.
-\end{itemize}
+Para el procesamiento y extracción de características de audio, se ha utilizado la biblioteca librosa en Python. Cómo se ha mencionado anteriormente, librosa permite el análisis y procesamiento de audio de una manera sencilla y se ha utilizado para extraer las características de audio para después alimentar al algoritmo de aprendizaje automático.
 
 \section{División del conjunto de datos}
 
 Para dividir el conjunto de datos en conjuntos de entrenamiento, prueba y validación, se ha utilizado la biblioteca scikit-learn. 
-Scikit-learn proporciona una función llamada \textit{train\textunderscore test\textunderscore split} que permite dividir el conjunto de datos en partes destinadas para el entrenamiento y la evaluación del modelo. Esta técnica de división del conjunto de datos es fundamental para evaluar la capacidad de \textbf{generalización} del modelo y evitar el \textbf{sobreajuste}.
+Scikit-learn proporciona una función llamada \textit{train\textunderscore test\textunderscore split} que permite dividir el conjunto de datos en partes destinadas para el entrenamiento y la evaluación del modelo.
+Esta técnica de división del conjunto de datos es fundamental para evaluar la capacidad de \textbf{generalización} del modelo y evitar el \textbf{sobreajuste}.
 
 \begin{figure}
   \centering
@@ -91,55 +108,7 @@ Scikit-learn proporciona una función llamada \textit{train\textunderscore test\
 
 Para realizar el entrenamiento de los datos, se han utilizado redes neuronales implementadas con la biblioteca TensorFlow.
 
-En este proyecto, se han utilizado diferentes arquitecturas de redes neuronales, como redes neuronales convolucionales (CNN) y redes neuronales multicapa. Estas arquitecturas son adecuadas para tareas de procesamiento de audio y han demostrado ser efectivas en la clasificación y reconocimiento de patrones en audio.
+En este proyecto, se han utilizado diferentes arquitecturas de redes neuronales, como redes neuronales convolucionales (CNN) y redes neuronales multicapa. 
+Estas arquitecturas son adecuadas para tareas de procesamiento de audio y han demostrado ser efectivas en la clasificación y reconocimiento de patrones en audio.
 
 Las redes neuronales se entrenan actualizando los pesos y los sesgos de la red iterativamente para minimizar la pérdida (\textit{loss}). Una vez entrenadas, las redes neuronales realizan predicciones sobre nuevos datos de audio, clasificándolos en categorías o estilos musicales.
-
-\begin{figure}
-  \centering
-  \begin{tikzpicture}[
-    neuron/.style={circle, draw, minimum size=1.5cm},
-    connection/.style={->, thick}
-  ]
-    % Input layer
-    \foreach \i in {1,2,3}
-      \node[neuron] (input\i) at (0,-\i*1.5) {};
-
-    % Hidden layer 1
-    \foreach \i in {1,2,3,4}
-      \node[neuron] (hidden1\i) at (3,-\i*1.5) {};
-
-    % Hidden layer 2
-    \foreach \i in {1,2,3,4}
-      \node[neuron] (hidden2\i) at (6,-\i*1.5) {};
-
-    % Output layer
-    \node[neuron] (output) at (9, -3) {};
-
-    % Connections
-    \foreach \i in {1,2,3}
-      \foreach \j in {1,2,3,4}
-        \draw[connection] (input\i) -- (hidden1\j);
-
-    \foreach \i in {1,2,3,4}
-      \foreach \j in {1,2,3,4}
-        \draw[connection] (hidden1\i) -- (hidden2\j);
-
-    \foreach \i in {1,2,3,4}
-      \draw[connection] (hidden2\i) -- (output);
-
-    \node[above] at (0,0) {Capa de entrada};
-    \node[above] at (3,0) {Capa oculta 1};
-    \node[above] at (6,0) {Capa oculta 2};
-    \node[above] at (9,0) {Capa de salida};
-
-  \end{tikzpicture}
-  \caption{Ejemplo de una red neuronal multicapa}
-\end{figure}
-
-\section{Desarrollo con Python y Flask}
-
-La parte del desarrollo de la aplicación web se ha llevado a cabo utilizando Python y el framework Flask. Flask es un framework web que permite construir aplicaciones web en Python.
-
-Utilizando Flask, se ha desarrollado el back-end de la aplicación, que se encarga de recibir las solicitudes del usuario, procesar los datos de audio y devolver los resultados de clasificación y análisis. Todo ello mediante la implementación de RESTful API, lo que proporciona una comunicación contínua entre el usuario y el servidor.
-
