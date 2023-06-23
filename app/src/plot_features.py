@@ -5,7 +5,7 @@ import numpy as np
 import io
 import base64
 
-UPLOAD_TRACK = './static/upload/upload.mp3'
+UPLOAD_TRACK = './app/static/upload/upload.mp3'
 
 def show_waveform(audio=UPLOAD_TRACK):
     """Display the waveform of an audio file.

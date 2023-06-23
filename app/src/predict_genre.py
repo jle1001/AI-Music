@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import librosa
 
-UPLOAD_TRACK = './static/upload/upload.mp3'
+UPLOAD_TRACK = './app/static/upload/upload.mp3'
 GENRES_LIST = './data/raw_genres.csv'
 
 # Load trained model

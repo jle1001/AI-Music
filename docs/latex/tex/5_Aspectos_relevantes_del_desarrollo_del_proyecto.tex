@@ -26,7 +26,7 @@ En resumen el desarrollo ha consistido en los siguientes pasos iterativos:
 El objetivo del proyecto es aplicar técnicas de Inteligencia Artificial (IA) y Aprendizaje Automático (ML) para la clasificación de estilos musicales. 
 Durante la fase de análisis, se estudiaron varios modelos de ML, eligiendo finalmente la Red Neuronal Convolucional (CNN) debido a su mayor eficacia.
 
-Otro factor a tener en cuenta en un proyecto de IA es el conjunto de datos. Se han pensado diversos conjuntos de datos para entrenar el modelo como:
+Otro factor a tener en cuenta en un proyecto de IA es el conjunto de datos. Se han planteado diversos conjuntos de datos para entrenar el modelo como:
 \begin{itemize}
 
 \item \textbf{GTZAN Dataset}: conjunto de datos muy utilizado en la clasificación musical. Recopilado por George Tzanetakis en 2002, consta de \textbf{1000 fragmentos} de audio de \textbf{30 segundos}, distribuidos en \textbf{10 géneros musicales}.
@@ -39,7 +39,7 @@ Otro factor a tener en cuenta en un proyecto de IA es el conjunto de datos. Se h
 
 \end{itemize}
 
-Finalmente se ha elegido el conjunto de datos \textbf{FMA (Free Music Archive) de 7.2 GiB}, con 8000 fragmentos de audio para realizar el entrenamiento del modelo. Esto es debido a que ofrece una gran cantidad de pistas musicales libres de derechos. Además, al incluir las pistas musicales (a diferencia de Million Song Dataset por ejemplo)
+Finalmente se ha elegido el conjunto de datos \textbf{FMA (Free Music Archive)} para realizar el entrenamiento del modelo. Esto es debido a que ofrece una gran cantidad de pistas musicales libres de derechos. Además, al incluir las pistas musicales (a diferencia de Million Song Dataset por ejemplo)
 es posible extraer las características de forma manual utilizando librosa u otras herramientas.
 
 \subsection{Diseño}
@@ -61,7 +61,7 @@ El marco de trabajo escogido para realizar la implementación de la aplicación 
 
 \begin{itemize}
 
-\item \textbf{Backend}: Para el backend se ha utilizado Flask, un marco de trabajo de Python, pensado para realizar aplicaciones web y APIs.
+\item \textbf{Backend}: Para el backend se ha utilizado Flask, un framework web comptabile con Python, pensado para realizar aplicaciones web y APIs.
 
 \item \textbf{Frontend}: Para el frontend, se ha optado por HTML y CSS. HTML es un lenguaje de marcado que define la estructura y contenidos de las páginas web que conforman la aplicación. CSS es utilizado para definir los estilos de los documentos HTML y añadir elementos atractivos para el usuario.
 
@@ -77,167 +77,79 @@ En este sección se va a analizar el proceso de extracción de características 
 
 El método de extracción de MFCC está diseñado para recorrer todos los archivos en un directorio especificado y extraer las características MFCC de cada archivo de audio que encuentre. La explicación de los detalles relevantes es la siguiente:
 
-\begin{verbatim}
-	y, sr = librosa.load(item)
-
-	if librosa.get_duration(y=y, sr=sr) < 25:
-		continue
-
-	y = y[:(25 * sr)]
-	mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
-	mfcc_normalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)
-
-	mfccs[int(item.stem)] = mfcc_normalized.ravel()
-\end{verbatim}
-
 \begin{enumerate}
-\item \textbf{y, sr = librosa.load(item)}: Carga del archivo de audio, devolviendo tanto la señal de audio (y) como la frecuencia de muestreo (sr).
+\tightlist
+\item \textbf{Carga de archivos}: Carga del archivo de audio, devolviendo tanto la señal de audio (y) como la frecuencia de muestreo (sr).
 
-\item \textbf{if librosa.get\textunderscore duration (y=y, sr=sr) < 25}: Comprobación de la duración del audio. Si el audio es inferior a 25 segundos se omite el archivo y se continúa con el siguiente.
+\item \textbf{Duración estándar}: Se extraen los primeros 25 segundos de cada pista de audio para obtener la misma dimensionalidad en todo el conjunto de datos.
 
-\item \textbf{y = y[:(25 * sr)]}: Recorte de los primeros 25 segundos de la señal de audio.
+\item\textbf{Extracción de coeficientes MFCC}: Se extraen 10 coeficientes MFCC de cada pista de audio. Se ha decidido extraer 10 coeficientes ya que es un número válido para realizar una posterior clasificación y su dimensionalidad es correcta para hacer el entrenamiento eficiente.
 
-\item\textbf{mfcc = librosa.feature.mfcc(y=y, sr=sr, n\textunderscore mfcc =10)}: Extracción de 10 coeficientes MFCC.
+\item \textbf{Normalización}: Los coeficientes MFCC extraídos se normalizan restando la media y dividiendo por la desviación estándar. Este proceso se llama \textit{Normalización Z-Score} y se calcula de la siguiente manera.
 
-\item \textbf{mfcc\textunderscore normalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)}: Normalización de los coeficientes MFCC restando la media y dividiendo por la desviación estándar.
+\begin{equation}
+z = \frac{x - \mu}{\sigma}
+\end{equation}
 
-\item\textbf{mfccs[int(item.stem)] = mfcc\textunderscore normalized.ravel()}: Los coeficientes MFCC normalizados se aplanan en una matriz 1D y se almacenan en un diccionario.
+donde \(z\) es el valor estandarizado, \(x\) es el valor de los coeficientes MFCC, \(\mu\) es la media de los coeficientes MFCC y \(\sigma\) es la desviación estándar de los coeficientes MFCC.
+
 \end{enumerate}
 
 \subsection{Extracción del resto de características}
 
-Para comparar el rendimiento y elegir el mejor conjunto de características de audio posibles para realizar la clasificación, se ha repetido el proceso con:
+Para generar visualizaciones, se ha repetido el proceso de extracción de características con:
 
 \begin{enumerate}
-\item \textbf{Espectrogramas}: librosa.feature.melspectrogram(y=y, sr=sr)
+\tightlist
+\item \textbf{Onda de audio}
 
-\item \textbf{Cromagramas}: librosa.feature.chroma\textunderscore stft(y=y, sr=sr)
+\item \textbf{Espectrogramas}
+
+\item \textbf{Cromagramas}
 \end{enumerate}
 
 \newpage
 
-\section{Implementación de las redes neuronales}
+\section{Técnicas de aumento de datos}
 
-En esta sección se van a estudiar las redes neuronales utilizadas en el proyecto y su eficacia.
+Las técnicas de aumentación de datos se basan en la generación de datos artificiales por medio de modificaciones de los datos originales. Esta técnica es importante en conjuntos de datos con pocos ejemplos o cuyos ejemplos no son suficientes para realizar un entrenamiento de calidad.
+En este proyecto se han planteado diversas técnicas de aumentación de datos como por ejemplo:
 
-\subsection{Modelo de Red Neuronal inicial}
+\begin{itemize}
+\tightlist
 
-\begin{verbatim}
-initial_model = tf.keras.Sequential([
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dense(164, activation='softmax')
-])
-\end{verbatim}
+\item \textbf{Adicción de ruido de fondo}: la adicción de ruido de fondo es una técnica utilizada en los clips de audio que consiste en añadir un sonido estático, como ruido blanco o ruido ambiental, de esta manera se puede ayudar al modelo a entender los diferentes sonidos de fondo.
 
-Primer modelo genérico que se utilizó para estudiar la calidad del entrenamiento y sus predicciones.
-Este modelo específico es un ejemplo de una red neuronal totalmente conectada, que se configura como una secuencia de capas.
+\item \textbf{Cambio de tono (pitch shifting)}: esta técnica consiste en variar la tonalidad o la frecuencia de la pista de audio sin cambiar su velocidad, de esta manera el modelo es capaz de generalizar mejor en situaciones donde hay diferentes tonalidades.
 
-\texttt{tf.keras.layers.Dense(512, activation='relu')}
+\item \textbf{Estiramiento temporal (time stretching)}: esta técnica, a diferencia del \textit{pitch shifting}, consiste en variar la velocidad del audio sin cambiar su tono o frecuencia. Esto ayuda al modelo a entender diferentes velocidades en el habla o en los instrumentos.
 
-Primera capa del modelo. Cada neurona en esta capa está conectada a todas las neuronas en la capa anterior. Tiene 512 neuronas y usa la función de activación ReLU (Rectified Linear Unit). La función \textbf{ReLU} es una función de activación no líneal por lo que el modelo puede aprender patrones complejos.
+\item \textbf{Efectos auditivos}: se añaden efectos a la pista de audio como pueden ser eco, reverberación o chorus. De esta manera el modelo aprende a ser más robusto en estas situaciones.
 
-\texttt{tf.keras.layers.Dropout(0.2)}
-
-Capa de Dropout. Dropout es una técnica de regularización utilizada para evitar el sobreajuste. Durante el entrenamiento, aleatoriamente se desactivan algunas neuronas para evitar un ajuste excesivo a los datos de entrenamiento. En este caso se desactivan el 20\% de las neuronas.
-
-\texttt{tf.keras.layers.Dense(512, activation='relu')} 
-
-\texttt{tf.keras.layers.Dropout(0.2)}:
-
-Estas son la segunda capa oculta y la segunda capa de Dropout, respectivamente.
-
-\texttt{tf.keras.layers.Dense(512, activation='relu')}
-
-Esta es la tercera capa oculta del modelo. Al igual que las dos primeras capas ocultas, tiene 512 neuronas y utiliza la función de activación ReLU.
-
-\texttt{tf.keras.layers.Dense(164, activation='softmax')}
-
-Capa de salida del modelo. Tiene 164 neuronas, que corresponden al número de estilos musicales presentes en el dataset. La función de activación \textbf{Softmax} produce una distribución de la probabilidad entre las diferentes clases.
-
-TODO: INTRODUCIR GRÁFICOS CON LOS RESULTADOS DEL ENTRENAMIENTO Y REPRESENTACIÓN DE LAS CAPAS
+\end{itemize}
 
 \newpage
 
-\subsection{Modelo de Red Neuronal Convolucional 1D (CNN 1D)}
+\section{Modelo de aprendizaje automático}
 
-\begin{verbatim}
-conv_model = tf.keras.Sequential([
-    tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
-    tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
-    tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
-    tf.keras.layers.BatchNormalization(),
-    tf.keras.layers.MaxPooling1D(pool_size=2),
+En esta sección se va a explicar en detalle las diferentes características del modelo de aprendizaje automático que se ha utilizado en el proyecto.
 
-    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-    tf.keras.layers.BatchNormalization(),
-    tf.keras.layers.MaxPooling1D(pool_size=2),
+El modelo de aprendizaje automático utilizado es una representación de datos musicales procesados y algoritmos utilizados para realizar tareas de predicción de una clase.
 
-    tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
-    tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
-    tf.keras.layers.BatchNormalization(),
-    tf.keras.layers.MaxPooling1D(pool_size=2),
+\subsection{Datos}
 
-    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-    tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-    tf.keras.layers.BatchNormalization(),
-    tf.keras.layers.MaxPooling1D(pool_size=2),
+Los datos con los que se alimentan al modelo utilizado son un conjunto de características musicales, en concreto 10 coeficientes MFCC, junto a su etiqueta correspondiente, el género musical. Con esta información el modelo aplicará algoritmos de machine learning para aprender de los datos y devolver nuevas predicciones
+(generalizar) sobre datos nuevos o externos.
 
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(512, activation='relu'),
-    tf.keras.layers.Dropout(0.5),
-    tf.keras.layers.Dense(512, activation='relu'),
-    tf.keras.layers.Dense(164, activation="softmax")
-])
-\end{verbatim}
+Los datos proceden de una gran cantidad de ficheros de audio, los cuales han sido procesados para extraer sus características más importantes. Una vez realizado este proceso, los datos procesados se guardan en un archivo, el cual será encargado de alimentar el modelo de aprendizaje automático.
 
-Las redes neuronales convolucionales son especialmente eficaces para la clasificación musical debido al reconocimiento de patrones locales, en el contexto de la música es especialmente relevante ya que puede traducirse en la capacidad de identificar patrones como ritmo o tonos de forma eficaz.
+Existen diversos problemas en este planteamiento, lo primero es la cantidad de datos a procesar. Los datos deben ser almacenados en alguna parte mientras se introducen al modelo. Esto puede suponer un problema si se cuenta con un equipo no demasiado potente que no puede almacenar todos los datos en la memoria.
+Para solucionar este problema se puede recurrir al uso de datasets incrementales mediante generadores. De esta manera los datos se devuelven iterativamente y no es necesario que se almacenen todos juntos en memoria.
 
-\texttt{tf.keras.layers.Reshape((10770, 1), input\_shape=(None, 10770))}
+\subsection{Redes neuronales}
 
-Primera capa del modelo. Se cambia la forma de los datos de entrada a un formato aceptado por las capas convolucionales propuestas. En este caso, los datos de entrada se reforman a una matriz 2D de 10770 filas y 1 columna.
+\section{Evaluación del rendimiento del modelo}
 
-\texttt{tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu')}
-\texttt{tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu')}
+\subsection{Entrenamiento}
 
-Primeras capa convolucionales. La convolución se realiza con \textbf{64 filtros} y un \textbf{tamaño de kernel de 3}. La función de activación es la ReLU (Rectified Linear Unit).
-
-\texttt{tf.keras.layers.BatchNormalization()}
-
-Capa de normalización por lotes. Técnica necesaria para estabilizar y acelerar el proceso de entrenamiento. El funcionamiento consiste en aplicar una transformación que mantenga la salida media cercana a 0 y la desviación típica cercana a 1.
-
-\texttt{tf.keras.layers.MaxPooling1D(pool\_size=2)}
-
-Capa de pooling. Reduce la dimensión espacial de la entrada extrayendo las características más importantes y así prevenir el sobreajuste.
-
-Posteriormente se realizan los mismos pasos con diferentes capas de 128 neuronas, 256 neuronas y finalmente otras 128 neuronas. Hasta llegar a las últimas capas.
-
-\texttt{tf.keras.layers.Flatten()}
-
-Esta capa, reduce la dimensionalidad de la entrada a una entrada 1D. \textbf{Es el puente entre las capas convolucionales y las capas densas.}
-
-\texttt{tf.keras.layers.Dense(512, activation='relu')}
-
-Capa completamente conectada de 512 neuronas con una función de activación ReLU.
-
-\texttt{tf.keras.layers.Dropout(0.5)}
-
-Capa de Dropout que desactiva aleatoriamente el 50\% de las neuronas para evitar el sobreajuste.
-
-\texttt{tf.keras.layers.Dense(512, activation='relu')}
-
-Capa completamente conectada de 512 neuronas con una función de activación ReLU.
-
-\texttt{tf.keras.layers.Dense(164, activation="softmax")}
-
-Capa de salida del modelo. Tiene 164 neuronas, que corresponden al número de estilos musicales presentes en el dataset. La función de activación \textbf{Softmax} produce una distribución de la probabilidad entre las diferentes clases.
-
-Este modelo es una CNN 1D con una estructura formada por una serie de bloques de capas convolucionales seguidas de normalización y pooling, seguidos por una serie de capas densas.
-
-La primera parte del modelo (las capas convolucionales) se encarga de aprender características locales en pequeñas ventanas de los datos de entrada, mientras que la segunda parte del modelo, formado por capas completamente conectadas, aprende a combinar estas características para hacer predicciones.
-
-TODO: INTRODUCIR GRÁFICOS CON LOS RESULTADOS DEL ENTRENAMIENTO
+\subsection{Explotación}
