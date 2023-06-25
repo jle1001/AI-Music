@@ -2,6 +2,8 @@
 
 \section{Introducción}
 
+Esta sección describe la especificación de requisitos para el proyecto. Se proporciona información detallada sobre los requisitos funcionales (RF) y requisitos no funcionales (RNF) así como el detalle de los casos de uso (CU).
+
 \section{Objetivos generales}
 
 \begin{itemize}
@@ -206,4 +208,133 @@ Insertar diagrama general de casos de uso.
 		\bottomrule
 	\end{tabularx}
 	\caption{CU-3 Ejecución del modelo de machine learning}
+\end{table}
+
+% Caso de Uso 4 -> Visualización de la predicción
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-4}    & \textbf{Visualización de la predicción}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Ángel López \\
+		\textbf{Requisitos asociados} & RF-2.1, RF-2.2 \\
+		\textbf{Descripción}          & Tras la ejecución del modelo de machine learning, la aplicación muestra la predicción del estilo musical al usuario. \\
+		\textbf{Precondiciones}        & 
+		\begin{enumerate}		    
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La aplicación ha generado una predicción.
+		\end{enumerate}\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La aplicación muestra la predicción del estilo musical en la interfaz.
+			\item El usuario puede cambiar entre distintas visualizaciones de forma dinámica.
+			\item El usuario visualiza la predicción.
+		\end{enumerate}\\
+		\textbf{Postcondiciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario ha obtenido la predicción del estilo musical de la canción.
+		\end{enumerate}\\
+		\textbf{Excepciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Se produce un error al intentar mostrar la predicción.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-4 Visualización de la predicción}
+\end{table}
+
+% Caso de Uso 5 -> Reproducción de la canción
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-5}    & \textbf{Reproducción de la canción}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Ángel López \\
+		\textbf{Requisitos asociados} & RF-1.2, RF-1.3 \\
+		\textbf{Descripción}          & La aplicación permite al usuario reproducir la canción cargada. \\
+		\textbf{Precondiciones}        & 
+		\begin{enumerate}		    
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La canción ha sido cargada correctamente en la aplicación.
+		\end{enumerate}\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario selecciona la opción de reproducir la canción mediante el botón \textit{play} del reproductor.
+			\item La aplicación reproduce la canción cargada.
+		\end{enumerate}\\
+		\textbf{Postcondiciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La canción está siendo reproducida en la aplicación.
+		\end{enumerate}\\
+		\textbf{Excepciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Se produce un error en la reproducción de la canción.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Media \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-5 Reproducción de la canción}
+\end{table}
+
+% Caso de Uso 6 -> Carga de una nueva canción
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-6}    & \textbf{Carga de una nueva canción}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Ángel López \\
+		\textbf{Requisitos asociados} & RF-1.1, RF-1.3 \\
+		\textbf{Descripción}          & El usuario puede cargar una nueva canción sin tener que cerrar o reiniciar la aplicación. \\
+		\textbf{Precondiciones}        & 
+		\begin{enumerate}		    
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La aplicación ha realizado la predicción de una canción.
+		\end{enumerate}\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario hace selecciona el nombre de la aplicación, en la zona superior izquierda de la pantalla, para volver a la página inicial.
+			\item El usuario pulsa el botón \textit{Upload File}.
+			\item El usuario busca y selecciona la nueva canción que desea cargar desde su almacenamiento.
+		\end{enumerate}\\
+		\textbf{Postcondiciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La nueva canción se carga en la aplicación.
+		\end{enumerate}\\
+		\textbf{Excepciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El archivo cargado no es un fichero de audio.
+			\item La canción tiene un formato incompatible.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-6 Carga de una nueva canción}
 \end{table}
