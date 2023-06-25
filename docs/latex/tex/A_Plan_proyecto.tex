@@ -47,4 +47,123 @@ Cada sprint implicó una serie de actividades que culminaron con una entrega inc
 
 \subsection{Viabilidad económica}
 
+La viabilidad económica de un proyecto de software se refiere a la capacidad para generar ingresos tanto para cubrir el desarrollo como para proporcionar una rentabilidad a medio y largo plazo. El presente proyecto no está planteado con un objetivo económico, por lo que esta sección se va a dedicar a explorar un posible plan de monetización de forma ficticia, explorando los costes totales de desarrollo de software y potenciales métodos de monetización.
+
+\subsection{Costes}
+Esta sección detalla los costes económicos a los que hay que hacer frente para diseñar, implementar y desplegar el software.
+
+\subsection{Costes de hardware}
+Los costes de hardware se refieren al gasto económico que se realiza para obtener los diferentes elementos hardware que se necesitan para poder llevar a cabo el desarrollo del proyecto. Los elementos hardware pueden ser ordenadores, periféricos o componentes internos por ejemplo.
+En este caso se ha planteado la compra de un ordenador portátil de unos 1000€. Esta decisión se toma teníendo en cuenta los siguientes factores:
+
+\begin{itemize}
+\tightlist
+\item \textbf{Rendimiento}: Este proyecto requiere un uso de algoritmos de aprendizaje automático y procesamiento de datos, por lo que se demanda una cierta capacidad de computación. 
+Un equipo dentro del rango de precio planteado viene equipado con un procesador potente, como un Intel Core i7 (12th o 13th Gen) o un AMD Ryzen 7 (6th Gen). Además suelen incluir una tarjeta gráfica dedicada, como una NVIDIA RTX 3060 con 6 GB de VRam, con la ventaja en rendimiento que esto conlleva en el uso de bibliotecas de \textit{Deep Learning} como TensorFlow.
+
+\item \textbf{Durabilidad}: Los ordenadores de este rango de precio suelen contar con componentes de mayor calidad asegurando una mayor vida útil. La durabilidad es importante en proyectos como este ya que un fallo de hardware podría tener un impacto significativo en la productividad.
+
+\item \textbf{Soporte}: Los fabricantes proporcionan un soporte de mayor calidad en ordenadores situados en este rango de precio. Este soporte puede incluir mejores condiciones de garantía o actualizaciones más duraderas en partes vitales del sistema como la BIOS.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Concepto} & \textbf{Coste} \\ 
+\hline
+Ordenador portátil & 1000€ \\ 
+\hline
+Total & 1000€ \\ 
+\hline
+\end{tabular}
+\caption{Costes de hardware}
+\end{table}
+
+\subsection{Costes de software}
+Los costes de software se refieren al gasto económico que se realiza en la adquisición de las distintas licencias de software que son necesarias para la realización del proyecto.
+
+\begin{itemize}
+\tightlist
+\item \textbf{Sistema Operativo}: Se ha elegido el sistema operativo Windows 11 Home como base para realizar el desarrollo del proyecto. Se podrían plantear alternativas gratuitas como alguna distribución de Linux pero por sencillez y extensión de uso se ha elegido Windows.
+
+\item \textbf{Servicios en la nube}: Durante las etapas intensivas de entrenamiento de modelos y almacenamiento de datos, podría llegar a ser necesario el uso de servicios de computación en la nube como AWS o Microsoft Azure. El coste puede variar según el uso necesario. En este caso ficticio se estima que el gasto será de 100€.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Concepto} & \textbf{Coste} \\
+\hline
+Windows 11 Home & 145€ \\
+Computación en la nube & 100€ \\
+\hline
+\textbf{Total} & \textbf{245€} \\
+\hline
+\end{tabular}
+\caption{Costes de software para el desarrollo del proyecto}
+\end{table}
+
+\subsection{Otros costes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Concepto} & \textbf{Coste} \\
+\hline
+Electricidad (mensual) & 50€ \\
+Internet (mensual) & 35€ \\
+Espacio de trabajo (mensual) & 350€ \\
+\hline
+\textbf{Total (mensual)} & \textbf{435€} \\
+\hline
+\textbf{Total (6 meses)} & \textbf{2610€} \\
+\hline
+\end{tabular}
+\caption{Otros costes para el desarrollo del proyecto}
+\end{table}
+
+\subsection{Costes totales}
+Teniendo en cuenta una duración de desarrollo de proyecto de 6 meses, el coste total ha sido:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Concepto} & \textbf{Coste} \\
+\hline
+Costes de hardware & 50€ \\
+Costes de software & 35€ \\
+Otors costes & 2610€ \\
+\hline
+\textbf{Total} & \textbf{2695€} \\
+\hline
+\end{tabular}
+\caption{Costes totales de desarrollo del proyecto}
+\end{table}
+
+\subsection{Ingresos}
+La idea del proyecto es generar ingresos hasta el punto de rentabilizar el gasto de desarrollo como mínimo. 
+Existen diversas formas en las que la aplicación podría generar ingresos como por ejemplo:
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Sistema de suscripción}: Se puede ofrecer la aplicación con distintas características según el \textit{tier} o el tipo de suscripción. Podrían existir tres \textit{tier}:
+	\begin{itemize}
+	\tightlist
+	\item \textbf{Suscripción gratuita}: límite 5 canciones/diarias
+
+	\item \textbf{Suscripción silver 5€/mes}: canciones ilimitadas.
+
+	\item \textbf{Suscripción gold 15€/mes}: canciones ilimitadas y análisis con más detalle.
+	\end{itemize}
+
+\item \textbf{Publicidad}: Se puede monetizar el servicio a través de anuncios. Los usuarios que usen la versión gratuita de la aplicación verán anuncios en distintas partes de la interfaz, mientras que si pagan una mensualidad (5€/mes) tiene la opción de eliminar anuncios.
+
+\item \textbf{Integraciones de API}: Se puede ofrecer un servicio de ofrecer la API a aplicaciones de terceros para utilizar la aplicación. Esta API puede ser gratuita, con limitaciones en el número de canciones a predecir, o de pago, con un menor número de limitaciones.
+\end{itemize}
+
 \subsection{Viabilidad legal}
