@@ -16,31 +16,53 @@
 \subsection{Requisitos funcionales}
 
 Un requisito funcional es una especificación que describe lo que un sistema debe hacer o cómo debe comportarse.
-Los requisitos funcinales pueden incluir detalles como cálculos, manipulación de datos, interacción con el usuario, etc.
+Los requisitos funcionales pueden incluir detalles como cálculos, manipulación de datos, interacción con el usuario, etc.
 A continuación se listan los requisitos funcionales extraidos para este proyecto:
 
-RF-1: Predicción de estilo musical.
+\begin{itemize}
+\tightlist
 
-RF-2: Presentación de la información.
+\item \textbf{RF-1 Predicción de estilo musical}: la aplicación debe ser capaz de predecir el estilo musical de una canción.
+	\begin{itemize}
+	\tightlist
+	\item \textbf{RF-1.1 Extracción de características de audio}: la aplicación debe ser capaz de extraer características relevantes de la canción que se utilizarán para predecir el estilo musical.
 
-RF-3: Implementación de una interfaz de usuario.
+	\item \textbf{RF-1.2 Implementar un modelo de machine learning para realizar la predicción}: la aplicación debe implementar un modelo de machine learning que se entrenará con las características de un conjunto de datos musical.
+	\end{itemize}
 
+\item \textbf{RF-2 Presentación de la información}: la aplicación debe mostrar información relevante sobre la predicción realizada.
+	\begin{itemize}
+	\tightlist
+	\item \textbf{RF-2.1 Detalles de la predicción}: la aplicación debe ser capaz de mostrar datos sobre los detalles de la predicción como la confianza (probabilidad) o posibles géneros musicales alternativos.
+
+	\item \textbf{RF-2.2 Información de la canción}: la aplicación debe mostrar información relevante sobre la pista de audio o canción utilizada como la duración, formato o frecuencia de muestreo.
+	\end{itemize}
+\item \textbf{RF-3 Implementación de una interfaz de usuario}: la aplicación debe contener una interfaz de usuario para facilitar su uso.
+	\begin{itemize}
+	\tightlist
+	\item \textbf{RF-3.1 Funcionalidad de carga de archivos}: la interfaz de usuario debe incluir una función de carga de archivos que permita seleccionar y cargar una canción para realizar la predicción.
+
+	\item \textbf{RF-3.2 Representación de los resultados}: la interfaz de usuario debe incluir sección donde se presenten de forma clara los resultados de la predicción.
+	\end{itemize}
+
+\end{itemize}
 \subsection{Requisitos no funcionales}
 
 Los requisitos no funcionales se centran en las características del sistema que no están directamente relacionadas con su comportamiento, por ejemplo rendimiento o seguridad.
 A continuación se listan los requisistos no funcionales extraídos para este proyecto:
 
-RNF-1: Rendimiento
+\begin{itemize}
+\tightlist
+\item \textbf{RNF-1 Rendimiento}: la aplicación debe ser capaz de procesar y analizar una canción y devolver los resultados dentro de un tiempo razonable, idealmente unos pocos segundos.
 
-RNF-2: Seguridad
+\item \textbf{RNF-2 Seguridad}: la aplicación debe cumplir con protocolos de seguridad como cifrado de comunicaciones o la eliminación de la canción después de su procesamiento.
 
-RNF-3: Compatibilidad
+\item \textbf{RNF-3 Compatibilidad}: la aplicación debe ser compatible con diversos navegadores y sistemas operativos.
 
-RNF-4: Usabilidad
+\item \textbf{RNF-4 Usabilidad}: la aplicación debe ser fácil de usar para el usuario. El usuario debería ser capaz de realizar el proceso de subida de archivos y comprobar la predicción y resultados de una forma sencilla.
 
-RNF-5: Portabilidad
-
-RNF-6: Adaptabilidad
+\item \textbf{RNF-5 Portabilidad}: la aplicación debe ser compatible con diversos dispositivos como PCs, tablets o dispositivos móviles.
+\end{itemize}
 
 \section{Especificación de requisitos}
 
@@ -50,33 +72,138 @@ En este sección se mostrará el diagrama general de casos de uso y se explicar�
 
 \subsection{Diagrama general de casos de uso}
 
-PONER DIAGRAMA GENERAL DE CASOS DE USO
+Insertar diagrama general de casos de uso.
 
 \subsection{Casos de uso}
 
-% Caso de Uso 1 -> Consultar Experimentos.
+% Caso de Uso 1 -> Carga de la canción
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-1}    & \textbf{Carga de la canción}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Ángel López \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Requisitos asociados} & RF-1.1, RF-3.1 \\
+		\textbf{Descripción}          & El usuario utiliza la función de carga de archivo para seleccionar y cargar una canción en la aplicación. \\
+		\textbf{Precondiciones}        & 
+		\begin{enumerate}		    
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La aplicación se encuentra en funcionamiento.
+			\item El usuario tiene acceso a los archivos de música que desea cargar.
+		\end{enumerate}\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item El usuario selecciona la opción para cargar una canción pulsando el botón \textit{Upload File}.
+			\item El usuario busca y selecciona la canción que desea cargar desde su almacenamiento local.
+			\item La canción se carga en la aplicación.
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondiciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La canción se encuentra cargada en la aplicación.
+			\item La aplicación está lista para extraer características y realizar el proceso de predicción de la canción cargada.
+		\end{enumerate}\\
+		\textbf{Excepciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El archivo cargado no es un fichero de audio.
+			\item La canción tiene un formato incompatible.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-1 Carga de la canción}
+\end{table}
+
+% Caso de Uso 2 -> Extracción de características de audio.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-2}    & \textbf{Extracción de características de audio.}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Ángel López \\
+		\textbf{Requisitos asociados} & RF-1.1 \\
+		\textbf{Descripción}          & La aplicación extrae las características relevantes del audio para su posterior análisis. \\
+		\textbf{Precondiciones}        & 
+		\begin{enumerate}		    
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La canción se ha cargado correctamente en la aplicación.
+		\end{enumerate}\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La aplicación inicia el proceso de extracción de características del archivo de audio cargado.
+		\end{enumerate}\\
+		\textbf{Postcondiciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Las características relevantes de la canción se han extraído correctamente.
+			\item La aplicación está lista para utilizar las características extraídas para realizar la predicción del estilo musical.
+		\end{enumerate}\\
+		\textbf{Excepciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Ocurrió un error durante la extracción de las características del audio.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-2 Extracción de características de audio}
+\end{table}
+
+% Caso de Uso 3 -> Ejecución del modelo de machine learning
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-3}    & \textbf{Ejecución del modelo de machine learning}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Ángel López \\
+		\textbf{Requisitos asociados} & RF-1.2 \\
+		\textbf{Descripción}          & La aplicación ejecuta el modelo de machine learning para realizar la predicción del estilo musical según las caracterísiticas extraídas. \\
+		\textbf{Precondiciones}        & 
+		\begin{enumerate}		    
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Las características de audio de la canción se han extraído correctamente.
+			\item Las características de audio de la canción son suficientes para realizar el proceso de predicción.
+		\end{enumerate}\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El modelo procesa las características extraídas de la canción.
+			\item Se obtiene el resultado de la predicción, el cual consiste en un vector de probabilidades entre diferentes estilos musicales.
+		\end{enumerate}\\
+		\textbf{Postcondiciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item La aplicación ha generado una predicción sobre el estilo musical de la canción.
+			\item La aplicación está lista para mostrar los detalles de la predicción al usuario.
+		\end{enumerate}\\
+		\textbf{Excepciones} &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El modelo no puede procesar las características extraídas.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-3 Ejecución del modelo de machine learning}
 \end{table}
