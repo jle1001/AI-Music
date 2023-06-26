@@ -1,20 +1,100 @@
 \apendice{Documentación técnica de programación}
 
 \section{Introducción}
-En esta sección se describe la documetnación técnica de programación, incluyendo la instalación del entorno de desaroolo, estructura de la aplicación como la estructura de carpetas, clases, etc. Compilación, configuración e servicios de integración utilizados y TESTSSS.
+Este apéndice aborda la documentación técnica de programación de la aplicación. En las siguientes secciones se detallan diferentes detalles importantes para trabajar en el proyecto, como pueden ser:
+\begin{enumerate}
+\tightlist
+
+\item Estructura de directorios.
+\item Instalación del entorno de desarrollo.
+\item Obtención del código fuente.
+\item Ejecución de la aplicación.
+\item Pruebas realizadas.
+
+\end{enumerate}
 
 \section{Estructura de directorios}
 
-Insertar estrcutura de directorios y carpetas y subcarpetas de la aplicación. Explicar en detalle que hace cada archivo, carpeta, etc.
+La estructura de directorios de la aplicación es la siguiente:
+
+\begin{itemize}
+\tightlist
+
+\item \texttt{/}: Directorio raíz del proyecto. Contiene el archivo \texttt{requirements.txt} con la información de las dependencias del proyecto, el archivo \texttt{README.md} con información relevante sobre el proyecto y el archivo \texttt{LICENSE} con la licencia del proyecto.
+
+\item \texttt{/app/}: Directorio con el código fuente de la aplicación. Además incluye en fichero \texttt{\textunderscore\textunderscore init\textunderscore\textunderscore .py} que lanza y define las rutas en la aplicación web utilizando \texttt{Flask}.
+
+\item \texttt{/app/models/}: Directorio donde se almacenan los modelos de machine learning entrenados que la aplicación utiliza para realizar las predicciones de los estilos musicales.
+
+\item \texttt{/app/src/}: Directorio donde se encuentra el código fuente Python. Aquí es donde se realiza todo el procesamiento interno de la aplicación.
+
+\item \texttt{/app/static/}: Directorio donde se almacenan los archivos estáticos utilizados en la interfaz web de la aplicación. Por ejemplo, archivos CSS, pistas de audio subidas o scripts de JavaScript.
+
+\item \texttt{/app/templates/}: Directorio donde se almacenan los archivos HTML que la aplicación utiliza para generar las páginas web.
+
+\item \texttt{/app/tests/}: Directorio donde se almacenan los tests unitarios y de integración utilizados para verificar el correcto funcionamiento de la aplicación.
+
+\item \texttt{/data/}: Directorio donde se almacenan los datos utilizados por la aplicación para realizar el entrenamiento o el procesado.
+
+\item \texttt{/data/processed/}: Directorio donde se almacenan los datos procesados y listos para ser entrenados en el modelo de machine learning.
+
+\item \texttt{/data/raw/}: Directorio donde se almacenan los ficheros de audio sin procesar.
+
+\item \texttt{/docs/latex/}: Documentación del proyecto en formato \LaTeX.
+
+\item \texttt{/examples/}: Ejemplos de uso de las librerías.
+
+\end{itemize}
+
 
 \section{Manual del programador}
 
-Manual creado con el objetivo de que los futuros programadores que trabajen en este aplicación sepan como funciona todo, como montar el entorno de desarrollo, como obtener el código fuente, etc.
-INCLUIRCAPTURAS CON HERRAMIENTAS Y ENTORNO DE TRABAJO.
+Esta sección tiene como objetivo ser una guía para que los futuros programadores puedan entender el código fuente, configurar el entorno de desarrollo y poder contribuir en el proyecto.
+
+Para el desarrollo del proyecto se utilizó Visual Studio Code con el lenguaje de programación Python. Además, se utilizó Git para el sistema de control de versiones. Se recomienda tener ciertos conocimientos en estos sistemas antes de empezar.
+
+\newpage
 
 \section{Compilación, instalación y ejecución del proyecto}
 
-compilación y ejecución del proyecto en una máquina propia del posible desarrollador futuro. Incluir todo lo necesario como capturas de pantalla e indicaciones donde se vea todo.
+Para obtener el código fuente del proyecto los pasos a seguir son los siguientes:
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Clonar el repositorio Git}
+	\begin{itemize}
+	\tightlist
+		\item \texttt{git clone https://github.com/jle1001/AI-Music.git}
+	\end{itemize}
+
+\item \textbf{Crear un entorno virtual de Python}: 
+	\begin{itemize}
+	\tightlist
+		\item \texttt{python3 -m venv venv}
+	\end{itemize}
+
+\item \textbf{Activar el entorno virtual}: 
+	\begin{itemize}
+		\item Linux: \texttt{source venv/bin/activate}
+		
+		\item Windows: \texttt{venv\textbackslash Scripts\textbackslash activate}
+	\end{itemize}
+
+\item \textbf{Instalación de dependencias}
+	\begin{itemize}
+	\tightlist
+		\item \texttt{pip install -r requirements.txt}
+	\end{itemize}
+
+\item \textbf{Iniciar el servidor}
+	\begin{itemize}
+	\tightlist
+		\item \texttt{flask run --debug}
+	\end{itemize}
+\end{itemize}
+
+Una vez que el servidor está en funcionamiento, se puede acceder a la aplicación web a través de un navegador entrando a la dirección \texttt{localhost:5000}.
 
 \section{Pruebas del sistema}
 
