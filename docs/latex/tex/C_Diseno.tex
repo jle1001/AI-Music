@@ -2,20 +2,25 @@
 
 \section{Introducción}
 
-En esta sección se define cómo se han implementado las especificaciones técnicas vistas en el apéndice B.
+En esta sección se define cómo se han implementado las especificaciones técnicas vistas en el apéndice B. En concreto 
+cómo se han implementado las especificaciones técnicas y cómo se han estructurado los datos y los procedimientos. 
+También se describirá la arquitectura general del sistema.
 
 \section{Diseño de datos}
 
-La aplicación trabaja con distintos tipos de datos.
+La aplicación maneja varios tipos de datos, que se describen a continuación:
 
 \begin{itemize}
 \tightlist
 
-\item \textbf{Archivos CSV}:
+\item \textbf{Archivos CSV}: Los archivos CSV son utilizados para almacenar información sobre los metadatos de los archivos de audio.
+En concreto, se trabaja con el fichero \texttt{tracks.csv} que contiene una gran cantidad de información sobre cada pista de audio y con el fichero \texttt{raw\textunderscore genres.csv} que contiene información sobre cada género musical.
+Estos ficheros se procesan para generar el archivo \texttt{track\textunderscore genres.csv}, que contiene el identificador de la pista de audio y sus géneros, y es más sencillo para su uso a la hora de introducir las características y entrenar el modelo.
 
-\item \textbf{Archivos de audio}:
+\item \textbf{Archivos de audio}: Los archivos de audio, en formato .mp3, son los datos de entrada principales en la aplicación. Estos son analizados y procesados para extraer las características necesarias para su predicción.
 
-\item \textbf{Archivos pickle}:
+\item \textbf{Archivos pickle}: Se ha optado por el uso de este tipo de ficheros para almacenar el conjunto de datos de entrenamiento procesado, \texttt{track\textunderscore genres\textunderscore mfcc.pkl}, debido a que mantiene mejor la información de las características que un fichero CSV tradicional.
+Este fichero se utiliza para entrenar el modelo de aprendizaje automático.
 
 \end{itemize}
 
@@ -23,15 +28,105 @@ INSERTAR DIAGRAMA DE CLASES, RELACIONES, E/R, ETC.
 
 \section{Diseño procedimental}
 
-DISEÑO PROCEDIMENTAL SIGNIFICA CÓMO SE HAN DISEÑADO LOS PROCEDIMIENTOS DE LA APLICACIÓN (CÓMO LOS MÉTODOS, FUNCIONES, ETC.)
-MOSTRAR CADA PROCEDIMIENTO EN PSEUDOCODIGO O LENGUAJE NATURAL.
-diagramas de interacción, secuencia, etc.
+\subsection{Procedimiento de funcionamiento básico}
+
+El diseño procedimental de la aplicación sigue un flujo de trabajo definido de la siguiente forma:
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Carga de datos}: El usuario carga un fichero de audio que se desea clasificar.
+
+\item \textbf{Procesamiento de audio}: La aplicación procesa el audio extrayéndo características necesarias para su clasificación.
+
+\item \textbf{Clasificación de audio}: El modelo de aprendizaje automático realiza la predicción del género musical del fichero de audio.
+
+\item \textbf{Visualización del resultado}: La aplicación devuelve el resultado de la clasificación al usuario.
+
+\end{enumerate}
+
+INSERTAR DIAGRAMA DE SECUENCIA.
+
+\subsection{Procedimiento de extracción de características de audio de un fichero}
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Carga de datos}: El archivo de audio es cargado por la aplicación.
+
+\item \textbf{Procesamiento de audio}: Se realiza un procesado del archivo recortando su longitud.
+
+\item \textbf{Extracción de características}: Mediante el uso de la biblioteca \texttt{librosa} se extraen las características MFCC del fichero de audio.
+
+\item \textbf{Normalización de las características}: Las características extraídas se normalizan para que tengan el mismo peso en el entrenamiento o predicción.
+
+\end{enumerate}
+
+INSERTAR DIAGRAMA DE SECUENCIA.
+
+\subsection{Procedimiento de extracción de características de audio para los ficheros de entrenamiento}
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Carga de datos}: Se recorren de forma iterativa todos los ficheros de audio en la carpeta \texttt{/data/raw} y se realiza el proceso siguiente individualmente en cada fichero.
+
+\item \textbf{Procesamiento de audio}: Se realiza un procesado de los archivos recortando su longitud.
+
+\item \textbf{Extracción de características}: Mediante el uso de la biblioteca \texttt{librosa} se extraen las características MFCC de los ficheros de audio.
+
+\item \textbf{Normalización de las características}: Las características extraídas se normalizan para que tengan el mismo peso en el entrenamiento o predicción.
+
+\item \textbf{Salida en archivo}: Las características extraídas se guardan junto a sus géneros musicales en un archivo.
+
+\end{enumerate}
+
+INSERTAR DIAGRAMA DE SECUENCIA.
+
+\subsection{Procedimiento de entrenamiento del modelo}
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Carga de datos}: Los datos de entrenamiento (características MFCC y géneros musicales) son cargados en memoria.
+
+\item \textbf{Partición de los datos}: Se divide el conjunto de datos en un conjunto de entrenamiento, test y validación.
+
+\item \textbf{Creación del modelo}: Se crea una instancia de la red neuronal que se va a utilizar para realizar el entrenamiento.
+
+\item \textbf{Compilación del modelo}: Se elige un optimizador, una función de pérdida y la métrica objetivo que se desea utilizar y se compila el modelo.
+
+\item \textbf{Entrenamiento del modelo}: Se entrena y valida el modelo con los datos de entrenamiento y de validación.
+
+\item \textbf{Guardado del modelo}: Una vez termina el proceso de entrenamiento se guarda el modelo en el sistema.
+
+\end{enumerate}
+
+INSERTAR DIAGRAMA DE SECUENCIA.
+
+\subsection{Visualización de características}
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Carga de datos}: El archivo de audio se carga en memoria.
+
+\item \textbf{Extracción de características}: Mediante el uso de la biblioteca \texttt{librosa} se extraen las características principales del archivo de audio.
+
+\item \textbf{Generación de gráficos}: Mediante el uso de la biblioteca de visualización \texttt{Matplotlib}, se generan gráficos que representan visualmente las características extraídas.
+
+\item \textbf{Visualización de gráficos}: Los gráficos generados se envían al servidor web para que el usuario pueda visualizarlos.
+
+\end{enumerate}
+
+INSERTAR DIAGRAMA DE SECUENCIA.
 
 \section{Diseño arquitectónico}
 
-MODELO ARQUITECTONICO PREVISTO, PATRONES DE DISEÑO. Por ejemplo decir si hemos usado patrón vista controlador, patrón MVM, etc.
-herencias, genericidad, clases, etc.
+El diseño arquitectónico de la aplicación sigue un modelo de capas.
 
-EXPLICAR LA FORMA GENERAL DE LA ARQUITECTURA DE LA APLICACIÓN (CON DIAGRAMAS, FLECHAS, ETC.)
+\subsection{Capa de presentación}
 
-INSERTAR NUEVA SECCIÓN CON DISEÑO DE INTERFACES SI PROCEDE.
+\subsection{Capa lógica}
+
+\subsection{Capa de acceso a datos}
