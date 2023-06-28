@@ -46,14 +46,51 @@ La estructura de directorios de la aplicación es la siguiente:
 
 \end{itemize}
 
-
 \section{Manual del programador}
 
 Esta sección tiene como objetivo ser una guía para que los futuros programadores puedan entender el código fuente, configurar el entorno de desarrollo y poder contribuir en el proyecto.
 
 Para el desarrollo del proyecto se utilizó Visual Studio Code con el lenguaje de programación Python. Además, se utilizó Git para el sistema de control de versiones. Se recomienda tener ciertos conocimientos en estos sistemas antes de empezar.
 
-\newpage
+\subsection{Herramientas recomendadas}
+
+Para contribuir al desarrollo del proyecto se recomienda utilizar las siguientes herramientas.
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Git}: Se trata del sistema de control de versiones utilizado para realizar un seguimiento de los cambios en el código fuente de la aplicación a lo largo del tiempo. Se puede combinar con GitHub.
+
+\imagen{Git_console}{Consola de Git.}
+
+\item \textbf{Visual Studio Code}: Es el editor de código fuente recomendado para continuar con el desarrollo del proyecto. Se trata de un editor de código simple y ligero pero con una gran cantidad de extensiones que facilitan el desarrollo.
+Por ejemplo, incluye linting de código, formateo automático del código y soporte con Jupyter Notebooks o Docker.
+
+\imagen{VSCode}{Visual Studio Code.}
+
+\item \textbf{Jupyter Notebooks}: Herramienta de desarrollo de código y visualizaciones. Es una herramienta muy útil para realizar experimentación ya que une la ejecución de código fuente con la visualización de datos y la documentación.
+No se trata de una herramienta para realizar una versión final del producto, pero es muy útil para probar y generar prototipos de una forma rápida.
+
+\imagen{Jupyter_notebook}{Jupyter Notebook.}
+
+\end{itemize}
+
+\subsection{Herramientas opcionales}
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Postman}: Herramienta de desarrollo de APIs. En este proyecto Postman puede ser útil para verificar y probar las solicitudes HTTP al servidor Flask y sus respuestas. De todas formas la consola de Flask también incorpora la utilidad de comprobar las solicitudes y respuestas HTTP de la aplicación pero Postman puede mostrar más detalle lo cual puede ayudar a un mejor desarrollo de la aplicación.
+
+\imagen{Postman}{Postman.}
+
+\item \textbf{Docker}: Plataforma de automatización, despliegue y gestión de aplicaciones dentro de contenedores. El uso de Docker en este proyecto puede ser interesante para empaquetar el estado actual del software y ejecutarlo facilmente en cualquier entorno con Docker instalado.
+
+\imagen{Docker_Windows}{Docker.}
+
+\end{itemize}
+
+\subsection{Explicación de aspectos relevantes de programación}
 
 \section{Compilación, instalación y ejecución del proyecto}
 
@@ -98,4 +135,6 @@ Una vez que el servidor está en funcionamiento, se puede acceder a la aplicaci�
 
 \section{Pruebas del sistema}
 
-Docuemntar tests realizados, captura de pantalla con los tests en verde, captura del buen funcionamiento de los componentes, etc.
+\subsection{Pruebas unitarias}
+
+\subsection{Pruebas de integración}
