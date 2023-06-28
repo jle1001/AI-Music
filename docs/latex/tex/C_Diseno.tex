@@ -124,9 +124,52 @@ INSERTAR DIAGRAMA DE SECUENCIA.
 \section{Diseño arquitectónico}
 
 El diseño arquitectónico de la aplicación sigue un modelo de capas.
+El modelo de capas es un arquitectura de software en las que las responsabilidades del software se dividen en capas apiladas. Cada capa ofrece servicios a la capa superior y los recibe de la capa inferior.
 
 \subsection{Capa de presentación}
 
-\subsection{Capa lógica}
+La capa de presentación se ocupa de la interacción e interfaz de usuario. Utiliza la librería \texttt{Flask} para funcionar y permite a los usuarios cargar archivos musicales, iniciar el proceso de predicción y visualizar los resultados finales.
+Es en esta capa donde se renderizan los archivos HTML y donde se realiza el intercambio de mensajes mediante el protocolo HTTP. Esta capa está comunicada con la capa de lógica, que le devolverá la información para poder mostrar los resultados.
+
+\subsection{Capa de lógica}
+
+La capa de lógica o lógica de negocio es donde se produce el funcionamiento interno de la aplicación. El funcionamiento de la lógica de la aplicación funciona bajo el lenguaje de programación \texttt{Python} y varias librerías. En concreto se ejecutan las siguientes funcionalidades:
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Extracción de características de audio}
+
+\item \textbf{Procesamiento de los datos de audio}
+
+\item \textbf{Entrenamiento del modelo}
+
+\end{itemize}
 
 \subsection{Capa de acceso a datos}
+
+Esta capa se ocupa del almacenamiento y recuperación de datos. Los datos con los que trabaja esta capa son: archivos de audio, archivos CSV, archivos de características, etc.
+
+Esta capa se comunica con la capa de lógica, proporcionándole los datos necesarios para su funcionamiento y almacenando sus resultados.
+
+INSERTAR DIAGRAMA DE CAPAS
+
+\section{Diseño de la interfaz}
+
+La interfaz de usuario proporciona la interacción directa entre el usuario y el sistema. En la aplicación la interfaz de usuario está centrada en la facilidad de uso y la visualización de los resultados.
+
+\subsection{Interfaz de usuario}
+
+El diseño de la interfaz de usuario está construido utilizando \texttt{Flask}. \texttt{Flask} se utiliza para renderizar los archivos HTML que forman la interfaz de usuario. Incluye los siguientes elementos:
+
+\textbf{Pantalla de inicio}: La pantalla de inicio es lo primero que ve el usuario al iniciar la aplicación. Proporciona una breve introducción sobre el propósito y funcionamiento de la aplicación y permite cargar un archivo de audio para iniciar el proceso de predicción musical.
+
+INTRODUCIR CAPTURA DE PANTALLA
+
+\textbf{Selección de modelos y reproducción de audio}: Esta sección permite al usuario ver información básica sobre la pista de audio subida, como la duración o la frecuencia de muestreo, y elegir qué modelo entrenado se va a utilizar para realizar la predicción musical.
+
+INTRODUCIR CAPTURA DE PANTALLA
+
+\textbf{Visualización de resultados}: Sección donde el usuario puede ver el resultado de la predicción y una serie de características sobre la pista de audio con una breve descripción de cada una. La presentación de la información es tanto en modo texto como con gráficas.
+
+INTRODUCIR CAPTURA DE PANTALLA
