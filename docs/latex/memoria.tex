@@ -342,12 +342,26 @@
   \end{minipage}
   \vfill
   % Datos de alumno, curso y tutores ------------------
+%  \begin{center}%
+%  {%
+%    \noindent\LARGE
+%    Presentado por \@author{}\\ 
+%    en Universidad de Burgos --- \@date{}\\
+%    Tutores: \@tutor{}\\
+%  }%
+%  \end{center}%
+
   \begin{center}%
-  {%
+   {%
     \noindent\LARGE
     Presentado por \@author{}\\ 
-    en Universidad de Burgos --- \@date{}\\
-    Tutores: \@tutor{}\\
+    en Universidad de Burgos \\
+    el \@date{}\\
+    \begin{tabbing}
+    Tutores: \= \kill
+    Tutores: César García Osorio\\
+           \> Alicia Olivares Gil\\
+    \end{tabbing}
   }%
   \end{center}%
   \null
@@ -377,32 +391,55 @@
 
 \noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
 
-\noindent D. nombre tutor, profesor del departamento de nombre departamento, área de nombre área.
+\noindent D. César Ignacio García Osorio y Dña. Alicia Olivares Gil, profesores del departamento de Ingeniería Informática, área de Lenguajes y Sistemas Informáticos. 
 
-\noindent Expone:
+\noindent Exponen:
 
 \noindent Que el alumno D. \nombre, con DNI 21071560H, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado título de TFG. 
 
 \noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
+
+%\begin{center} %\large
+%En Burgos, {\large \today}
+%\end{center}
+%
+%\vfill\vfill\vfill
+%
+%% Author and supervisor
+%\begin{minipage}{0.45\textwidth}
+%\begin{flushleft} %\large
+%Vº. Bº. del Tutor:\\[2cm]
+%D. nombre tutor
+%\end{flushleft}
+%\end{minipage}
+%\hfill
+%\begin{minipage}{0.45\textwidth}
+%\begin{flushleft} %\large
+%Vº. Bº. del co-tutor:\\[2cm]
+%D. nombre co-tutor
+%\end{flushleft}
+%\end{minipage}
+%\hfill
+%
+%\vfill
 
 \begin{center} %\large
 En Burgos, {\large \today}
 \end{center}
 
 \vfill\vfill\vfill
-
+\noindent Visto bueno de los tutores:\\[4cm]
 % Author and supervisor
 \begin{minipage}{0.45\textwidth}
 \begin{flushleft} %\large
-Vº. Bº. del Tutor:\\[2cm]
-D. nombre tutor
+
+D. César Ignacio García Osorio
 \end{flushleft}
 \end{minipage}
 \hfill
 \begin{minipage}{0.45\textwidth}
 \begin{flushleft} %\large
-Vº. Bº. del co-tutor:\\[2cm]
-D. nombre co-tutor
+Dña. Alicia Olivares Gil
 \end{flushleft}
 \end{minipage}
 \hfill

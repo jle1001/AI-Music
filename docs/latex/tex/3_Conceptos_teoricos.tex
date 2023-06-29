@@ -6,14 +6,14 @@ Antes de empezar con el desarrollo del proyecto, es necesario explicar una serie
 
 El sonido es una vibración mecánica que se propaga a través de un medio elástico, como el aire, el agua o cualquier otro material. Estas vibraciones generan diferencias de presión en el medio, que son captadas por nuestros oídos y percibidas como sonido.
 
-Matemáticamente, el sonido se puede representar mediante una función matemática $f(t)$, donde $t$ representa el tiempo. Esta función describe cómo varía la presión o desplazamiento de partículas en el medio a medida que pasa el tiempo.
+Matemáticamente, el sonido se puede representar mediante una función matemática $g(t)$, donde $t$ representa el tiempo. Esta función describe cómo varía la presión o desplazamiento de partículas en el medio a medida que pasa el tiempo.
 
 \subsection{Representación Matemática del Sonido}
 
 La representación matemática más común del sonido es la onda sinusoidal. Una onda sinusoidal se puede describir mediante la siguiente ecuación:
 
 \begin{equation}
-f(t) = A \sin(2\pi ft + \phi)
+g(t) = A \sin(2\pi ft + \phi)
 \end{equation}
 
 Donde:
@@ -23,7 +23,6 @@ Donde:
 \item $t$ es el tiempo.
 \item $\phi$ es la fase inicial de la onda, que determina el desplazamiento horizontal de la onda en el tiempo.
 \end{itemize}
-
 
 \section{Reconocimiento musical}
 
@@ -39,7 +38,7 @@ El ritmo se puede analizar en términos de su complejidad, regularidad, velocida
 La importancia del ritmo en el reconocimiento musical puede involucrar la detección del tempo y el análisis de los patrones rítmicos para obtener conclusiones.
 
 \item \textbf{Frecuencia}: La frecuencia musical es el número de vibraciones u oscilaciones por segundo en el sonido. 
-La frecuencia de estas vibraciones se mide en ciclos por segundo, o Hertz (Hz). Mientras mayor sea la frecuencia más agudo es el tono, y cuando menor más grave.
+La frecuencia de estas vibraciones se mide en ciclos por segundo, o hercios (Hz). Mientras mayor sea la frecuencia más agudo es el tono, y cuando menor más grave.
 La frecuencia musical se puede utilizar para identificar notas específicas o para determinar la armonía.
 
 \item \textbf{Timbre}: El timbre se refiere a las características tonales y armónicas que distinguen diferentes instrumentos y voces. 
@@ -90,9 +89,9 @@ Esto se logra mediante la aplicación de una ventana temporal a cada segmento y 
 \item \textbf{Representación visual}: La magnitud del espectro se representa visualmente en un gráfico 2D, donde el eje horizontal representa el tiempo y el eje vertical representa las frecuencias. La intensidad del color o brillo en cada punto del gráfico indica la energía o amplitud de la frecuencia correspondiente.
 \end{itemize}
 
-Los espectrogramas tienen una gran utilidad no solo en el estudio de la música. Por ejemplo, se pueden utilizar para visualizar las señales de un radar y detectar objetos o en lingüistica estudiando los patrones de frecuencia de los sonidos del habla y así estudiar los diferentes fonemas o acentos.
+Los espectrogramas tienen una gran utilidad no solo en el estudio de la música. Por ejemplo, se pueden utilizar para visualizar las señales de un radar y detectar objetos o en lingüística estudiando los patrones de frecuencia de los sonidos del habla y así estudiar los diferentes fonemas o acentos.
 
-\imagen{example_spectrogram}{Espectrograma de una pista de audio.}{.5}
+\imagen{example_spectrogram}{Espectrograma de una pista de audio.}{1.0}
 
 \newpage
 
@@ -112,7 +111,7 @@ A continuación se explica el proceso para obtener los coeficientes MFCC de una 
 
 \item \textbf{Banco de filtros de Mel}: Se aplica un banco de filtros de Mel, que consiste en una serie de filtros triangularmente espaciados en la escala de Mel. Estos filtros se utilizan para representar el espectro en términos de bandas de frecuencia de Mel.
 
-\item \textbf{Logaritmo de la energía}: Se calcula el logaritmo de la después de aplicar el banco de filtros de Mel. Esto se hace para tener en cuenta la respuesta no lineal del oído humano a las frecuencias.
+\item \textbf{Logaritmo de la energía}: Se calcula el logaritmo de la energía después de aplicar el banco de filtros de Mel. Esto se hace para tener en cuenta la respuesta no lineal del oído humano a las frecuencias.
 
 \item \textbf{Transformada de Coseno Discreta}: Se aplica la Transformada de Coseno Discreta (DCT) a los valores obtenidos anteriormente.
 
@@ -123,13 +122,13 @@ Los coeficientes MFCC son ampliamente utilizados en aplicaciones como:
 
 \begin{itemize}
 \tightlist
-\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y facilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs.
+\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y fácilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs.
 \item Identificación de hablantes: Los MFCC se pueden utilizar para identificar voces de diferentes hablantes, debido a que cada persona tiene una forma característica de hablar.
-\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos músicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación.
+\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos musicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación.
 \end{itemize}
 
 
-\imagen{example_MFCC}{MFCC de una pista de audio.}{.5}
+\imagen{example_MFCC}{MFCC de una pista de audio.}{1.0}
 
 \newpage
 
@@ -150,9 +149,9 @@ Existen diversos tipos de aprendizaje automático:
 \begin{itemize}
 \item \textbf{Aprendizaje supervisado}: Se proporciona como entrada a los algoritmos un conjunto de datos de entrenamiento etiquetados. El modelo aprende a realizar predicciones o tomar decisiones basadas en estos ejemplos etiquetados. El aprendizaje supervisado se utiliza en tareas de clasificación o regresión.
 
-\item \textbf{Aprendizaje no supervisado}: Los algoritmos trabajan con conjuntos de datos no etiquetados, es decir, sin clase conocida. El objetivo es encontrar patrones u estructuras ocultas en los datos. El aprendizaje no supervisado se utiliza en tareas como el (\textit{clustering}).
+\item \textbf{Aprendizaje no supervisado}: Los algoritmos trabajan con conjuntos de datos no etiquetados, es decir, sin clase conocida. El objetivo es encontrar patrones u estructuras ocultas en los datos. El aprendizaje no supervisado se utiliza en tareas como el agrupamiento (\textit{clustering}) o la detección de valores atípicos (\emph{outliers}).
 
-\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una seríe de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica.
+\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una serie de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica.
 
 \item \textbf{Aprendizaje semi-supervisado}: En este tipo de aprendizaje el conjunto de datos no está completamente etiquetado, por lo tanto, el objetivo es maximizar el rendimiento del modelo a partir de los datos con clase conocida.
 \end{itemize}
@@ -162,10 +161,10 @@ Existen diversos tipos de aprendizaje automático:
 En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado. Por lo que se va a detallar un ejemplo simple para entender su funcionamiento:
 
 \subsection{Objetivo}
-Construir un modelo de aprendizaje automático para clasificar correos electrónicos como "<spam"> o "no spam".
+Construir un modelo de aprendizaje automático para clasificar correos electrónicos como "<spam"> o "<no spam">.
 
 \subsection{Conjunto de datos}
-Conjunto de datos etiquetados que contiene 1000 correos electrónicos, donde cada correo tiene características como la frecuencia de ciertas palabras sospechosas de pertenecer a spam, la longitud del mensaje, la presencia de enlaces o imágenes, entre otros. \textbf{Además de incluir la clase a la que pertenece: "Spam" o "No Spam"}.
+Conjunto de datos etiquetados que contiene 1000 correos electrónicos, donde cada correo tiene características como la frecuencia de ciertas palabras sospechosas de pertenecer a spam, la longitud del mensaje, la presencia de enlaces o imágenes, entre otros. \textbf{Además de incluir la clase a la que pertenece: "<Spam"> o "<No Spam">}.
 
 \subsection{Preparación de los datos}
 Se deben preparar los datos para el entrenamiento del modelo. 
@@ -191,19 +190,19 @@ Una vez preparados los datos en un formato adecuado, estos son introducidos en u
 \subsection{Predicción}
 Una vez entrenado el modelo, se alimenta con datos externos y se realizan predicciones.
 
-\textit{El algoritmo utilizado en el proyecto es más complejo y será explicado en detalle en las siguientes secciones.}
+El algoritmo utilizado en el proyecto es más complejo y será explicado en detalle en las siguientes secciones.
 
 \newpage
 
 \section{Redes neuronales}
 Para realizar el entrenamiento del modelo de aprendizaje automático se han utilizado redes neuronales. 
-Las redes neuronales son una categoría de modelos de aprendizaje automático inspirados en la estructura biológica del cerebro humano. Se componen de nodos interconectados, o "neuronas", organizadas en capas, que trabajan juntas para procesar información y hacer predicciones.
+Las redes neuronales son una categoría de modelos de aprendizaje automático inspirados en la estructura biológica del cerebro humano. Se componen de nodos interconectados llamados neuronas, organizadas en capas, que trabajan juntas para procesar información y hacer predicciones.
 
 Las redes neuronales se componen de los siguientes elementos:
 \begin{itemize}
 \tightlist
 \item \textbf{Neuronas}: entidad matemática inspirada en la neurona biológica. Es el componente básico de una red neuronal. 
-\item \textbf{Capas}: las neuronas están organizadas por capas. Capa se refiere a un conjunto de neuronas que procesan información al mismo tiempo. Existen tres tipos de capas: capa de entrada, capas ocultas y capa de salida. Cada neurona en una capa está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
+\item \textbf{Capas}: las neuronas están organizadas por capas. Capa se refiere a un conjunto de neuronas que procesan información al mismo tiempo. Dependiendo de su posición en relación a los datos de entrada existen tres tipos de capas: capa de entrada, capas ocultas y capa de salida. Cada neurona en una capa está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
 \item \textbf{Proceso de entrenamiento}: el proceso de entrenamiento de una red neuronal consiste en ajustar los pesos y sesgos de las neuronas de tal manera que el error entre las predicciones y los valores reales sea lo más pequeño posible. Existen diversos algoritmos para realizar este cálculo iterativo de los valores de cada neurona.
 \end{itemize}
 
@@ -333,11 +332,38 @@ El entrenamiento de una red neuronal implica un proceso que, de forma iterativa,
 
 \textbf{Propagación hacia adelante}: la propagación hacia adelante es el proceso por el cual la red neuronal transmite la información desde la capa de entrada hasta la capa de salida mediante la información calculada en cada función de activación neuronal.
 
-\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}.
+\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}, esta función es utilizada en problemas de clasificación multiclase dónde las etiquetas son datos enteros como es el caso del proyecto.
+La función es la siguiente:
 
-\textbf{Backpropagation}: proceso de ajuste de los pesos de la red neuronal en función al error calculado en la función de perdida. El objetivo es minimizar iterativamente la función de perdida propagando los errores desde la capa de salida hacia las capas ocultas por medio de la regla de la cadena. De esta manera se puede descubrir que número de neuronas deben actualizar sus pesos.
+\begin{equation}
+L = - \log(y_{\mathrm{pred}}[y_{\mathrm{true}}])
+\end{equation}
 
-\textbf{Iteración}: todo este proceso se repite N veces. Cada proceso completo de inicialización, propagación hacia adelante, función de coste y backpropagation se llama época (\textit{epoch}). Normalmente se ejecutan varias epocas hasta que la función de perdida se estabiliza.
+Donde:
+\begin{itemize}
+\tightlist
+\item $y_{\mathrm{pred}}$ son las probabilidades predichas para cada clase.
+\item $y_{\mathrm{true}}$ es la etiqueta verdadera.
+\end{itemize}
+
+\textbf{Backpropagation}: proceso de ajuste de los pesos de la red neuronal en función al error calculado en la función de perdida. El objetivo es minimizar iterativamente la función de pérdida propagando los errores desde la capa de salida hacia las capas ocultas por medio de la regla de la cadena, de esta manera se puede descubrir que número de neuronas deben actualizar sus pesos. La técnica que hace posible este proceso es el \textbf{Descenso del Gradiente}.
+
+\textbf{Descenso del Gradiente}: algoritmo de optimización utilizado para minimizar la función de pérdida. Su funcionamiento consiste en ajustar los parámetros del modelo de forma iterativa en la dirección negativa del gradiente de la función de pérdida. Su función es la siguiente:
+
+\begin{equation}
+\theta_{j} = \theta_{j} - \alpha \frac{\partial}{\partial \theta_{j}} J(\theta)
+\end{equation}
+
+Donde:
+\begin{itemize}
+\tightlist
+\item $\theta_{j}$ es el peso a actualizar.
+\item $J(\theta)$ es la función de pérdida.
+\item $\frac{\partial}{\partial \theta_{j}} J(\theta)$ es el gradiente de la función de pérdida con respecto al parámetro $\theta_{j}$.
+\item $\alpha$ es la tasa de aprendizaje o \textit{learning rate}, este parámetro controla cuanto varía $\theta_{j}$ en cada iteración.
+\end{itemize}
+
+\textbf{Iteración}: todo este proceso se repite $N$ veces. Cada proceso completo de inicialización, propagación hacia adelante, función de coste y backpropagation se llama época (\textit{epoch}). Normalmente se ejecutan varias épocas hasta que la función de perdida se estabiliza.
 
 \section{Evaluación del modelo}
 La evaluación de un modelo de red neuronal es el proceso donde se determina la efectividad del modelo. Este proceso debe realizarse durante y después del entrenamiento.
