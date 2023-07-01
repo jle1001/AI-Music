@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, render_template, request
 from app.src import plot_features, predict_genre
 import librosa
 import os
@@ -17,9 +17,17 @@ def upload_file():
     
     y, sr = librosa.load(f'./app/static/upload/upload{os.path.splitext(track.filename)[1]}')
     sample_rate = sr
+    filename = os.path.splitext(track.filename)[0]
     format = os.path.splitext(track.filename)[1]
     duration = librosa.get_duration(y=y)
-    return render_template('upload.html', sample_rate=sample_rate, format=format, duration=duration)
+    minutes, seconds = divmod(duration, 60)
+
+    return render_template('upload.html', 
+                           filename=filename, 
+                           sample_rate=sample_rate, 
+                           format=format, 
+                           minutes=int(minutes), 
+                           seconds=int(seconds))
 
 @app.route('/analysis', methods=['POST', 'GET'])
 def analysis():

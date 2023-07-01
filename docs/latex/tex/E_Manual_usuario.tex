@@ -43,15 +43,94 @@ Esta sección proporciona instrucciones de uso detalladas sobre cómo utilizar l
 
 \end{itemize}
 
-\section{Instalación}
+\section{Instalación y ejecución}
 
-Como instalar el programa en el pc o como acceder a la página web etc.
+\subsection{Instalación local}
+
+Para obtener el código fuente del proyecto los pasos a seguir son los siguientes:
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Clonar el repositorio Git}
+	\begin{itemize}
+	\tightlist
+		\item \texttt{git clone https://github.com/jle1001/AI-Music.git}
+	\end{itemize}
+
+\item \textbf{Crear un entorno virtual de Python}: 
+	\begin{itemize}
+	\tightlist
+		\item \texttt{python3 -m venv venv}
+	\end{itemize}
+
+\item \textbf{Activar el entorno virtual}: 
+	\begin{itemize}
+		\item Linux: \texttt{source venv/bin/activate}
+		
+		\item Windows: \texttt{venv\textbackslash Scripts\textbackslash activate}
+	\end{itemize}
+
+\item \textbf{Instalación de dependencias}
+	\begin{itemize}
+	\tightlist
+		\item \texttt{pip install -r requirements.txt}
+	\end{itemize}
+
+\item \textbf{Iniciar el servidor}
+	\begin{itemize}
+	\tightlist
+		\item \texttt{flask run --debug}
+	\end{itemize}
+\end{itemize}
+
+Una vez que el servidor está en funcionamiento, se puede acceder a la aplicación web a través de un navegador entrando a la dirección \texttt{localhost:5000}.
+
+\subsection{Uso en línea}
+
+Para utilizar la aplicación en línea hay que entrar al siguiente enlace: 
 
 \section{Manual del usuario}
-Descripción de como usar diferentes funcionalidades de la aplicación.
+El objetivo de este manual es proporcionar una guía paso a paso para que el usuario pueda utilizar las funciones de la aplicación.
 
-Como subir canciones.
-Como analizar canciones.
-Ver características.
-Cambiar algoritmo
-ETC.
+\subsection{Subida de canciones}
+\begin{itemize}
+\tightlist
+
+\item En la ventana principal de la aplicación hay que pulsar el botón \textit{Upload File}.
+\item Elegir el fichero de audio en el almacenamiento.
+\item Una vez subido el fichero de audio se darán opciones como: reproducir la canción, visualizar datos básicos y elegir el modelo para la predicción.
+
+\end{itemize}
+
+INSERTAR CAPTURA DE PANTALLA
+
+\subsection{Análisis y predicción}
+
+\begin{itemize}
+\tightlist
+
+\item En la ventana principal de la aplicación, pulsar el botón \textit{Upload File}.
+\item Elegir el fichero de audio en el almacenamiento.
+\item Una vez subido el fichero de audio se darán opciones como: reproducir la canción, visualizar datos básicos y elegir el modelo para la predicción.
+\item Para realizar la predicción del género musical se debe elegir un modelo a utilizar y pulsar el botón \textit{Predict}.
+
+\end{itemize}
+
+INSERTAR CAPTURA DE PANTALLA
+
+\subsection{Visualización del resultado}
+
+\begin{itemize}
+\tightlist
+
+\item En la ventana principal de la aplicación, pulsar el botón \textit{Upload File}.
+\item Elegir el fichero de audio en el almacenamiento.
+\item Una vez subido el fichero de audio se darán opciones como: reproducir la canción, visualizar datos básicos y elegir el modelo para la predicción.
+\item Para realizar la predicción del género musical se debe elegir un modelo a utilizar y pulsar el botón \textit{Predict}.
+\item Una vez el modelo haya terminado de predecir el estilo musical, este se mostrará en la parte superior de la pantalla.
+\item En la parte central de la pantalla se podrán ver cuatro gráficos con diferentes características musicales.
+
+\end{itemize}
+
+INSERTAR CAPTURA DE PANTALLA

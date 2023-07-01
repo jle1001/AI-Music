@@ -21,7 +21,7 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     # elif n_model == "3":
     #     model = conv_model
 
-    model = tf.keras.models.load_model('app/models/model_22L_RMS.h5')
+    model = tf.keras.models.load_model('app/models/model_9L_RMS.h5')
 
     # Extract MFCC of uploaded track
     y, sr = librosa.load(audio)

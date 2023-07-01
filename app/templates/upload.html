@@ -13,23 +13,18 @@
                 <option value="2">Simple Convolutional</option>
                 <option value="3">Convolutional</option>
             </select>
-            <div id="options" class="options">
-                <input type="checkbox" id="option1" name="option1">
-                <label for="option1">Option 1</label>
-                <input type="checkbox" id="option2" name="option2">
-                <label for="option2">Option 2</label>
-                <input type="checkbox" id="option3" name="option3">
-                <label for="option3">Option 3</label>
-            </div>
             <input type="submit" value="Submit" class="btn-submit">
         </form>
     </div>
     <div id="upload-information" class="card">
         <h2>Information</h2>
-        <p><strong>Sample rate: {{ sample_rate }}</strong></p>
-        <p><strong>Format: {{ format }}</strong></p>
-        <p><strong>Duration: {{ duration }}</strong></p>
+        <p>Name:<span><strong> {{ filename }}</strong></span></p>
+        <p>Sample rate:<span><strong> {{ sample_rate }}Hz</strong></span></p>
+        <p>Format:<span><strong > {{ format }}</strong></span></p>
+        <p>Duration:<span><strong> {{ minutes }}:{{ seconds }} min</strong></span></p>
     </div>
+</div>
+<div>
     <div id="player">
         <audio controls>
             <source src="{{ url_for('static', filename='upload/upload.mp3') }}" type="audio/mpeg">
@@ -41,26 +36,26 @@
 {% block information %}
 <div id="information">
     <div class="information-section">
-        <div class="section-image"><img></div>
+        <div class="section-image"><img src="{{ url_for('static', filename='media/img/analisis.png') }}" width="50" height="50"></div>
         <div class="section-content">
             <h3>Analysis</h3>
-            <p>Music analysis is a pivotal step in the identification of a track's genre. Each genre possesses distinctive characteristics and features that set it apart. Our process involves a thorough analysis of these elements.</p>
+            <p>Music analysis is a pivotal step in the identification of a track's genre. Each genre possesses distinctive characteristics and features that set it apart.</p>
         </div>
     </div>
     <hr>
     <div class="information-section">
-        <div class="section-image"><img></div>
+        <div class="section-image"><img src="{{ url_for('static', filename='media/img/clasificacion-de-datos.png') }}" width="50" height="50"></div>
         <div class="section-content">
             <h3>Classification</h3>
-            <p>Post-analysis, our advanced Artificial Intelligence algorithm steps in to categorize the song accurately into its respective musical style. This classification hinges on an in-depth understanding of the analyzed musical features.</p>
+            <p>Artificial Intelligence algorithm steps in to categorize the song into its respective musical style based on the analyzed features.</p>
         </div>
     </div>
     <hr>
     <div class="information-section">
-        <div class="section-image"><img></div>
+        <div class="section-image"><img src="{{ url_for('static', filename='media/img/idea.png') }}" width="50" height="50"></div>
         <div class="section-content">
             <h3>Insights</h3>
-            <p>To shed light on the classification process, we provide data and graphical representations that portray the underlying structure and characteristics of the music. This deep-dive knowledge acquisition offers an enhanced comprehension of the composition.</p>
+            <p>Data and graphical representations that portray the underlying structure and characteristics of the music.</p>
         </div>
     </div>
 </div>
@@ -78,7 +73,7 @@
             </div>
         </div>
         <div id="dataset-landing-image">
-            <img>
+            <img src="{{ url_for('static', filename='media/img/dataset.png') }}">
         </div>
     </div>
 </div>

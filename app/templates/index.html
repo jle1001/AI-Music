@@ -4,7 +4,7 @@
 <div id="upload">
     <div id="upload-content">
         <div id="app-information">
-            <h1>Musical Analysis Using Artificial Intelligence</h1>
+            <h1 id="main-title">Musical Analysis Using Artificial Intelligence</h1>
             <p>Using computational algorithms to analyze and classify music based on diverse musical features</p>
         </div>
         <div id="upload-buttons">
@@ -21,7 +21,7 @@
 {% block information %}
 <div id="information">
     <div class="information-section">
-        <div class="section-image"><img></div>
+        <div class="section-image"><img src="{{ url_for('static', filename='media/img/analisis.png') }}" width="50" height="50"></div>
         <div class="section-content">
             <h3>Analysis</h3>
             <p>Music analysis is a pivotal step in the identification of a track's genre. Each genre possesses distinctive characteristics and features that set it apart.</p>
@@ -29,7 +29,7 @@
     </div>
     <hr>
     <div class="information-section">
-        <div class="section-image"><img></div>
+        <div class="section-image"><img src="{{ url_for('static', filename='media/img/clasificacion-de-datos.png') }}" width="50" height="50"></div>
         <div class="section-content">
             <h3>Classification</h3>
             <p>Artificial Intelligence algorithm steps in to categorize the song into its respective musical style based on the analyzed features.</p>
@@ -37,7 +37,7 @@
     </div>
     <hr>
     <div class="information-section">
-        <div class="section-image"><img></div>
+        <div class="section-image"><img src="{{ url_for('static', filename='media/img/idea.png') }}" width="50" height="50"></div>
         <div class="section-content">
             <h3>Insights</h3>
             <p>Data and graphical representations that portray the underlying structure and characteristics of the music.</p>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div id="dataset-landing-image">
-            <img>
+            <img src="{{ url_for('static', filename='media/img/dataset.png') }}">
         </div>
     </div>
 </div>

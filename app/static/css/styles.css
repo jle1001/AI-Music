@@ -4,23 +4,29 @@
 
 html, body {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
 
 body {
     background-color: #FFFFFF;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden; 
 }
 
 header {
     background-color: #333;
     color: white;
     padding: 10px;
+    position: sticky;
+    width: 100%;
+    top: 0;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
+    margin-right: 25px;
+    margin-left: 25px;
 }
 
 nav h1 {
@@ -37,6 +43,10 @@ nav h1 a {
 h4 {
     font-weight: normal;
     margin: 10px 0 10px 0;
+}
+
+button {
+    font-family: "Poppins", sans-serif;
 }
 
 nav ul {
@@ -62,7 +72,8 @@ nav li a:hover {
 
 /* Main area */
 main {
-    margin: 20px 10% 20px 10%;
+    margin: 100px 10% 100px 10%;
+    overflow-x: hidden;
 }
 
 #upload {
@@ -86,7 +97,7 @@ main {
 }
 
 #app-information h1 {
-    font-size: 2em;
+    font-size: 3em;
     margin-bottom: 15px;
 }
 
@@ -97,7 +108,7 @@ main {
 
 #upload-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
 }
 
@@ -179,18 +190,21 @@ button:hover {
 
 /* Information */
 #information {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
+    width: 50%;
+    margin: 0 auto; 
 }
 
 .information-section {
     display: flex;
     align-items: center;
     padding: 20px;
+    gap: 20px; 
 }
 
-.section-image {
+/* .section-image {
     flex: 1;
-}
+} */
 
 .section-content {
     flex: 3;
@@ -209,13 +223,25 @@ hr {
     border: none;
     border-top: 1px solid #ccc;
     margin: 20px 0;
+    width: 50%;
+    margin: 0 auto; 
+    margin-top: 50px; 
+    margin-bottom: 50px; 
+}
+#information hr {
+    width: 100%; 
+    margin-top: 5px; 
+    margin-bottom: 5px; 
 }
 
 #dataset {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 75%;
+    margin: 0 auto; 
 }
 
 #dataset-content {
@@ -253,6 +279,7 @@ hr {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    margin: 0; 
 }
 
 #dataset-landing-image {
@@ -274,6 +301,10 @@ hr {
     gap: 20px;
     align-items: stretch;
     justify-content: center;
+}
+
+#upload-information span {
+    font-size: 20px; 
 }
 
 .card {
@@ -328,6 +359,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top: 50px; 
 }
 
 /* Track features */
@@ -392,32 +424,6 @@ hr {
     margin: 0;
 }
 
-/* Users */
-#login_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #c8c8c8;
-    font-weight: bold;
-}
-
-#register_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #c8c8c8;
-    font-weight: bold;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px;
-}
-
 /* Footer */
 footer {
     background-color: #333;
@@ -425,8 +431,8 @@ footer {
     padding: 10px;
     text-align: center;
     bottom: 0;
-    left: 0;
     width: 100%;
+    position: fixed;
 }
 
 footer a {
@@ -436,4 +442,43 @@ footer a {
 
 footer a:visited{
     color: White;
+}
+
+@media screen and (max-width: 1024px) {
+    main {
+        margin: 20px 10px 100px 10px; 
+    }
+    header nav {
+        flex-direction: column;
+        align-items: center; 
+    }
+    #app-information h1 {
+        font-size: 2em;
+    }
+    #upload-buttons {
+        flex-direction: column; 
+        gap: 25px; 
+    }
+    .custom-file-upload {
+        width: 70%;
+    }
+    #information {
+        width: 90%;
+    }
+    hr {
+        width: 90%; 
+    }
+    #dataset {
+        width: 90%;
+    }
+    #dataset-content {
+        flex-direction: column;
+    }
+    #music-player {
+        grid-template-columns: 1fr;
+    }
+    .features-tab ul {
+        flex-direction: column; 
+        align-items: center; 
+    }
 }

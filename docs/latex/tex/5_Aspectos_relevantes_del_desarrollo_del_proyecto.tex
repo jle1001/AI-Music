@@ -3,20 +3,20 @@
 \section{Desarrollo del Proyecto}
 
 El desarrollo de este proyecto se ha llevado a cabo utilizando una metodología ágil basada en Scrum. Este enfoque proporciona flexibilidad necesaria para adaptar cambios en los requerimientos y para mejorar iterativamente el proyecto durante su desarrollo.
-Las metodología ágiles se basan en la idea de dividir el proyecto en ciclos iterativos llamados "sprints", donde se llevan a cabo actividades de planificación, desarrollo, pruebas y revisión. 
+Las metodología ágiles se basan en la idea de dividir el proyecto en ciclos iterativos llamados \textit{sprints}, donde se llevan a cabo actividades de planificación, desarrollo, pruebas y revisión. 
 Estos sprints suelen tener una duración fija, en este caso han sido de 1 semana con alguna excepción justificada.
 
 \subsection{Metodología Scrum}
-En el documento \textit{Anexos} se explica en detalle el proceso de desarrollo del proyecto.
+En el documento \texttt{anexos} se explica en detalle el proceso de desarrollo del proyecto.
 
 En resumen el desarrollo ha consistido en los siguientes pasos iterativos:
 
 \begin{enumerate}
-\item \textbf{Planificación inicial}: Etapa de definición de objetivos generales del proyecto. Creación del Product Backlog.
+\item \textbf{Planificación inicial}: Etapa de definición de objetivos generales del proyecto. Creación del \textit{product backlog}.
 
-\item \textbf{Reuniones de Sprint}: Al comienzo de cada sprint, se realiza una pequeña reunión para revisar las tareas realizadas y seleccionar las tareas a desarrollar.
+\item \textbf{Reuniones de sprint}: Al comienzo de cada \textit{sprint}, se realiza una pequeña reunión para revisar las tareas realizadas y seleccionar las tareas a desarrollar.
 
-\item \textbf{Desarrollo del sprint}: Durante el sprint, se trabaja en cada una de las tareas asignadas.
+\item \textbf{Desarrollo del sprint}: Durante el \textit{sprint}, se trabaja en cada una de las tareas asignadas.
 
 \item \textbf{Mejora continua}: La metodología ágil promueve la mejora continua y el aprendizaje a lo largo del desarrollo del proyecto.
 \end{enumerate}
@@ -35,7 +35,7 @@ Otro factor a tener en cuenta en un proyecto de IA es el conjunto de datos. Se h
 
 \item \textbf{MagnaTagATune}: conjunto de datos formado por \textbf{25863 fragmentos} de audio de \textbf{29 segundos}.
 
-\item \textbf{FMA (Free Music Archive)}: conjunto de datos musicales, libre de derechos, constituido por \textbf{106574 fragmentos} de audio de \textbf{30 segundos}. 
+\item \textbf{FMA (Free Music Archive)}: conjunto de datos musicales, libre de derechos, constituido por \textbf{106574 fragmentos} de audio de \textbf{30 segundos}. \cite{defferrard2017fma}
 
 \end{itemize}
 
@@ -52,7 +52,7 @@ En cuanto al diseño de la aplicación, en un primer momento se pensó en el des
 
 \item \textbf{Accesibilidad}: La aplicación web es accesible desde cualquier dispositivo con una conexión a internet, independientemente del sistema operativo. De esta manera se amplía el alcance de la aplicación.
 
-\item \textbf{Actualizaciones}: Cuando se actualiza una aplicación web, automaticamente los usuarios reciben la última versión disponible en producción, eliminando la necesidad de descargar e instalar actualizaciones manualmente. 
+\item \textbf{Actualizaciones}: Cuando se actualiza una aplicación web, automáticamente los usuarios reciben la última versión disponible en producción, eliminando la necesidad de descargar e instalar actualizaciones manualmente. 
 
 \item \textbf{Mantenimiento}: Generalmente es más sencillo mantener una aplicación web que una aplicación de escritorio, ya que factores como hardware o sistema operativo del usuario desaparecen.
 \end{itemize}
@@ -61,9 +61,9 @@ El marco de trabajo escogido para realizar la implementación de la aplicación 
 
 \begin{itemize}
 
-\item \textbf{Backend}: Para el backend se ha utilizado Flask, un framework web comptabile con Python, pensado para realizar aplicaciones web y APIs.
+\item \textbf{\textit{Backend}}: Para el \textit{backend} se ha utilizado Flask, un framework web comptabile con Python, pensado para realizar aplicaciones web y APIs.
 
-\item \textbf{Frontend}: Para el frontend, se ha optado por HTML y CSS. HTML es un lenguaje de marcado que define la estructura y contenidos de las páginas web que conforman la aplicación. CSS es utilizado para definir los estilos de los documentos HTML y añadir elementos atractivos para el usuario.
+\item \textbf{\textit{Frontend}}: Para el \textit{frontend}, se ha optado por HTML y CSS. HTML es un lenguaje de marcado que define la estructura y contenidos de las páginas web que conforman la aplicación. CSS es utilizado para definir los estilos de los documentos HTML y añadir elementos atractivos para el usuario.
 
 \end{itemize}
 
@@ -79,7 +79,7 @@ El método de extracción de MFCC está diseñado para recorrer todos los archiv
 
 \begin{enumerate}
 \tightlist
-\item \textbf{Carga de archivos}: Carga del archivo de audio, devolviendo tanto la señal de audio (y) como la frecuencia de muestreo (sr).
+\item \textbf{Carga de archivos}: Carga del archivo de audio, devolviendo tanto la señal de audio \texttt{y} como la frecuencia de muestreo \texttt{sr}.
 
 \item \textbf{Duración estándar}: Se extraen los primeros 25 segundos de cada pista de audio para obtener la misma dimensionalidad en todo el conjunto de datos.
 
@@ -101,18 +101,18 @@ Para generar visualizaciones, se ha repetido el proceso de extracción de caract
 
 \begin{enumerate}
 \tightlist
-\item \textbf{Onda de audio}
+\item \textbf{Onda de audio}: Se genera convirtiendo el archivo de audio en una onda unidimensional. Esta onda se puede visualizar en un gráfico, de esta manera se puede ver de una forma sencilla las diferentes variaciones en el volumen de la pista de audio a lo largo del tiempo notando los cambios de ritmo o de estructura. Este proceso es realizado con \texttt{librosa}.
 
-\item \textbf{Espectrogramas}
+\item \textbf{Espectrograma}: Se genera cargando el archivo de audio y realizando el proceso visto en el apartado \texttt{3.3. Ejemplo teórico de extracción de características musicales} utilizando \texttt{librosa}.
 
-\item \textbf{Cromagramas}
+\item \textbf{Cromagrama}: Se genera mediante \texttt{librosa}.
 \end{enumerate}
 
 \newpage
 
 \section{Técnicas de aumento de datos}
 
-Las técnicas de aumentación de datos se basan en la generación de datos artificiales por medio de modificaciones de los datos originales. Esta técnica es importante en conjuntos de datos con pocos ejemplos o cuyos ejemplos no son suficientes para realizar un entrenamiento de calidad.
+Las técnicas de aumentación de datos se basan en la generación de datos artificiales por medio de modificaciones de los datos originales \cite{PIERGALLINI_2023}. Esta técnica es importante en conjuntos de datos con pocos ejemplos o cuyos ejemplos no son suficientes para realizar un entrenamiento de calidad.
 En este proyecto se han planteado diversas técnicas de aumentación de datos como por ejemplo:
 
 \begin{itemize}
@@ -120,9 +120,9 @@ En este proyecto se han planteado diversas técnicas de aumentación de datos co
 
 \item \textbf{Adicción de ruido de fondo}: la adicción de ruido de fondo es una técnica utilizada en los clips de audio que consiste en añadir un sonido estático, como ruido blanco o ruido ambiental, de esta manera se puede ayudar al modelo a entender los diferentes sonidos de fondo.
 
-\item \textbf{Cambio de tono (pitch shifting)}: esta técnica consiste en variar la tonalidad o la frecuencia de la pista de audio sin cambiar su velocidad, de esta manera el modelo es capaz de generalizar mejor en situaciones donde hay diferentes tonalidades.
+\item \textbf{Cambio de tono (\textit{pitch shifting})}: esta técnica consiste en variar la tonalidad o la frecuencia de la pista de audio sin cambiar su velocidad, de esta manera el modelo es capaz de generalizar mejor en situaciones donde hay diferentes tonalidades.
 
-\item \textbf{Estiramiento temporal (time stretching)}: esta técnica, a diferencia del \textit{pitch shifting}, consiste en variar la velocidad del audio sin cambiar su tono o frecuencia. Esto ayuda al modelo a entender diferentes velocidades en el habla o en los instrumentos.
+\item \textbf{Estiramiento temporal (\textit{time stretching})}: esta técnica, a diferencia del \textit{pitch shifting}, consiste en variar la velocidad del audio sin cambiar su tono o frecuencia. Esto ayuda al modelo a entender diferentes velocidades en el habla o en los instrumentos.
 
 \item \textbf{Efectos auditivos}: se añaden efectos a la pista de audio como pueden ser eco, reverberación o chorus. De esta manera el modelo aprende a ser más robusto en estas situaciones.
 
@@ -143,13 +143,26 @@ Los datos con los que se alimentan al modelo utilizado son un conjunto de caract
 
 Los datos proceden de una gran cantidad de ficheros de audio, los cuales han sido procesados para extraer sus características más importantes. Una vez realizado este proceso, los datos procesados se guardan en un archivo, el cual será encargado de alimentar el modelo de aprendizaje automático.
 
-Existen diversos problemas en este planteamiento, lo primero es la cantidad de datos a procesar. Los datos deben ser almacenados en alguna parte mientras se introducen al modelo. Esto puede suponer un problema si se cuenta con un equipo no demasiado potente que no puede almacenar todos los datos en la memoria.
-Para solucionar este problema se puede recurrir al uso de datasets incrementales mediante generadores. De esta manera los datos se devuelven iterativamente y no es necesario que se almacenen todos juntos en memoria.
+Se ha detectado un problema en este planteamiento, la cantidad de datos a procesar. Los datos deben ser almacenados en alguna parte mientras se introducen al modelo, esto puede suponer un problema si se cuenta con un equipo no demasiado potente que no puede almacenar todos los datos en la memoria. En este caso se ha producido un problema de memoria a la hora de procesar el conjunto de datos \texttt{fma\textunderscore large} ya que su tamaño, una vez procesado, superaba el límite de memoria. Para solucionar este problema se ha implementado una solución que se basa en el uso de datasets incrementales mediante generadores. De esta manera los datos se devuelven iterativamente y no es necesario que se almacenen juntos en memoria.
 
 \subsection{Redes neuronales}
+
+Las redes neuronales utilizadas para el entrenamiento consiste una serie de capas convolucionales que van transformando las entradas en representaciones cada vez más sencillas y abstractas hasta llegar a la capa final, una capa densa, que realiza la clasificación en las clases correspondientes.
+
+INSERTAR IMAGEN DEL RESUMEN DEL MODELO E IMAGEN DEL RESUMEN DE LAS CAPAS.
 
 \section{Evaluación del rendimiento del modelo}
 
 \subsection{Entrenamiento}
 
+INSERTAR IMÁGENES DEL PROCESO DE ENTRENAMIENTO DEL MODELO.
+
 \subsection{Explotación}
+
+Una vez que el modelo ha sido entrenado se prueba con el 30\% de datos restantes los cuales son datos que no se han tenido en cuenta en el proceso de entrenamiento. Este proceso proporciona una evaluación del rendimiento del modelo y da una ídea sobre como se comportará el modelo con datos que insertará el usuario en la aplicación.
+
+INSERTAR IMÁGENES DEL PROCESO DE EVALUACIÓN CON LOS DATOS DE TEST.
+
+Además se ha evaluado el comportamiento del modelo con diferentes métricas, vistas anteriormente en la sección \texttt{3.8. Evaluación del modelo}.
+
+INSERTAR MÉTRICAS DE RENDIMIENTO.

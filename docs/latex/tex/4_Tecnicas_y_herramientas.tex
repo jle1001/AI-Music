@@ -12,13 +12,17 @@ En este proyecto, Python se ha utilizado para la implementación del back-end. S
 
 \item \textbf{TensorFlow}: TensorFlow es una biblioteca de código abierto utilizada en el campo del aprendizaje automático. Proporciona la posiblidad de implementar redes neuronales complejas de una forma sencilla con grandes volúmenes de datos.
 
+\item \textbf{Keras}: Keras es una interfaz de alto nivel para TensorFlow. Facilita la creación y configuración de modelos.
+
 \item \textbf{scikit-learn}: scikit-learn es una biblioteca de aprendizaje automático de Python que proporciona una amplia gama de algoritmos y herramientas para el análisis de datos y la construcción de modelos. Incluye funciones para la división de conjuntos de datos en conjuntos de entrenamiento (\textit{train} y \textit{prueba}) que han sido utilizadas en este proyecto.
 
 \item \textbf{NumPy}: NumPy es una biblioteca de Python utilizada para realizar cálculos numéricos en matrices y matrices multidimensionales. 
 
-\item \textbf{Pandas}: bibliteca de código abierto en Python que proporciona herramientas de análisis de datos.
+\item \textbf{Pandas}: biblioteca de código abierto en Python que proporciona herramientas de análisis de datos.
 
-\item \textbf{Flask}: 
+\item \textbf{Flask}: framework de desarrollo web de Python. Es simple y adaptable, permitiendo utilizar diferentes bibliotecas en conjunto.
+
+\item \textbf{Matplotlib}: biblioteca de Python utilizada para la visualización de datos mediante una interfaz de alto nivel.
 \end{itemize}
 
 \section{Justificación de las herramientas utilizadas}
@@ -36,7 +40,7 @@ En cuanto a Go, su implementación en este proyecto hubiera sido muy interesante
 Esto ha sido vital para elegir Python por encima del resto de lenguajes planteados.
 
 \textbf{Rendimiento}: En este apartado los ganadores claros son C y Go, al tratarse de lenguajes compilados, pero en este proyecto el rendimiento bruto no es la prioridad como pueden ser la implementación de algoritmos de aprendizaje automático o el tratamiento de datos.
-Por eso mismo se ha elegido Python teniéndo en cuenta que aunque es el que menor rendimiento tiene, es el que otorga un mayor valor al proyecto.
+Por eso mismo se ha elegido Python teniendo en cuenta que aunque es el que menor rendimiento tiene, es el que otorga un mayor valor al proyecto. Aunque en última instancia, incluso en Python, las partes de código computacionalmente más intensivas recurren a llamar a código escrito en lenguaje C o Fortran, con lo que la penalización de eficiencia tampoco es tan grande.
 
 \subsection{Biblioteca de aprendizaje automático}
 \textbf{Bibliotecas planteadas}: TensorFlow, Pytorch, Scikit-learn
@@ -45,8 +49,8 @@ Por eso mismo se ha elegido Python teniéndo en cuenta que aunque es el que meno
 
 \textbf{Integraciones}: tanto TensorFlow, Pytorch como Scikit-learn ofrecen excelentes integraciones con Python. Por lo que este apartado no ha sido importante para valorar la elección entre uno u otro.
 
-\textbf{Enfoque y alcance}: Tanto TensorFlow como Pytorch son bibliotecas de aprendizaje automático de propósito general con soporte para aprendizaje profundo y grandes volumenes de datos. En cambio Scikit-learn es una biblioteca de aprendizaje automático centrada en algoritmos tradicionales y no es adecuado para grandes volúmenes de datos.
-Por estas razones se descarta Scikit-learn como una opción viable para entrenar el modelo planteado en este proyecto, aunque se ha utilizado como biblioteca de métodos de procesamiento del conjunto de datos mediante sus herramientas de partición de conjunto de datos (\textit{train\textunderscore test\textunderscore split}).
+\textbf{Enfoque y alcance}: Tanto TensorFlow como Pytorch son bibliotecas de aprendizaje automático con soporte para aprendizaje profundo y grandes volumenes de datos. En cambio Scikit-learn es una biblioteca de aprendizaje automático centrada en algoritmos tradicionales y no es adecuado para grandes volúmenes de datos.
+Por estas razones se descarta Scikit-learn como una opción viable para entrenar el modelo planteado en este proyecto, aunque se ha utilizado como biblioteca de métodos de procesamiento del conjunto de datos mediante sus herramientas de partición de conjunto de datos (\texttt{train\textunderscore test\textunderscore split}).
 
 \textbf{Rendimiento}: tanto TensorFlow como Pytorch poseen soporte para entrenamiento con GPU o TPU, por lo que su rendimiento es muy similar. En este caso la elección ha sido utilizar TensorFlow debido a su mayor documentación y posibilidad de configuración.
 
