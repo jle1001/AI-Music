@@ -46,16 +46,14 @@ Dos instrumentos musicales pueden reproducir la misma nota pero sonar de una man
 El análisis del timbre puede ayudar a reconocer estilos musicales debido a que permite identificar los diferentes instrumentos implicados en una canción.
 
 \item \textbf{Estructura Musical}: La estructura musical se refiere a la organización global de una composición musical.
-Estudiando la estructura musical se pueden distinguir las diferentes partes de una canción como el estribillo, versos o secciones instrumentales. De esta manera se pueden encontrar patrones repetitivos y que se ajusten a estilos musicales concretos.
-\end{itemize}
-
-\subsection{Estilos Musicales y Reconocimiento}
-Como se ha visto en el apartado anterior, los estilos musicales poseen características que se pueden utilizar para realizar una clasificación.
-Algunos géneros musicales tienen una estructura musical ampliamente establecida. Por ejemplo una gran cantidad de la música pop \cite{Team} tiene una estructura definida como:
+Estudiando la estructura musical se pueden distinguir las diferentes partes de una canción como el estribillo, versos o secciones instrumentales. De esta manera se pueden encontrar patrones repetitivos y que se ajusten a estilos musicales concretos. 
+Por ejemplo una gran cantidad de la música pop \cite{Team} tiene una estructura definida como: 
 
 \begin{center}
 \hfill \textbf{Verso} - \hfill \textbf{Estribillo} - \hfill \textbf{Verso} - \hfill \textbf{Estribillo} - \hfill \textbf{Puente} - \hfill \textbf{Estribillo}
 \end{center}
+
+\end{itemize}
 
 Este tipo de características o patrones comunes pueden ser utilizados por modelos de aprendizaje automático para aprender de los datos y extraer conclusiones.
 
@@ -103,7 +101,7 @@ A continuación se explica el proceso para obtener los coeficientes MFCC de una 
 
 \begin{enumerate}
 \tightlist
-\item \textbf{Preénfasis}: La señal de audio se normaliza con un filtro de preénfasis, que resalta las frecuencias de alta frecuencia y compensa la atenuación de las frecuencias más bajas. Esto ayuda a mejorar la relación señal-ruido y realzar las características relevantes en el espectro.
+\item \textbf{Preénfasis}: La señal de audio se normaliza con un filtro de preénfasis, que resalta las altas frecuencias y compensa la atenuación de las más bajas. Esto ayuda a mejorar la relación señal-ruido y realzar las características relevantes en el espectro.
 
 \item \textbf{División en tramas}: La señal preénfasis se divide en tramas o segmentos cortos y superpuestos en el tiempo. Esto se hace para capturar la variación espectral en diferentes puntos de la señal a lo largo del tiempo.
 
@@ -122,11 +120,10 @@ Los coeficientes MFCC son ampliamente utilizados en aplicaciones como:
 
 \begin{itemize}
 \tightlist
-\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y fácilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs.
-\item Identificación de hablantes: Los MFCC se pueden utilizar para identificar voces de diferentes hablantes, debido a que cada persona tiene una forma característica de hablar.
-\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos musicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación.
+\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y fácilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs. \cite{Kiran_2021}
+\item Identificación de hablantes: Los MFCC se pueden utilizar para identificar voces de diferentes hablantes, debido a que cada persona tiene una forma característica de hablar. \cite{Kiran_2021} \cite{Nakagawa_Wang}
+\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos musicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación. \cite{Wu}
 \end{itemize}
-
 
 \imagen{example_MFCC}{MFCC de una pista de audio.}{1.0}
 
@@ -151,14 +148,14 @@ Existen diversos tipos de aprendizaje automático:
 
 \item \textbf{Aprendizaje no supervisado}: Los algoritmos trabajan con conjuntos de datos no etiquetados, es decir, sin clase conocida. El objetivo es encontrar patrones u estructuras ocultas en los datos. El aprendizaje no supervisado se utiliza en tareas como el agrupamiento (\textit{clustering}) o la detección de valores atípicos (\emph{outliers}).
 
-\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una serie de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica.
+\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una serie de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica. \cite{sutton2018reinforcement}
 
-\item \textbf{Aprendizaje semi-supervisado}: En este tipo de aprendizaje el conjunto de datos no está completamente etiquetado, por lo tanto, el objetivo es maximizar el rendimiento del modelo a partir de los datos con clase conocida.
+\item \textbf{Aprendizaje semi-supervisado}: En este tipo de aprendizaje el conjunto de datos no está completamente etiquetado, por lo tanto, el objetivo es maximizar el rendimiento del modelo a partir de los datos con clase conocida. \cite{chapelle2006ssl}
 \end{itemize}
 
 \section{Ejemplo de aprendizaje supervisado}
 
-En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado. Por lo que se va a detallar un ejemplo simple para entender su funcionamiento:
+En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado, por lo que se va a detallar un ejemplo simple para entender su funcionamiento: \cite{DADA2019e01802}
 
 \subsection{Objetivo}
 Construir un modelo de aprendizaje automático para clasificar correos electrónicos como "<spam"> o "<no spam">.
@@ -197,12 +194,26 @@ El algoritmo utilizado en el proyecto es más complejo y será explicado en deta
 \section{Redes neuronales}
 Para realizar el entrenamiento del modelo de aprendizaje automático se han utilizado redes neuronales. 
 Las redes neuronales son una categoría de modelos de aprendizaje automático inspirados en la estructura biológica del cerebro humano. Se componen de nodos interconectados llamados neuronas, organizadas en capas, que trabajan juntas para procesar información y hacer predicciones.
+La decisión de utilizar redes neuronales en lugar de otras técnicas de aprendizaje automático para el entrenamiento del modelo se basa en varios factores: \cite{9165253} \cite{Nandi_2021} 
 
-Las redes neuronales se componen de los siguientes elementos:
+\begin{itemize}
+\tightlist
+
+\item \textbf{Capacidad de modelado de características no lineales}: Partiendo sobre las bases asentadas a lo largo de este proyecto, las redes neuronales resultan ser especialmente útiles debido a la naturaleza compleja y no lineal de la música. Cada canción tiene numerosos componentes, como el ritmo, la melodía, la armonía, la instrumentación, el tempo, y el timbre, los cuales interactúan entre sí de maneras complejas para crear un género musical. Estas interacciones no son fácilmente modelables con técnicas lineales, y los géneros musicales no pueden ser claramente separados en base a solo una o dos características.
+
+Las redes neuronales son capaces de entender estas relaciones y patrones no lineales al aprender representaciones internas de las canciones que capturan las características esenciales que definen cada género. Esto les permite realizar predicciones precisas del género musical, incluso en el caso de canciones que pueden fusionar elementos de varios géneros o que no se ajustan claramente a las definiciones de género establecidas.
+
+\item \textbf{Capacidad para aprender automáticamente características}: En lugar de depender de la ingeniería manual de características, las redes neuronales son capaces de aprender representaciones útiles de los datos de entrada por sí mismas. Esto nos puede resultar particularmente beneficioso en tareas que requieren un alto nivel de comprensión de los datos, como el procesamiento de imágenes, texto o audio, como es nuestro caso. De este modo, estaremos utilizando una herramienta que en vez de depender de esta extracción manual de las características de las canciones, como los coeficientes de frecuencia mel, las características espectrales o el ritmo, es capaz de aprender automáticamente las representaciones más útiles a partir de los datos de audio brutos o preprocesados.
+
+\item \textbf{Escalabilidad}: Las redes neuronales pueden manejar grandes volúmenes de datos y se benefician de la computación paralela, lo que las hace adecuadas para manejar las grandes cantidades de datos disponibles en muchos problemas modernos de aprendizaje automático. En el caso de la detección de géneros musicales, esta capacidad de las redes neuronales se vuelve imprescindible. Las bases de datos de canciones para entrenamiento y validación suelen ser enormes, comprendiendo miles o incluso millones de pistas, las cuales pueden ser eficientemente gestionadas a través de las redes neuronales, las cuales, partiendo de esta diversidad de ejemplos trabajarán para generar un modelo más robusto y preciso. 
+
+\end{itemize}
+
+Las redes neuronales se componen de los siguientes elementos: \cite{AGGARWAL_2023}
 \begin{itemize}
 \tightlist
 \item \textbf{Neuronas}: entidad matemática inspirada en la neurona biológica. Es el componente básico de una red neuronal. 
-\item \textbf{Capas}: las neuronas están organizadas por capas. Capa se refiere a un conjunto de neuronas que procesan información al mismo tiempo. Dependiendo de su posición en relación a los datos de entrada existen tres tipos de capas: capa de entrada, capas ocultas y capa de salida. Cada neurona en una capa está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
+\item \textbf{Capas}: las neuronas están organizadas por capas. Capa se refiere a un conjunto de neuronas que procesan información al mismo tiempo. Dependiendo de su posición en relación a los datos de entrada existen tres tipos de capas: capa de entrada, capas ocultas y capa de salida.
 \item \textbf{Proceso de entrenamiento}: el proceso de entrenamiento de una red neuronal consiste en ajustar los pesos y sesgos de las neuronas de tal manera que el error entre las predicciones y los valores reales sea lo más pequeño posible. Existen diversos algoritmos para realizar este cálculo iterativo de los valores de cada neurona.
 \end{itemize}
 
@@ -212,7 +223,7 @@ Al igual que las neuronas en el cerebro humano, una neurona artificial toma una 
 
 La neurona artificial suma las entradas ponderadas y luego aplica una función de activación para producir la salida. Las funciones de activación son necesarias para introducir no linealidad en la red, lo que permite que la red aprenda a partir de datos más complejos.
 
-Hay varios tipos de neuronas diferenciadas por su función de activación. Algunos ejemplos podrían ser:
+Hay varios tipos de neuronas diferenciadas por su función de activación. Algunos ejemplos podrían ser: \cite{Baheti} \cite{Gutpa_2022}
 
 \textbf{Neurona umbral}: esta neurona aplica una función de umbral a las entradas. Si la suma ponderada de las entradas supera un cierto umbral, la neurona se activa.
 
@@ -261,8 +272,8 @@ f(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{N} e^{x_j}}
 Donde $x_i$ es el valor de entrada de la neurona y $N$ es el número total de entradas.
 
 \subsection{Capas}
-Una red neuronal artificial está compuesta por un conjunto de capas neuronales interconectadas. 
-Cada capa consiste en un conjunto de neuronas las cuales reciben información de la capa anterior y envía su salida a las neuronas en la capa siguiente.
+Una red neuronal artificial está compuesta por un conjunto de capas neuronales interconectadas. \cite{AGGARWAL_2023} \cite{Ognjanovski_2020}
+Cada capa consiste en un conjunto de neuronas las cuales reciben información de la capa anterior y envía su salida a las neuronas en la capa siguiente. Según su posición en la red neuronal las capas se pueden clasificar como:
 
 \textbf{Capa de entrada}: es la primera capa de la red. Cada neurona en la capa de entrada corresponde a una característica en el conjunto de datos de entrada.
 
@@ -310,10 +321,12 @@ En estas capas es donde se produce la mayor parte del cálculo de la red. Los pe
   \node[align=center] at (6,-1) {Capa\\de salida};
 
 \end{tikzpicture}
-\caption{Red neuronal con dos capas ocultas}
+\caption{Red neuronal con dos capas ocultas \cite{Wikilibros}}
 \end{figure}
 
 \subsection{Tipos de capas}
+
+Las redes neuronales se componen de varias capas cada una con su funcionalidad específica. A continuación se exploran algunos tipos comunes de capas. \cite{Rosebrock_2023}
 
 \textbf{Capas densas o totalmente conectadas}: cada neurona está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
 
@@ -326,13 +339,13 @@ En estas capas es donde se produce la mayor parte del cálculo de la red. Los pe
 \textbf{Capas de normalización}: capas utilizadas para normalizar las entradas a una red o las salidas de una capa anterior. La normalización ayuda con el proceso de entrenamiento de la red.
 
 \section{Proceso de entrenamiento}
-El entrenamiento de una red neuronal implica un proceso que, de forma iterativa, ajusta los pesos de cada una de las neuronas para minimizar la diferencia entre las salidas predichas y las salidas reales del conjunto de datos de entrenamiento. Este proceso se puede clasificar en varios pasos:
+El entrenamiento de una red neuronal implica un proceso que, de forma iterativa, ajusta los pesos de cada una de las neuronas para minimizar la diferencia entre las salidas predichas y las salidas reales del conjunto de datos de entrenamiento. Este proceso se puede clasificar en varios pasos: \cite{Pramoditha_2022}
 
 \textbf{Inicialización de pesos}: el primer paso en el entrenamiento es inicializar los pesos de las neuronas de la red. Normalmente se inicializan de manera aleatoria.
 
 \textbf{Propagación hacia adelante}: la propagación hacia adelante es el proceso por el cual la red neuronal transmite la información desde la capa de entrada hasta la capa de salida mediante la información calculada en cada función de activación neuronal.
 
-\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}, esta función es utilizada en problemas de clasificación multiclase dónde las etiquetas son datos enteros como es el caso del proyecto.
+\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}, esta función es utilizada en problemas de clasificación multiclase dónde las etiquetas son datos enteros como es el caso del proyecto. \cite{Koech_2022}
 La función es la siguiente:
 
 \begin{equation}
@@ -346,7 +359,7 @@ Donde:
 \item $y_{\mathrm{true}}$ es la etiqueta verdadera.
 \end{itemize}
 
-\textbf{Backpropagation}: proceso de ajuste de los pesos de la red neuronal en función al error calculado en la función de perdida. El objetivo es minimizar iterativamente la función de pérdida propagando los errores desde la capa de salida hacia las capas ocultas por medio de la regla de la cadena, de esta manera se puede descubrir que número de neuronas deben actualizar sus pesos. La técnica que hace posible este proceso es el \textbf{Descenso del Gradiente}.
+\textbf{Backpropagation}: proceso de ajuste de los pesos de la red neuronal en función al error calculado en la función de perdida. El objetivo es minimizar iterativamente la función de pérdida propagando los errores desde la capa de salida hacia las capas ocultas por medio de la regla de la cadena, de esta manera se puede descubrir que número de neuronas deben actualizar sus pesos. La técnica que hace posible este proceso es el Descenso del Gradiente. 
 
 \textbf{Descenso del Gradiente}: algoritmo de optimización utilizado para minimizar la función de pérdida. Su funcionamiento consiste en ajustar los parámetros del modelo de forma iterativa en la dirección negativa del gradiente de la función de pérdida. Su función es la siguiente:
 
@@ -363,7 +376,7 @@ Donde:
 \item $\alpha$ es la tasa de aprendizaje o \textit{learning rate}, este parámetro controla cuanto varía $\theta_{j}$ en cada iteración.
 \end{itemize}
 
-\textbf{Iteración}: todo este proceso se repite $N$ veces. Cada proceso completo de inicialización, propagación hacia adelante, función de coste y backpropagation se llama época (\textit{epoch}). Normalmente se ejecutan varias épocas hasta que la función de perdida se estabiliza.
+\textbf{Iteración}: todo este proceso se repite $N$ veces. Cada proceso completo de inicialización, propagación hacia adelante, función de coste y backpropagation se llama época (\textit{epoch}). Ejecutar demasiadas épocas puede provocar sobreajuste, por este motivo, se implementan criterios de parada. Estos criterios pueden ser un número fijo de épocas, la estabilización de la función de pérdida (cuando no mejora tras un cierto número de épocas), una tasa de error constante en un conjunto de prueba, o si la disminución en la función de pérdida es menor que una tolerancia establecida.
 
 \section{Evaluación del modelo}
 La evaluación de un modelo de red neuronal es el proceso donde se determina la efectividad del modelo. Este proceso debe realizarse durante y después del entrenamiento.
@@ -371,7 +384,7 @@ La evaluación de un modelo de red neuronal es el proceso donde se determina la 
 \textbf{Evaluación con el conjunto de prueba}: tras entrenar el modelo es imprescindible realizar una evaluación final con el conjunto de prueba. Esta evaluación da como resultado una evaluación más precisa de como se comportará el modelo con datos externos.
 
 \subsection{Cálculo de métricas de rendimiento}
-Existen diversas métricas de rendimiento que indican como de bueno es el entrenamiento del modelo. Algunas de las más usadas son:
+Existen diversas métricas de rendimiento que indican como de bueno es el entrenamiento del modelo. Algunas de las más usadas en problemas de clasificación son:
 
 \textbf{Accuracy}: proporción de predicciones correctas que hace el modelo en relación con todas las predicciones que hace.
 \begin{equation}
@@ -386,9 +399,4 @@ Existen diversas métricas de rendimiento que indican como de bueno es el entren
 \textbf{F1-Score}: media armónica de precisión y recall.
 \begin{equation}
 \text{F1-Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-\end{equation}
-
-\textbf{MSE}: es una métrica comúnmente usada para problemas de regresión. Es el promedio de los cuadrados de las diferencias entre las predicciones del modelo y las clases verdaderas.
-\begin{equation}
-\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y_i})^2
 \end{equation}
