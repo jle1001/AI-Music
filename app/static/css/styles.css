@@ -1,10 +1,10 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 html, body {
-    max-width: 100%;
-    overflow-x: hidden; 
+    max-width: 100%; 
 }
 
 body {
@@ -349,6 +349,7 @@ hr {
     margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif
 }
 
 .btn-submit:hover {
@@ -399,6 +400,7 @@ hr {
     transition: background-color 0.3s ease, color 0.3s ease;
     text-align: center;
     margin: 5px;
+    cursor: pointer; 
 }
 
 .features-tab ul li a:hover {
@@ -430,9 +432,7 @@ footer {
     color: white;
     padding: 10px;
     text-align: center;
-    bottom: 0;
     width: 100%;
-    position: fixed;
 }
 
 footer a {
