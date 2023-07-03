@@ -35,7 +35,7 @@ Esta sección proporciona instrucciones de uso detalladas sobre cómo utilizar l
 
 \item \textbf{CPU 2.0 GHz o superior}: Un procesador de 2 GHz es capaz de manejar las instrucciones por segundo necesarias para realizar las tareas requeridas en esta aplicación. Como el procesamiento de audio y la ejecución de la predicción.
 
-\item \textbf{Memoria RAM de 4GB o superior}: 
+\item \textbf{Memoria RAM de 4GB o superior}: Los 4GB de RAM son necesarios para que la aplicación funcione de manera eficiente sin ralentizaciones o bloqueos.
 
 \item \textbf{2GB de almacenamiento libre}: Esta cantidad de almacenamiento libre es la mínima necesaria para instalar la aplicación y sus librerías necesarias.
 
@@ -45,50 +45,7 @@ Esta sección proporciona instrucciones de uso detalladas sobre cómo utilizar l
 
 \section{Instalación y ejecución}
 
-\subsection{Instalación local}
-
-Para obtener el código fuente del proyecto los pasos a seguir son los siguientes:
-
-\begin{itemize}
-\tightlist
-
-\item \textbf{Clonar el repositorio Git}
-	\begin{itemize}
-	\tightlist
-		\item \texttt{git clone https://github.com/jle1001/AI-Music.git}
-	\end{itemize}
-
-\item \textbf{Crear un entorno virtual de Python}: 
-	\begin{itemize}
-	\tightlist
-		\item \texttt{python3 -m venv venv}
-	\end{itemize}
-
-\item \textbf{Activar el entorno virtual}: 
-	\begin{itemize}
-		\item Linux: \texttt{source venv/bin/activate}
-		
-		\item Windows: \texttt{venv\textbackslash Scripts\textbackslash activate}
-	\end{itemize}
-
-\item \textbf{Instalación de dependencias}
-	\begin{itemize}
-	\tightlist
-		\item \texttt{pip install -r requirements.txt}
-	\end{itemize}
-
-\item \textbf{Iniciar el servidor}
-	\begin{itemize}
-	\tightlist
-		\item \texttt{flask run --debug}
-	\end{itemize}
-\end{itemize}
-
-Una vez que el servidor está en funcionamiento, se puede acceder a la aplicación web a través de un navegador entrando a la dirección \texttt{localhost:5000}.
-
-\subsection{Uso en línea}
-
-Para utilizar la aplicación en línea hay que entrar al siguiente enlace: 
+Para utilizar la aplicación se puede acceder al siguiente enlace: \url{https://jle1001.pythonanywhere.com}
 
 \section{Manual del usuario}
 El objetivo de este manual es proporcionar una guía paso a paso para que el usuario pueda utilizar las funciones de la aplicación.
@@ -103,7 +60,7 @@ El objetivo de este manual es proporcionar una guía paso a paso para que el usu
 
 \end{itemize}
 
-INSERTAR CAPTURA DE PANTALLA
+\imagen{upload_file}{Subida de canciones.}
 
 \subsection{Análisis y predicción}
 
@@ -117,7 +74,9 @@ INSERTAR CAPTURA DE PANTALLA
 
 \end{itemize}
 
-INSERTAR CAPTURA DE PANTALLA
+\imagen{info_cancion}{Información sobre la canción subida.}
+
+\imagen{seleccion_algoritmo}{Selección de algoritmo.}
 
 \subsection{Visualización del resultado}
 
@@ -133,4 +92,10 @@ INSERTAR CAPTURA DE PANTALLA
 
 \end{itemize}
 
-INSERTAR CAPTURA DE PANTALLA
+\imagen{waveform}{Visualización del resultado: Onda de audio.}
+
+\imagen{spectrogram}{Visualización del resultado: Espectrograma.}
+
+\imagen{chromagram}{Visualización del resultado: Cromograma}
+
+\imagen{MFCC}{Visualización del resultado: MFCC.}

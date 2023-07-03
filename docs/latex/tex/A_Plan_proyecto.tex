@@ -17,31 +17,59 @@ Cada sprint implicó una serie de actividades que culminaron con una entrega inc
 
 \subsection{Sprint 1 (08/03/2023 - 15/03/2023)}
 
+En el Sprint 1, se realizó la configuración inicial del proyecto, añadiendo una descripción detallada en el archivo README.md y estableciendo las bases de la documentación. Asimismo, se implementaron componentes básicos y se trabajó en el diseño de la aplicación, aprovechando las funcionalidades de la biblioteca librosa para el procesamiento de audio.
+
 \subsection{Sprint 2 (15/03/2023 - 22/03/2023)}
+
+En el Sprint 2, se configuró el entorno de desarrollo utilizando Poetry, que posteriormente se descartó ante el uso de entornos virtuales clásicos, y se implementó el módulo \texttt{train\textunderscore classifier} para entrenar el clasificador de géneros musicales. De igual manera, también se llevó a cabo la extracción de características MFCC y se realizó un preprocesamiento básico de los datos.
 
 \subsection{Sprint 3 (22/03/2023 - 05/04/2023)}
 
+En el Sprint 3, se realizaron pequeños cambios en el código e investigación sobre el área.
+
 \subsection{Sprint 4 (05/04/2023 - 12/04/2023)}
+
+En el Sprint 4, se realizaron diversas tareas. En primer lugar, se agregó un archivo \texttt{requirements.txt} para gestionar las dependencias del proyecto y se creó la estructura inicial de Flask para desarrollar la aplicación web. Complementariamente, se diseñó una aplicación Flask básica y se llevó a cabo el preprocesamiento de géneros musicales. Además, se realizaron ajustes en la estructura del proyecto y se actualizó la extracción de características MFCC. También se implementó la visualización de características de audio, como la forma de onda, el espectrograma, el cromagrama y los MFCC. Finalmente, se realizaron mejoras en el estilo y se añadió un modelo de aprendizaje automático inicial.
 
 \subsection{Sprint 5 (12/04/2023 - 19/04/2023)}
 
+En el Sprint 5, se trabajó en los aspectos visuales del proyecto. Se crearon mockups e imágenes de prueba para la interfaz de usuario, permitiendo una mejor comprensión de cómo se presentaría la aplicación.
+
 \subsection{Sprint 6 (19/04/2023 - 26/04/2023)}
+
+En el Sprint 6, se avanzó en la sección de carga del proyecto y se añadió una página de inicio. Además, se implementó un reproductor de música que permitía a los usuarios escuchar las pistas seleccionadas.
 
 \subsection{Sprint 7 (26/04/2023 - 10/05/2023)}
 
+En el Sprint 7, se llevaron a cabo varias tareas importantes. Se añadió un nuevo modelo al sistema y se actualizó la documentación correspondiente. Paralelamente, también se trabajó en la implementación de las páginas de registro e inicio de sesión para los usuarios, aunque finalmente no pudieron ser llevadas a cabo. También se realizaron ajustes en el guardado del modelo y se añadieron las páginas de inicio de sesión y registro al índice del proyecto.
+
 \subsection{Sprint 8 (10/05/2023 - 17/05/2023)}
+
+En el Sprint 8, se dedicó tiempo a la búsqueda de referencias y documentación relevante para el proyecto. Se recopilaron trabajos relacionados, papers e información general que proporcionaron una base sólida para la consolidación de la aplicación.
 
 \subsection{Sprint 9 (17/05/2023 - 24/05/2023)}
 
+En el Sprint 9, se realizaron mejoras en la extracción de características y se llevó a cabo un proceso de limpieza, eliminando archivos de borrador que ya no eran necesarios.
+
 \subsection{Sprint 10 (24/05/2023 - 02/06/2023)}
+
+En el Sprint 10, se añadió documentación adicional para complementar el proyecto, asegurando que todos los aspectos importantes estuvieran debidamente explicados.
 
 \subsection{Sprint 11 (02/06/2023 - 09/06/2023)}
 
+En el Sprint 11, se implementaron generadores para la fase de entrenamiento del modelo, lo que permitió una mejor gestión de los datos. También se actualizó la representación de géneros predichos.
+
 \subsection{Sprint 12 (09/06/2023 - 16/06/2023)}
+
+En el Sprint 12, se realizaron cambios en el diseño de la aplicación, mejorando la representación visual de las características de audio. Se llevaron a cabo actualizaciones en el diseño de los colores utilizados en la interfaz.
 
 \subsection{Sprint 13 (16/06/2023 - 23/06/2023)}
 
-\subsection{Sprint 14 (23/06/2023 - 30/06/2023)}
+En el Sprint 13, se realizaron varios cambios significativos. Por un lado se implementaron diferentes mejoras en el procesamiento y entrenamiento de los datos. De igual modo, se actualizaron el reproductor de audio y la información de las pistas. Además, se realizaron múltiples actualizaciones en la memoria, los anexos y la aplicación web. Eventualmente, se llevaron a cabo correcciones menores de estilo para mejorar la presentación general.
+
+\subsection{Sprint 14 (23/06/2023 - 04/06/2023)}
+
+En el Sprint 14, se continuaron realizando actualizaciones y mejoras en la documentación. Se realizaron cambios específicos en la sección B de los anexos, relacionada con los requisitos funcionales y no funcionales. También se actualizaron las secciones A, D y E de los anexos, que incluyen el plan del proyecto, el manual del programador y el manual de usuario, respectivamente. Se agregó un diagrama general de casos de uso y se llevaron a cabo actualizaciones adicionales en la documentación, la aplicación web y los anexos.
 
 \section{Estudio de viabilidad}
 
@@ -87,7 +115,7 @@ Los costes de software se refieren al gasto económico que se realiza en la adqu
 \tightlist
 \item \textbf{Sistema Operativo}: Se ha elegido el sistema operativo Windows 11 Home como base para realizar el desarrollo del proyecto. Se podrían plantear alternativas gratuitas como alguna distribución de Linux pero por sencillez y extensión de uso se ha elegido Windows.
 
-\item \textbf{Servicios en la nube}: Durante las etapas intensivas de entrenamiento de modelos y almacenamiento de datos, podría llegar a ser necesario el uso de servicios de computación en la nube como AWS o Microsoft Azure. El coste puede variar según el uso necesario. En este caso ficticio se estima que el gasto será de 100€.
+\item \textbf{Servicios en la nube}: Durante las etapas intensivas de entrenamiento de modelos y almacenamiento de datos, podría llegar a ser necesario el uso de servicios de computación en la nube como AWS \cite{AWS} o Microsoft Azure \cite{Kcpitt}. El coste puede variar según el uso necesario. En este caso ficticio se estima que el gasto será de 100€.
 \end{itemize}
 
 \begin{table}[h]
@@ -96,7 +124,7 @@ Los costes de software se refieren al gasto económico que se realiza en la adqu
 \hline
 \textbf{Concepto} & \textbf{Coste} \\
 \hline
-Windows 11 Home & 145€ \\
+Windows 11 Home \cite{win11} & 145€ \\
 Computación en la nube & 100€ \\
 \hline
 \textbf{Total} & \textbf{245€} \\
@@ -178,8 +206,35 @@ A la hora de la subida de archivos musicales para su clasificación existe un pr
 
 \subsection{Licencias de software}
 
-Según el software utilizado se tienen en cuenta las siguientes licencias.
+Según el software utilizado se tienen en cuenta las siguientes licencias: \cite{Creative_Commons} \cite{Open_Source_Initiative_2023}
 
-INSERTAR TABLA CON LICENCIAS DE CADA PARTE DEL SOFTWARE.
+\begin{table}[h]
+\centering
+\caption{Licencias de las herramientas utilizadas}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Herramienta} & \textbf{Licencia} \\
+\hline
+Python \cite{3.10_Documentation} & PSF \\
+Librosa \cite{librosa} & ISC \\
+TensorFlow \cite{TensorFlow} & Apache 2.0 \\
+ScikitLearn \cite{scikit} & BSD-3-Clause \\
+Flask \cite{Flask} & BSD-3-Clause \\
+FMA Dataset \cite{fma_dataset} & CC BY-NC-SA 4.0 \\
+Matplotlib \cite{matplotlib} & PSF \\
+\hline
+\end{tabular}
+\end{table}
 
-La licencia utilizada se corresponde con la licencia más general que sea compatible con el resto.
+Según las herramientas utilizadas, se ha elegido la licencia MIT para la distribución y uso del software desarrollado. Esta es una licencia de código abierto permisiva, la cual permite a los usuarios utilizar, modificar y distribuir el software bajo ciertas condiciones, requiriendo la inclusión del aviso de derechos de autor y la renuncia de responsabilidad en el software distribuido.
+Una de las características principales de la licencia MIT es su flexibilidad. Permite a los usuarios utilizar el software con pocas restricciones y sin imponer condiciones adicionales. Además, ofrece libertad para modificar y distribuir el software tanto en proyectos de código abierto como en proyectos comerciales.
+La elección de la licencia MIT se basa en su adecuación a las necesidades y especificidades de este proyecto. Algunas razones por las cuales es la licencia que mejor se ajusta son:
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Flexibilidad y colaboración}: La licencia MIT \cite{Open_Source_Initiative_2023} permite que otras personas utilicen, modifiquen y distribuyan el software sin imponer restricciones excesivas. Esto fomenta la colaboración y la participación de la comunidad, lo cual es beneficioso para un proyecto de desarrollo de software.
+\item \textbf{Compatibilidad}: La licencia MIT es compatible con la mayoría de las otras licencias de código abierto. Esto es importante, ya que el proyecto utiliza diversas herramientas con diferentes licencias, asegurando que no haya conflictos y permitiendo una integración fluida entre ellas.
+\item \textbf{Reconocimiento y protección de derechos de autor}: La licencia MIT incluye disposiciones que protegen los derechos de autor y exigen la inclusión del aviso de derechos de autor en el software distribuido. Esto garantiza el reconocimiento adecuado del autor original del proyecto y protege sus derechos.
+
+\end{enumerate}

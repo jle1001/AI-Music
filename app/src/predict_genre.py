@@ -30,10 +30,15 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     mfcc = tf.reshape(mfcc.ravel(), shape=(1,10770))
 
     # Predict output
+    genres = []
     print(model.predict(mfcc)[0])
     print(np.argmax(model.predict(mfcc)[0]))
     print(f"{np.argsort(model.predict(mfcc)[0])[-3:][::-1]}")
-    return get_genre_name(np.argmax(model.predict(mfcc)[0]))
+
+    # return get_genre_name(np.argmax(model.predict(mfcc)[0]))
+    for i in np.argsort(model.predict(mfcc)[0])[-3:][::-1]:
+        genres.append(get_genre_name(i))
+    return f'{genres[0]}, {genres[1]}, {genres[2]}'
 
 def get_model(n_model=1):
     # TODO: Documentate this function

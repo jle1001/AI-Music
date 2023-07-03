@@ -3,7 +3,7 @@
 {% block genre_classifier %}
     <div id="music_genre">
         <h3 class="model-name">Model: {{ model_name }}</h3>
-        <h2 class="predicted-genre">Predicted music genre: {{ prediction }}</h2>
+        <h2 class="predicted-genre">Predicted music genres: {{ prediction }}</h2>
     </div>
 {% endblock %}
 
@@ -13,7 +13,7 @@
     <div class="features-tab">
         <ul>
             <li><a id="defaultOpen" onclick="openFeature(event, 'waveform')">Waveform</a></li>
-            <li><a onclick="openFeature(event, 'spectogram')">Spectogram</a></li>
+            <li><a onclick="openFeature(event, 'spectogram')">Spectrogram</a></li>
             <li><a onclick="openFeature(event, 'chromagram')">Chromagram</a></li>
             <li><a onclick="openFeature(event, 'mfcc')">MFCC</a></li>
         </ul>

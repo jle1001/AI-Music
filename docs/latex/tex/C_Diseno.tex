@@ -13,18 +13,16 @@ La aplicación maneja varios tipos de datos, que se describen a continuación:
 \begin{itemize}
 \tightlist
 
-\item \textbf{Archivos CSV}: Los archivos CSV son utilizados para almacenar información sobre los metadatos de los archivos de audio.
+\item \textbf{Archivos CSV}: Los archivos CSV son utilizados para almacenar información sobre los metadatos de los archivos de audio. \cite{CSV_documentation}
 En concreto, se trabaja con el fichero \texttt{tracks.csv} que contiene una gran cantidad de información sobre cada pista de audio y con el fichero \texttt{raw\textunderscore genres.csv} que contiene información sobre cada género musical.
 Estos ficheros se procesan para generar el archivo \texttt{track\textunderscore genres.csv}, que contiene el identificador de la pista de audio y sus géneros, y es más sencillo para su uso a la hora de introducir las características y entrenar el modelo.
 
-\item \textbf{Archivos de audio}: Los archivos de audio, en formato .mp3, son los datos de entrada principales en la aplicación. Estos son analizados y procesados para extraer las características necesarias para su predicción.
+\item \textbf{Archivos de audio}: Los archivos de audio, en formato .mp3 \cite{MP3}, son los datos de entrada principales en la aplicación. Estos son analizados y procesados para extraer las características necesarias para su predicción.
 
 \item \textbf{Archivos pickle}: Se ha optado por el uso de este tipo de ficheros para almacenar el conjunto de datos de entrenamiento procesado, \texttt{track\textunderscore genres\textunderscore mfcc.pkl}, debido a que mantiene mejor la información de las características que un fichero CSV tradicional.
-Este fichero se utiliza para entrenar el modelo de aprendizaje automático.
+Este fichero se utiliza para entrenar el modelo de aprendizaje automático. \cite{Selvaraj_2023}
 
 \end{itemize}
-
-INSERTAR DIAGRAMA DE CLASES, RELACIONES, E/R, ETC.
 
 \section{Diseño procedimental}
 
@@ -45,7 +43,7 @@ El diseño procedimental de la aplicación sigue un flujo de trabajo definido de
 
 \end{enumerate}
 
-INSERTAR DIAGRAMA DE SECUENCIA.
+\imagen{secuencia_procedimiento_funcionamiento_basico}{Funcionamiento básico de la aplicación - Diagrama de secuencia}
 
 \subsection{Procedimiento de extracción de características de audio de un fichero}
 
@@ -62,7 +60,7 @@ INSERTAR DIAGRAMA DE SECUENCIA.
 
 \end{enumerate}
 
-INSERTAR DIAGRAMA DE SECUENCIA.
+\imagen{secuencia_procedimiento_extraccion_caracteristicas}{Extracción de características de un fichero de audio - Diagrama de secuencia}
 
 \subsection{Procedimiento de extracción de características de audio para los ficheros de entrenamiento}
 
@@ -81,7 +79,7 @@ INSERTAR DIAGRAMA DE SECUENCIA.
 
 \end{enumerate}
 
-INSERTAR DIAGRAMA DE SECUENCIA.
+\imagen{secuencia_procedimiento_extraccion_caracteristicas_entrenamiento}{Extracción de características de los datos de entrenamiento - Diagrama de secuencia}
 
 \subsection{Procedimiento de entrenamiento del modelo}
 
@@ -102,7 +100,7 @@ INSERTAR DIAGRAMA DE SECUENCIA.
 
 \end{enumerate}
 
-INSERTAR DIAGRAMA DE SECUENCIA.
+\imagen{secuencia_procedimiento_entrenamiento}{Proceso de entrenamiento del modelo - Diagrama de secuencia}
 
 \subsection{Visualización de características}
 
@@ -119,17 +117,17 @@ INSERTAR DIAGRAMA DE SECUENCIA.
 
 \end{enumerate}
 
-INSERTAR DIAGRAMA DE SECUENCIA.
+\imagen{secuencia_procedimiento_visualizacion}{Proceso de visualización de características - Diagrama de secuencia}
 
 \section{Diseño arquitectónico}
 
-El diseño arquitectónico de la aplicación sigue un modelo de capas.
+El diseño arquitectónico de la aplicación sigue un modelo de capas. \cite{Blancarte}
 El modelo de capas es un arquitectura de software en las que las responsabilidades del software se dividen en capas apiladas. Cada capa ofrece servicios a la capa superior y los recibe de la capa inferior.
 
 \subsection{Capa de presentación}
 
 La capa de presentación se ocupa de la interacción e interfaz de usuario. Utiliza la librería \texttt{Flask} para funcionar y permite a los usuarios cargar archivos musicales, iniciar el proceso de predicción y visualizar los resultados finales.
-Es en esta capa donde se renderizan los archivos HTML y donde se realiza el intercambio de mensajes mediante el protocolo HTTP. Esta capa está comunicada con la capa de lógica, que le devolverá la información para poder mostrar los resultados.
+Es en esta capa donde se renderizan los archivos HTML \cite{HTML_tutorial} y donde se realiza el intercambio de mensajes mediante el protocolo HTTP \cite{MozDevNet}. Esta capa está comunicada con la capa de lógica, que le devolverá la información para poder mostrar los resultados.
 
 \subsection{Capa de lógica}
 
@@ -152,7 +150,7 @@ Esta capa se ocupa del almacenamiento y recuperación de datos. Los datos con lo
 
 Esta capa se comunica con la capa de lógica, proporcionándole los datos necesarios para su funcionamiento y almacenando sus resultados.
 
-INSERTAR DIAGRAMA DE CAPAS
+\imagen{esquema-capas-datos}{Esquema con las capas de la aplicación.}
 
 \section{Diseño de la interfaz}
 
@@ -160,16 +158,18 @@ La interfaz de usuario proporciona la interacción directa entre el usuario y el
 
 \subsection{Interfaz de usuario}
 
-El diseño de la interfaz de usuario está construido utilizando \texttt{Flask}. \texttt{Flask} se utiliza para renderizar los archivos HTML que forman la interfaz de usuario. Incluye los siguientes elementos:
+El diseño de la interfaz de usuario está construido utilizando \texttt{Flask}. \texttt{Flask} se utiliza para renderizar los archivos HTML que forman la interfaz de usuario. Las imágenes utilizadas en la interfaz de usuario se han obtenido de la plataforma \textit{Flaticon} \cite{Flaticon}, la fuente utilizada es \texttt{Poppins} y ha sido extraída de \textit{Google Fonts}. \cite{Google_Fonts}
+
+Incluye los siguientes elementos:
 
 \textbf{Pantalla de inicio}: La pantalla de inicio es lo primero que ve el usuario al iniciar la aplicación. Proporciona una breve introducción sobre el propósito y funcionamiento de la aplicación y permite cargar un archivo de audio para iniciar el proceso de predicción musical.
 
-INTRODUCIR CAPTURA DE PANTALLA
+\imagen{inicio}{Pantalla de inicio de la aplciación.}
 
 \textbf{Selección de modelos y reproducción de audio}: Esta sección permite al usuario ver información básica sobre la pista de audio subida, como la duración o la frecuencia de muestreo, y elegir qué modelo entrenado se va a utilizar para realizar la predicción musical.
 
-INTRODUCIR CAPTURA DE PANTALLA
+\imagen{info_cancion}{Pantalla de selección de modelos y reproducción de audio.}
 
 \textbf{Visualización de resultados}: Sección donde el usuario puede ver el resultado de la predicción y una serie de características sobre la pista de audio con una breve descripción de cada una. La presentación de la información es tanto en modo texto como con gráficas.
 
-INTRODUCIR CAPTURA DE PANTALLA
+\imagen{waveform}{Pantalla de visualización de resultados.}
