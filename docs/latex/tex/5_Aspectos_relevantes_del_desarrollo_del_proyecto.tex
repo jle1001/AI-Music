@@ -2,7 +2,7 @@
 
 \section{Desarrollo del Proyecto}
 
-El desarrollo de este proyecto se ha llevado a cabo utilizando una metodología ágil basada en Scrum. Este enfoque proporciona flexibilidad necesaria para adaptar cambios en los requerimientos y para mejorar iterativamente el proyecto durante su desarrollo.
+El desarrollo de este proyecto se ha llevado a cabo utilizando una metodología ágil basada en Scrum \cite{Scrum}. Este enfoque proporciona flexibilidad necesaria para adaptar cambios en los requerimientos y para mejorar iterativamente el proyecto durante su desarrollo.
 Las metodología ágiles se basan en la idea de dividir el proyecto en ciclos iterativos llamados \textit{sprints}, donde se llevan a cabo actividades de planificación, desarrollo, pruebas y revisión. 
 Estos sprints suelen tener una duración fija, en este caso han sido de 1 semana con alguna excepción justificada.
 
@@ -21,19 +21,19 @@ En resumen el desarrollo ha consistido en los siguientes pasos iterativos:
 \item \textbf{Mejora continua}: La metodología ágil promueve la mejora continua y el aprendizaje a lo largo del desarrollo del proyecto.
 \end{enumerate}
 
-\subsection{Análisis}
+\subsection{Datos de entrenamiento}
 
 El objetivo del proyecto es aplicar técnicas de Inteligencia Artificial (IA) y Aprendizaje Automático (ML) para la clasificación de estilos musicales. 
-Durante la fase de análisis, se estudiaron varios modelos de ML, eligiendo finalmente la Red Neuronal Convolucional (CNN) debido a su mayor eficacia.
+Durante la fase de análisis, se estudiaron varios modelos de ML, eligiendo finalmente la Red Neuronal Convolucional (CNN) debido a su mayor eficacia \cite{article_cnn}.
 
 Otro factor a tener en cuenta en un proyecto de IA es el conjunto de datos. Se han planteado diversos conjuntos de datos para entrenar el modelo como:
 \begin{itemize}
 
-\item \textbf{GTZAN Dataset}: conjunto de datos muy utilizado en la clasificación musical. Recopilado por George Tzanetakis en 2002, consta de \textbf{1000 fragmentos} de audio de \textbf{30 segundos}, distribuidos en \textbf{10 géneros musicales}.
+\item \textbf{GTZAN Dataset}: conjunto de datos muy utilizado en la clasificación musical. Recopilado por George Tzanetakis en 2002, consta de \textbf{1000 fragmentos} de audio de \textbf{30 segundos}, distribuidos en \textbf{10 géneros musicales} \cite{Andrada_2020}.
 
-\item \textbf{Million Song Dataset}: conjunto de datos formado por las \textit{características musicales y metadatos} de un millón de canciones populares. No incluye pistas de audio.
+\item \textbf{Million Song Dataset}: conjunto de datos formado por las \textit{características musicales y metadatos} de un millón de canciones populares. No incluye pistas de audio \cite{Bertin-Mahieux2011, MSD}.
 
-\item \textbf{MagnaTagATune}: conjunto de datos formado por \textbf{25863 fragmentos} de audio de \textbf{29 segundos}.
+\item \textbf{MagnaTagATune}: conjunto de datos formado por \textbf{25863 fragmentos} de audio de \textbf{29 segundos} \cite{MagnaTagATune}.
 
 \item \textbf{FMA (Free Music Archive)}: conjunto de datos musicales, libre de derechos, constituido por \textbf{106574 fragmentos} de audio de \textbf{30 segundos}. \cite{defferrard2017fma}
 
@@ -44,7 +44,7 @@ es posible extraer las características de forma manual utilizando librosa u otr
 
 \subsection{Diseño}
 
-En cuanto al diseño de la aplicación, en un primer momento se pensó en el desarrollo de una aplicación de escritorio. Sin embargo, esta idea fue descartada y se optó por desarrollar una aplicación web debido a las siguientes razones:
+En cuanto al diseño de la aplicación, en un primer momento se pensó en el desarrollo de una aplicación de escritorio. Sin embargo, esta idea fue descartada y se optó por desarrollar una aplicación web debido a las siguientes razones \cite{Desai_2023}:
 
 \begin{itemize}
 
@@ -83,7 +83,7 @@ El método de extracción de MFCC está diseñado para recorrer todos los archiv
 
 \item \textbf{Duración estándar}: Se extraen los primeros 25 segundos de cada pista de audio para obtener la misma dimensionalidad en todo el conjunto de datos.
 
-\item\textbf{Extracción de coeficientes MFCC}: Se extraen 10 coeficientes MFCC de cada pista de audio. Se ha decidido extraer 10 coeficientes ya que es un número válido para realizar una posterior clasificación y su dimensionalidad es correcta para hacer el entrenamiento eficiente.
+\item\textbf{Extracción de coeficientes MFCC}: Se extraen 10 coeficientes MFCC de cada pista de audio. Se ha decidido extraer 10 coeficientes ya que es un número válido en el caso de este problema para realizar la clasificación, además su dimensionalidad es correcta para hacer el entrenamiento eficiente.
 
 \item \textbf{Normalización}: Los coeficientes MFCC extraídos se normalizan restando la media y dividiendo por la desviación estándar. Este proceso se llama \textit{Normalización Z-Score} y se calcula de la siguiente manera.
 
@@ -113,7 +113,7 @@ Para generar visualizaciones, se ha repetido el proceso de extracción de caract
 \section{Técnicas de aumento de datos}
 
 Las técnicas de aumentación de datos se basan en la generación de datos artificiales por medio de modificaciones de los datos originales \cite{PIERGALLINI_2023}. Esta técnica es importante en conjuntos de datos con pocos ejemplos o cuyos ejemplos no son suficientes para realizar un entrenamiento de calidad.
-En este proyecto se han planteado diversas técnicas de aumentación de datos como por ejemplo:
+En este proyecto se han planteado diversas técnicas de aumentación de datos, aunque finalmente no ha sido necesaria su incorporación. De todas maneras se ha considerado conveniente tener en cuenta todas estas técnicas para ahondar más profundamente en el estudio.
 
 \begin{itemize}
 \tightlist
@@ -136,14 +136,15 @@ En esta sección se va a explicar en detalle las diferentes características del
 
 El modelo de aprendizaje automático utilizado es una representación de datos musicales procesados y algoritmos utilizados para realizar tareas de predicción de una clase.
 
-\subsection{Datos}
+\subsection{Procesamiento de datos}
 
 Los datos con los que se alimentan al modelo utilizado son un conjunto de características musicales, en concreto 10 coeficientes MFCC, junto a su etiqueta correspondiente, el género musical. Con esta información el modelo aplicará algoritmos de machine learning para aprender de los datos y devolver nuevas predicciones
 (generalizar) sobre datos nuevos o externos.
 
 Los datos proceden de una gran cantidad de ficheros de audio, los cuales han sido procesados para extraer sus características más importantes. Una vez realizado este proceso, los datos procesados se guardan en un archivo, el cual será encargado de alimentar el modelo de aprendizaje automático.
 
-Se ha detectado un problema en este planteamiento, la cantidad de datos a procesar. Los datos deben ser almacenados en alguna parte mientras se introducen al modelo, esto puede suponer un problema si se cuenta con un equipo no demasiado potente que no puede almacenar todos los datos en la memoria. En este caso se ha producido un problema de memoria a la hora de procesar el conjunto de datos \texttt{fma\textunderscore large} ya que su tamaño, una vez procesado, superaba el límite de memoria. Para solucionar este problema se ha implementado una solución que se basa en el uso de datasets incrementales mediante generadores. De esta manera los datos se devuelven iterativamente y no es necesario que se almacenen juntos en memoria.
+Al realizar el procedimiento, se ha detectado un problema con la cantidad de datos a procesar. Los datos deben ser almacenados mientras se introducen al modelo, esto puede suponer un problema si se cuenta con un equipo no demasiado potente que no puede almacenar todos los datos en la memoria. 
+En este caso se ha producido un problema de memoria a la hora de procesar el conjunto de datos \texttt{fma\textunderscore large} ya que su tamaño, una vez procesado, superaba el límite de memoria. Para solucionar este problema se ha implementado una solución que se basa en el uso de datasets incrementales mediante generadores. De esta manera los datos se devuelven iterativamente y no es necesario que se almacenen juntos en memoria.
 
 \subsection{Redes neuronales}
 

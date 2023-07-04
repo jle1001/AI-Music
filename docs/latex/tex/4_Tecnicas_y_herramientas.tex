@@ -6,23 +6,27 @@ Esta parte de la memoria tiene como objetivo presentar las técnicas metodológi
 \begin{itemize}
 \tightlist
 \item \textbf{Python}: Python es un lenguaje de programación de alto nivel ampliamente utilizado en el campo del aprendizaje automático y la inteligencia artificial. Esto es debido, en parte, a que posee una gran cantidad de bibliotecas y frameworks que facilitan el procesamiento de datos y la implementación de algoritmos de inteligencia artificial.
-En este proyecto, Python se ha utilizado para la implementación del back-end. Se han aprovechado su conjunto de bibliotecas para realizar el desarrollo Web (Flask), procesamiento de datos (Librosa, NumPy, Pandas) y métodos de aprendizaje automático (TensorFlow y Scikit-learn).
+En este proyecto, Python se ha utilizado para la implementación del back-end. Se han aprovechado su conjunto de bibliotecas para realizar el desarrollo Web (Flask), procesamiento de datos (Librosa, NumPy, Pandas) y métodos de aprendizaje automático (TensorFlow y Scikit-learn) \cite{3.10_Documentation}. 
 
-\item \textbf{librosa}: librosa es una biblioteca de Python utilizada para el análisis y procesamiento de audio. Proporciona de una manera sencilla el acceso a métodos y funciones para realizar análisis, extracción y visualización de características de audio.
+\item \textbf{librosa}: librosa es una biblioteca de Python utilizada para el análisis y procesamiento de audio. Proporciona de una manera sencilla el acceso a métodos y funciones para realizar análisis, extracción y visualización de características de audio \cite{librosa}.
 
-\item \textbf{TensorFlow}: TensorFlow es una biblioteca de código abierto utilizada en el campo del aprendizaje automático. Proporciona la posiblidad de implementar redes neuronales complejas de una forma sencilla con grandes volúmenes de datos.
+\item \textbf{TensorFlow}: TensorFlow es una biblioteca de código abierto utilizada en el campo del aprendizaje automático. Proporciona la posiblidad de implementar redes neuronales complejas de una forma sencilla con grandes volúmenes de datos \cite{TensorFlow}.
 
-\item \textbf{Keras}: Keras es una interfaz de alto nivel para TensorFlow. Facilita la creación y configuración de modelos.
+\item \textbf{Keras}: Keras es una interfaz de alto nivel para TensorFlow. Facilita la creación y configuración de modelos \cite{TensorFlow}. 
 
-\item \textbf{scikit-learn}: scikit-learn es una biblioteca de aprendizaje automático de Python que proporciona una amplia gama de algoritmos y herramientas para el análisis de datos y la construcción de modelos. Incluye funciones para la división de conjuntos de datos en conjuntos de entrenamiento (\textit{train} y \textit{prueba}) que han sido utilizadas en este proyecto.
+\item \textbf{scikit-learn}: scikit-learn es una biblioteca de aprendizaje automático de Python que proporciona una amplia gama de algoritmos y herramientas para el análisis de datos y la construcción de modelos. Incluye funciones para la división de conjuntos de datos en conjuntos de entrenamiento (\textit{train} y \textit{prueba}) que han sido utilizadas en este proyecto \cite{scikit}. 
 
-\item \textbf{NumPy}: NumPy es una biblioteca de Python utilizada para realizar cálculos numéricos en matrices y matrices multidimensionales. 
+\item \textbf{NumPy}: NumPy es una biblioteca de Python utilizada para realizar cálculos numéricos en matrices y matrices multidimensionales \cite{NumPy}. 
 
-\item \textbf{Pandas}: biblioteca de código abierto en Python que proporciona herramientas de análisis de datos.
+\item \textbf{Pandas}: biblioteca de código abierto en Python que proporciona herramientas de análisis de datos \cite{pandas}. 
 
-\item \textbf{Flask}: framework de desarrollo web de Python. Es simple y adaptable, permitiendo utilizar diferentes bibliotecas en conjunto.
+\item \textbf{Flask}: framework de desarrollo web de Python. Es simple y adaptable, permitiendo utilizar diferentes bibliotecas en conjunto \cite{Flask}. 
 
-\item \textbf{Matplotlib}: biblioteca de Python utilizada para la visualización de datos mediante una interfaz de alto nivel.
+\item \textbf{Matplotlib}: biblioteca de Python utilizada para la visualización de datos mediante una interfaz de alto nivel \cite{matplotlib}. 
+
+\item \textbf{Visual Studio Code}: Visual Studio Code es un editor de código fuente con diversas funcionalidades como depuración de código o control de versiones Git entre otras. Asimismo ofrece una alta capacidad de personalización \cite{Microsoft_2021}. 
+
+\item \textbf{Jupyter Notebooks}: Jupyter Notebook es una aplicación web de código abierto que permite crear y compartir documentos que combinan código, visualizaciones y documentación \cite{Jupyter}. 
 \end{itemize}
 
 \section{Justificación de las herramientas utilizadas}
@@ -34,22 +38,23 @@ En este proyecto, Python se ha utilizado para la implementación del back-end. S
 
 A continuación se presentan algunas justificaciones que han decantado el desarrollo del proyecto en lenguaje Python en comparación con otros lenguajes de programación.
 
-\textbf{Integraciones}: Python cuenta con una completa integración con la mayoría de bibliotecas y frameworks especializados en aprendizaje automático, como TensorFlow, scikit-learn, PyTorch, Keras entre otros. 
+\textbf{Integraciones}: Python cuenta con una completa integración con la mayoría de bibliotecas y frameworks especializados en aprendizaje automático, como TensorFlow, scikit-learn, PyTorch, Keras entre otros \cite{Team_2023}.
 En el caso de C, aunque existen algunas bibliotecas como \textit{mlpack}, \textit{libsvm} o una API para controlar TensorFlow (\textit{libtensorflow}) su comunidad de aprendizaje automático es bastante más pequeña que la de Python, por lo que hay menos soporte y recursos disponibles.
 En cuanto a Go, su implementación en este proyecto hubiera sido muy interesante debido a ser un lenguaje moderno, rápido y muy popular, pero ocurre lo mismo que con C. Tiene escaso soporte para aprendizaje automático y procesamiento de datos por lo que sus recursos son escasos.
 Esto ha sido vital para elegir Python por encima del resto de lenguajes planteados.
 
-\textbf{Rendimiento}: En este apartado los ganadores claros son C y Go, al tratarse de lenguajes compilados, pero en este proyecto el rendimiento bruto no es la prioridad como pueden ser la implementación de algoritmos de aprendizaje automático o el tratamiento de datos.
+\textbf{Rendimiento}: En este apartado los ganadores claros son C y Go \cite{Python3vsC}, al tratarse de lenguajes compilados, pero en este proyecto el rendimiento bruto no es la prioridad como pueden ser la implementación de algoritmos de aprendizaje automático o el tratamiento de datos.
 Por eso mismo se ha elegido Python teniendo en cuenta que aunque es el que menor rendimiento tiene, es el que otorga un mayor valor al proyecto. Aunque en última instancia, incluso en Python, las partes de código computacionalmente más intensivas recurren a llamar a código escrito en lenguaje C o Fortran, con lo que la penalización de eficiencia tampoco es tan grande.
 
 \subsection{Biblioteca de aprendizaje automático}
+
 \textbf{Bibliotecas planteadas}: TensorFlow, Pytorch, Scikit-learn
 
 \textbf{Bibliotecas elegidas}: TensorFlow y Scikit-learn (como herramienta de partición de datos).
 
 \textbf{Integraciones}: tanto TensorFlow, Pytorch como Scikit-learn ofrecen excelentes integraciones con Python. Por lo que este apartado no ha sido importante para valorar la elección entre uno u otro.
 
-\textbf{Enfoque y alcance}: Tanto TensorFlow como Pytorch son bibliotecas de aprendizaje automático con soporte para aprendizaje profundo y grandes volumenes de datos. En cambio Scikit-learn es una biblioteca de aprendizaje automático centrada en algoritmos tradicionales y no es adecuado para grandes volúmenes de datos.
+\textbf{Enfoque y alcance}: Tanto TensorFlow como Pytorch son bibliotecas de aprendizaje automático con soporte para aprendizaje profundo y grandes volumenes de datos. En cambio Scikit-learn es una biblioteca de aprendizaje automático centrada en algoritmos tradicionales y no es adecuado para grandes volúmenes de datos \cite{Loobuyck_2020}.
 Por estas razones se descarta Scikit-learn como una opción viable para entrenar el modelo planteado en este proyecto, aunque se ha utilizado como biblioteca de métodos de procesamiento del conjunto de datos mediante sus herramientas de partición de conjunto de datos (\texttt{train\textunderscore test\textunderscore split}).
 
 \textbf{Rendimiento}: tanto TensorFlow como Pytorch poseen soporte para entrenamiento con GPU o TPU, por lo que su rendimiento es muy similar. En este caso la elección ha sido utilizar TensorFlow debido a su mayor documentación y posibilidad de configuración.
@@ -61,14 +66,14 @@ Por estas razones se descarta Scikit-learn como una opción viable para entrenar
 
 \textbf{Rendimiento}: Flask y Django poseen un rendimiento similar en la mayoría de ocasiones aunque es posible, que en ciertas ocasiones, Flask sea algo más rápido debido a su naturaleza.
 
-\textbf{Enfoque}: Flask sigue una filosofía más simple y minimalista en su desarrollo. Esto ayuda a que su implementación en el proyecto sea más sencilla y \textit{directa}. En cambio Django sigue un patrón de diseño (MVC) más estricto y con muchas funciones que en este proyecto no han sido necesarias.
+\textbf{Enfoque}: Flask sigue una filosofía más simple y minimalista en su desarrollo \cite{Campbell_2023}. Esto ayuda a que su implementación en el proyecto sea más sencilla y \textit{directa}. En cambio Django sigue un patrón de diseño (MVC) más estricto y con muchas funciones que en este proyecto no han sido necesarias.
 Por estas razones se ha escogido Flask como la opción para implementar la aplicación web.
 
 \section{Técnicas utilizadas}
 
 Se han utilizado diversas técnicas y metodologías para llevar a cabo el desarrollo y entrenamiento de los modelos de aprendizaje automático.
 
-(En el documento \textit{Anexos} se describe de una forma mucho más profunda el desarrollo metodológico del proyecto.)
+(En el documento \texttt{Anexos} se describe de una forma mucho más profunda el desarrollo metodológico del proyecto.)
 
 \subsection{Procesamiento y extracción de características de audio}
 
@@ -77,7 +82,7 @@ Para el procesamiento y extracción de características de audio, se ha utilizad
 \subsection{División del conjunto de datos}
 
 Para dividir el conjunto de datos en conjuntos de entrenamiento, prueba y validación, se ha utilizado la biblioteca scikit-learn. 
-Scikit-learn proporciona una función llamada \texttt{train\textunderscore test\textunderscore split} que permite dividir el conjunto de datos en partes destinadas para el entrenamiento y la evaluación del modelo.
+Scikit-learn proporciona una función llamada \texttt{train\textunderscore test\textunderscore split} \cite{scikit_tts} que permite dividir el conjunto de datos en partes destinadas para el entrenamiento y la evaluación del modelo.
 Esta técnica de división del conjunto de datos es fundamental para evaluar la capacidad de \textbf{generalización} del modelo y evitar el \textbf{sobreajuste}.
 
 \begin{figure}
@@ -112,7 +117,7 @@ Esta técnica de división del conjunto de datos es fundamental para evaluar la 
 
 Para realizar el entrenamiento de los datos, se han utilizado redes neuronales implementadas con la biblioteca TensorFlow.
 
-En este proyecto, se han utilizado diferentes arquitecturas de redes neuronales, como redes neuronales convolucionales (CNN) y redes neuronales multicapa. 
-Estas arquitecturas son adecuadas para tareas de procesamiento de audio y han demostrado ser efectivas en la clasificación y reconocimiento de patrones en audio.
+En este proyecto, se han utilizado diferentes arquitecturas de redes neuronales, como redes neuronales convolucionales (CNN) y redes neuronales multicapa.
+Estas arquitecturas son adecuadas para tareas de procesamiento de audio y han demostrado ser efectivas en la clasificación y reconocimiento de patrones en audio \cite{article_cnn}. 
 
 Las redes neuronales se entrenan actualizando los pesos y los sesgos de la red iterativamente para minimizar la pérdida (\textit{loss}). Una vez entrenadas, las redes neuronales realizan predicciones sobre nuevos datos de audio, clasificándolos en categorías o estilos musicales.

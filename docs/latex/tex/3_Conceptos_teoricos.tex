@@ -73,7 +73,7 @@ Estos sistemas analizan las características de las canciones más escuchadas po
 Un espectrograma es una representación visual del espectro de frecuencia de una señal de audio en función del tiempo. 
 Proporciona información detallada sobre cómo se distribuye la energía del sonido en diferentes frecuencias a lo largo del tiempo.
 
-A continuación se explica el proceso para obtener un espectrograma de una canción.
+A continuación se explica el proceso para obtener un espectrograma de una canción. \cite{Gartzman_2020}
 
 \begin{itemize}
 \tightlist
@@ -107,7 +107,8 @@ A continuación se explica el proceso para obtener los coeficientes MFCC de una 
 
 \item \textbf{Cálculo de la Transformada de Fourier de tiempo corto (STFT)}: A cada trama de la señal se le aplica la Transformada de Fourier de tiempo corto (STFT), que calcula la contribución de diferentes frecuencias en cada trama. La STFT proporciona diversa información sobre las fases y amplitudes de las frecuencias en cada segmento de tiempo.
 
-\item \textbf{Banco de filtros de Mel}: Se aplica un banco de filtros de Mel, que consiste en una serie de filtros triangularmente espaciados en la escala de Mel. Estos filtros se utilizan para representar el espectro en términos de bandas de frecuencia de Mel.
+\item \textbf{Banco de filtros de Mel}: Se aplica un banco de filtros de Mel, que consiste en una serie de filtros triangularmente espaciados en la escala de Mel. Estos bancos de filtros son una parte crucial en el análisis del habla y la música.
+En primer lugar, se debe destacar que una banda de frecuencia Mel engloba un rango de frecuencias agrupadas dentro de esta misma escala. Por otro lado, el término espaciado triangular se refiere a la forma en la que los filtros son distribuidos a lo largo de la escala. Debemos considerar a cada filtro como un triángulo cuya base se extiende a lo largo de una parte de la escala de Mel. La altura de este triángulo se correspondería con la respuesta del filtro.
 
 \item \textbf{Logaritmo de la energía}: Se calcula el logaritmo de la energía después de aplicar el banco de filtros de Mel. Esto se hace para tener en cuenta la respuesta no lineal del oído humano a las frecuencias.
 
@@ -131,13 +132,7 @@ Los coeficientes MFCC son ampliamente utilizados en aplicaciones como:
 
 \section{Inteligencia Artificial}
 
-La inteligencia artificial (IA) es la capacidad de un sistema informático de imitar funciones cognitivas humanas, como el aprendizaje y la solución de problemas
-
-Los sistemas de inteligencia artificial pueden analizar grandes cantidades de datos, reconocer patrones y tomar decisiones basadas en esa información. Pueden aprender de la experiencia y mejorar su rendimiento con el tiempo. 
-
-Hay diferentes enfoques en la IA, incluyendo el aprendizaje automático (\textit{machine learning}), el procesamiento del lenguaje natural (\textit{natural language processing}), la visión por computador (\textit{computer vision}) y la robótica, entre otros.
-
-La IA se utiliza en una amplia variedad de aplicaciones cómo en sistemas de recomendación, análisis de datos o diagnósticos médicos por ejemplo.
+La inteligencia artificial (IA) es la capacidad de un sistema informático de imitar funciones cognitivas humanas, como el aprendizaje y la solución de problemas. Los sistemas de inteligencia artificial pueden analizar grandes cantidades de datos, reconocer patrones y tomar decisiones basadas en esa información. Pueden aprender de la experiencia y mejorar su rendimiento con el tiempo. Hay diferentes enfoques en la IA, incluyendo el aprendizaje automático (\textit{machine learning}), el procesamiento del lenguaje natural (\textit{natural language processing}), la visión por computador (\textit{computer vision}) y la robótica, entre otros. La IA se utiliza en una amplia variedad de aplicaciones cómo en sistemas de recomendación, análisis de datos o diagnósticos médicos por ejemplo.
 
 \subsection{Aprendizaje automático (Machine Learning)}
 El aprendizaje automático (\textit{machine learning}) es un subcampo de la inteligencia artificial que se centra en el desarrollo de algoritmos y modelos que permiten a los sistemas aprender y extraer información a partir de datos, sin ser explícitamente programados para ello.
@@ -334,9 +329,9 @@ Las redes neuronales se componen de varias capas cada una con su funcionalidad e
 
 \textbf{Capas recurrentes}: capas formadas por redes neuronales recurrentes. En una capa recurrente, las neuronas tienen conexiones de retroalimentación con ellas mismas a lo largo del tiempo.
 
-\textbf{Capas de pooling}: capas utilizadas para reducir la dimensionalidad de los datos. Una capa de pooling toma un subconjunto de las entradas y produce una sola salida, que es una medida estadística resumida de sus entradas (por ejemplo, el máximo o el promedio).
+\textbf{Capas de pooling}: capas utilizadas para reducir la dimensionalidad de los datos. Una capa de pooling toma un subconjunto de las entradas y produce una sola salida, que es una medida estadística resumida de sus entradas (por ejemplo, el máximo o el promedio). Este tipo de capas son comunmente utilizadas en redes convolucionales.
 
-\textbf{Capas de normalización}: capas utilizadas para normalizar las entradas a una red o las salidas de una capa anterior. La normalización ayuda con el proceso de entrenamiento de la red.
+\textbf{Capas de normalización}: capas utilizadas para normalizar las entradas a una red o las salidas de una capa anterior. La normalización ayuda con el proceso de entrenamiento de la red y es un proceso fundamental para equilibrar la escala de características de entrenamiento y acelerar su convergencia. También desempeña una importante función como forma de regularización, previniendo el sobreajuste.
 
 \section{Proceso de entrenamiento}
 El entrenamiento de una red neuronal implica un proceso que, de forma iterativa, ajusta los pesos de cada una de las neuronas para minimizar la diferencia entre las salidas predichas y las salidas reales del conjunto de datos de entrenamiento. Este proceso se puede clasificar en varios pasos: \cite{Pramoditha_2022}
@@ -380,6 +375,7 @@ Donde:
 
 \section{Evaluación del modelo}
 La evaluación de un modelo de red neuronal es el proceso donde se determina la efectividad del modelo. Este proceso debe realizarse durante y después del entrenamiento.
+Durante el desarrollo de un modelo, los datos se dividen en conjuntos de entrenamiento, validación y prueba. El conjunto de entrenamiento se utiliza para ajustar los pesos de la red. El conjunto de validación, aunque no participa directamente en el entrenamiento, se utiliza para ajustar hiperparámetros y prevenir el sobreajuste. Finalmente, el conjunto de prueba se usa una vez que el modelo ha sido completamente entrenado. \cite{Jordan_2018}
 
 \textbf{Evaluación con el conjunto de prueba}: tras entrenar el modelo es imprescindible realizar una evaluación final con el conjunto de prueba. Esta evaluación da como resultado una evaluación más precisa de como se comportará el modelo con datos externos.
 

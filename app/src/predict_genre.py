@@ -41,7 +41,18 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     return f'{genres[0]}, {genres[1]}, {genres[2]}'
 
 def get_model(n_model=1):
-    # TODO: Documentate this function
+    """ Retrieve the name of the model type based on the number.
+
+    The function maps input number to model name:
+    "1" -> 'Initial'
+    "2" -> 'Simple Convolutional'
+    "3" -> 'Convolutional'
+
+    Args:
+        n_model: number of the model. Default value is 1.
+
+    Returns:
+        str: The name of the corresponding model. """
     model = []
     if n_model == "1":
         model = f'Initial'
