@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import pandas as pd
+import os
 import librosa
 
 UPLOAD_TRACK = './app/static/upload/upload.mp3'
@@ -37,20 +38,25 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
 
     # Predict output
     genres = []
-    print(model.predict(mfcc)[0])
-    print(np.argmax(model.predict(mfcc)[0]))
-    print(f"{np.argsort(model.predict(mfcc)[0])[-3:][::-1]}")
+    predictions = model.predict(mfcc)[0]
+    print(predictions)
+    # print(np.argmax(model.predict(mfcc)[0]))
+    top_3_predictions = np.argsort(model.predict(mfcc)[0])[-3:][::-1]
 
     # Returns the top three predicted genres
-    for i in np.argsort(model.predict(mfcc)[0])[-3:][::-1]:
-        genres.append(get_genre_name(i))
-    return f'{genres[0]}, {genres[1]}, {genres[2]}'
+    for i in top_3_predictions:
+        genres.append((get_genre_name(i), predictions[i] * 100))
+
+    # Removes upload audio file from disk due to legal reasons.
+    os.remove(UPLOAD_TRACK)
+
+    return ', '.join(f'{genre_name}: {genre_prob:.2f}%' for genre_name, genre_prob in genres)
 
 def get_model(n_model=1):
     """ Retrieve the name of the model type based on the number.
 
     The function maps input number to model name:
-    "1" -> 'Initial'
+    "1" -> 'Dense'
     "2" -> 'Simple Convolutional'
     "3" -> 'Convolutional'
 
@@ -61,7 +67,7 @@ def get_model(n_model=1):
         str: The name of the corresponding model. """
     model = []
     if n_model == "1":
-        model = f'Initial'
+        model = f'Dense'
     elif n_model == "2":
         model = f'Simple Convolutional'
     elif n_model == "3":
