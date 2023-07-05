@@ -4,9 +4,9 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-# from keras.optimizers import Adam
+from sklearn.metrics import classification_report
 from keras.regularizers import l2
-from keras.callbacks import EarlyStopping
+import matplotlib.pyplot as plt
 
 # Load MFCC features
 track_genres_mfcc = pd.read_pickle('data/processed/track_genres_mfcc.pkl')
@@ -80,7 +80,7 @@ def get_model(n_model):
         ])
     elif (n_model == 2):
         model = tf.keras.Sequential([
-            tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
+            # tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
             tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal"),
             tf.keras.layers.Conv1D(128, (3), activation='relu', kernel_regularizer=l2(0.01)),
             tf.keras.layers.Dropout(0.5),
@@ -91,36 +91,18 @@ def get_model(n_model):
             tf.keras.layers.Dense(64, activation='relu'),
             tf.keras.layers.Dropout(0.5),
             tf.keras.layers.Flatten(),
-            tf.keras.layers.Dense(1236, activation='softmax')
+            tf.keras.layers.Dense(max(converted_y) + 1, activation='softmax')
         ])
     else:
         model = tf.keras.Sequential([
-            tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
-            tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
-            tf.keras.layers.Conv1D(64, 3, padding='same', activation='relu'),
-            tf.keras.layers.BatchNormalization(),
-            tf.keras.layers.MaxPooling1D(pool_size=2),
-
-            tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-            tf.keras.layers.Conv1D(128, 3, padding='same', activation='relu'),
-            tf.keras.layers.BatchNormalization(),
-            tf.keras.layers.MaxPooling1D(pool_size=2),
-
-            tf.keras.layers.Conv1D(32, 3, padding='same', activation='relu'),
-            tf.keras.layers.Conv1D(256, 3, padding='same', activation='relu'),
-            tf.keras.layers.BatchNormalization(),
-            tf.keras.layers.MaxPooling1D(pool_size=2),
-
-            # tf.keras.layers.LSTM(128),
-            # tf.keras.layers.LSTM(128),
-            # tf.keras.layers.BatchNormalization(),
-            # tf.keras.layers.MaxPooling1D(pool_size=2),
-
-            tf.keras.layers.Flatten(),
-            tf.keras.layers.Dense(64, activation='relu'),
+            tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal"),
+            tf.keras.layers.Dense(256, activation='relu'),
             tf.keras.layers.Dropout(0.5),
-            tf.keras.layers.Dense(32, activation='relu'),
-            tf.keras.layers.Dense(1236, activation="softmax")
+            tf.keras.layers.Dense(128, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(64, activation="relu"),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(max(converted_y) + 1, activation="softmax")
         ])
 
     return model
@@ -161,7 +143,7 @@ def train(n_model):
     y_test_np = np.array(y_test)
 
     # callbacks = [EarlyStopping(patience=5, restore_best_weights=True)]
-    history = model.fit(X_train_np, y_train_np, epochs=5, validation_split=0.2, batch_size=13)#, callbacks=callbacks)
+    history = model.fit(X_train_np, y_train_np, epochs=10, validation_split=0.2, batch_size=5)
     loss, acc = model.evaluate(X_test_np, y_test_np, verbose=2)
     print(f'Loss: {loss}')
     print(f'Accuracy: {acc}')
@@ -179,6 +161,11 @@ def train(n_model):
 
     # Save model
     model.save(f'app/models/{model_name}.h5')
+
+    # Saving the history
+    import pickle
+    with open(f'app/models/{model_name}_history', 'wb') as file_pi:
+        pickle.dump(history.history, file_pi)
 
 def train_generators(n_model, train_data=1024, test_data=64, val_data=64):
     # TODO: Add documentation
@@ -231,5 +218,38 @@ def train_generators(n_model, train_data=1024, test_data=64, val_data=64):
     print(f'Loss: {loss}')
     print(f'Accuracy: {acc}')
 
+def eval_model():
+    model = tf.keras.models.load_model('app/models/model_8L_Ada.h5')
+    y_pred = model.predict(np.stack(X_test))
+    y_pred = np.argmax(y_pred, axis=1)
+
+    report = classification_report(y_test, y_pred, output_dict=True)
+
+    # You can then access the overall recall, precision, and f1-score as follows:
+    print(f"Overall Precision: {report['weighted avg']['precision']}")
+    print(f"Overall Recall: {report['weighted avg']['recall']}")
+    print(f"Overall F1-score: {report['weighted avg']['f1-score']}")
+    print(f"Accuracy: {report['accuracy']}")
+
+    plot_metrics(report, 'precision')
+    plot_metrics(report, 'recall')
+    plot_metrics(report, 'f1-score')
+
+# Define a function to plot metrics
+def plot_metrics(metrics_dict, metric):
+    # Exclude overall metrics, only keep per-class metrics
+    classes = [k for k in metrics_dict.keys() if isinstance(metrics_dict[k], dict)]
+    values = [metrics_dict[class_label][metric] for class_label in classes]
+
+    plt.figure(figsize=(10,5))
+    plt.bar(classes, values, color='blue')
+    plt.xlabel('Class')
+    plt.ylabel(metric)
+    plt.title(f'{metric} for different classes')
+
+    # Save the plot to a file
+    plt.savefig(f'app/plots/model_8L_{metric}_plot.png')
+
 # Change later
 train(1)
+# eval_model()

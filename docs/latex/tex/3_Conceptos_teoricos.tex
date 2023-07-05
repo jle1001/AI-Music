@@ -35,7 +35,7 @@ El reconocimiento musical se basa en el análisis de diversas características d
 \begin{itemize}
 \item \textbf{Ritmo}: El ritmo es una de las propiedades fundamentales de la música y se refiere a la organización temporal de los eventos sonoros. Su complejidad abarca desde un ritmo repetitivo a un ritmo con notas y silencios complejos.
 El ritmo se puede analizar en términos de su complejidad, regularidad, velocidad y otros aspectos. En algunos géneros de música, como el techno, el ritmo suele ser el aspecto más dominante.
-La importancia del ritmo en el reconocimiento musical puede involucrar la detección del tempo y el análisis de los patrones rítmicos para obtener conclusiones. \cite{Crossley-Holland}
+La importancia del ritmo en el reconocimiento musical puede involucrar la detección del tempo y el análisis de los patrones rítmicos para obtener conclusiones \cite{Crossley-Holland}.
 
 \item \textbf{Frecuencia}: La frecuencia musical es el número de vibraciones u oscilaciones por segundo en el sonido. 
 La frecuencia de estas vibraciones se mide en ciclos por segundo, o hercios (Hz). Mientras mayor sea la frecuencia más agudo es el tono, y cuando menor más grave.
@@ -73,7 +73,7 @@ Estos sistemas analizan las características de las canciones más escuchadas po
 Un espectrograma es una representación visual del espectro de frecuencia de una señal de audio en función del tiempo. 
 Proporciona información detallada sobre cómo se distribuye la energía del sonido en diferentes frecuencias a lo largo del tiempo.
 
-A continuación se explica el proceso para obtener un espectrograma de una canción. \cite{Gartzman_2020}
+A continuación se explica el proceso para obtener un espectrograma de una canción \cite{Gartzman_2020}.
 
 \begin{itemize}
 \tightlist
@@ -95,7 +95,7 @@ Los espectrogramas tienen una gran utilidad no solo en el estudio de la música.
 
 \subsection{Coeﬁcientes Cepstrales de Frecuencias de Mel (MFCC)}
 Los coeficientes cepstrales de frecuencias de Mel (MFCC) son características ampliamente utilizadas en el procesamiento de señales de audio y el reconocimiento de voz. 
-Estos coeficientes representan las características espectrales de una señal de audio en función de la escala de Mel, que es una escala perceptual de frecuencia basada en la respuesta del oído humano. \cite{SAHIDULLAH2012543} \cite{Deruty_2022}
+Estos coeficientes representan las características espectrales de una señal de audio en función de la escala de Mel, que es una escala perceptual de frecuencia basada en la respuesta del oído humano \cite{SAHIDULLAH2012543, Deruty_2022}.
 
 A continuación se explica el proceso para obtener los coeficientes MFCC de una pista de audio.
 
@@ -121,9 +121,9 @@ Los coeficientes MFCC son ampliamente utilizados en aplicaciones como:
 
 \begin{itemize}
 \tightlist
-\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y fácilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs. \cite{Kiran_2021}
-\item Identificación de hablantes: Los MFCC se pueden utilizar para identificar voces de diferentes hablantes, debido a que cada persona tiene una forma característica de hablar. \cite{Kiran_2021} \cite{Nakagawa_Wang}
-\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos musicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación. \cite{Wu}
+\item Reconocimiento de voz: Como los MFCC son una forma de reducir la complejidad de la voz a estructuras más simples y fácilmente procesables, son utilizados para el reconocimiento de voz. Por ejemplo asistentes de audio como Siri o Alexa utilizan (junto a otros sistemas) MFCCs \cite{Kiran_2021}.
+\item Identificación de hablantes: Los MFCC se pueden utilizar para identificar voces de diferentes hablantes, debido a que cada persona tiene una forma característica de hablar \cite{Kiran_2021, Nakagawa_Wang}.
+\item Clasificación de audio: Se pueden utilizar para identificar diferentes sonidos o instrumentos musicales en una pista de audio y de esta manera obtener información relevante que permita realizar una clasificación \cite{Wu}.
 \end{itemize}
 
 \imagen{example_MFCC}{MFCC de una pista de audio.}{1.0}
@@ -143,14 +143,14 @@ Existen diversos tipos de aprendizaje automático:
 
 \item \textbf{Aprendizaje no supervisado}: Los algoritmos trabajan con conjuntos de datos no etiquetados, es decir, sin clase conocida. El objetivo es encontrar patrones u estructuras ocultas en los datos. El aprendizaje no supervisado se utiliza en tareas como el agrupamiento (\textit{clustering}) o la detección de valores atípicos (\emph{outliers}).
 
-\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una serie de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica. \cite{sutton2018reinforcement}
+\item \textbf{Aprendizaje por refuerzo}: En este tipo de aprendizaje, un agente inteligente interactúa con su entorno y aprende a tomar decisiones según una serie de recompensas o penalizaciones. El objetivo es encontrar una política de actuación que maximize las recompensas recibidas. El aprendizaje por refuerzo es utilizado para entrenar agentes en videojuegos o en robótica \cite{sutton2018reinforcement}.
 
-\item \textbf{Aprendizaje semi-supervisado}: En este tipo de aprendizaje el conjunto de datos no está completamente etiquetado, por lo tanto, el objetivo es maximizar el rendimiento del modelo a partir de los datos con clase conocida. \cite{chapelle2006ssl}
+\item \textbf{Aprendizaje semi-supervisado}: En este tipo de aprendizaje el conjunto de datos no está completamente etiquetado, por lo tanto, el objetivo es maximizar el rendimiento del modelo a partir de los datos con clase conocida \cite{chapelle2006ssl}.
 \end{itemize}
 
 \section{Ejemplo de aprendizaje supervisado}
 
-En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado, por lo que se va a detallar un ejemplo simple para entender su funcionamiento: \cite{DADA2019e01802}
+En este proyecto se va a utilizar un enfoque de IA utilizando aprendizaje supervisado, por lo que se va a detallar un ejemplo simple para entender su funcionamiento \cite{DADA2019e01802}:
 
 \subsection{Objetivo}
 Construir un modelo de aprendizaje automático para clasificar correos electrónicos como "<spam"> o "<no spam">.
@@ -189,7 +189,7 @@ El algoritmo utilizado en el proyecto es más complejo y será explicado en deta
 \section{Redes neuronales}
 Para realizar el entrenamiento del modelo de aprendizaje automático se han utilizado redes neuronales. 
 Las redes neuronales son una categoría de modelos de aprendizaje automático inspirados en la estructura biológica del cerebro humano. Se componen de nodos interconectados llamados neuronas, organizadas en capas, que trabajan juntas para procesar información y hacer predicciones.
-La decisión de utilizar redes neuronales en lugar de otras técnicas de aprendizaje automático para el entrenamiento del modelo se basa en varios factores: \cite{9165253} \cite{Nandi_2021} 
+La decisión de utilizar redes neuronales en lugar de otras técnicas de aprendizaje automático para el entrenamiento del modelo se basa en varios factores \cite{9165253, Nandi_2021}: 
 
 \begin{itemize}
 \tightlist
@@ -204,7 +204,7 @@ Las redes neuronales son capaces de entender estas relaciones y patrones no line
 
 \end{itemize}
 
-Las redes neuronales se componen de los siguientes elementos: \cite{AGGARWAL_2023}
+Las redes neuronales se componen de los siguientes elementos \cite{AGGARWAL_2023}:
 \begin{itemize}
 \tightlist
 \item \textbf{Neuronas}: entidad matemática inspirada en la neurona biológica. Es el componente básico de una red neuronal. 
@@ -218,7 +218,7 @@ Al igual que las neuronas en el cerebro humano, una neurona artificial toma una 
 
 La neurona artificial suma las entradas ponderadas y luego aplica una función de activación para producir la salida. Las funciones de activación son necesarias para introducir no linealidad en la red, lo que permite que la red aprenda a partir de datos más complejos.
 
-Hay varios tipos de neuronas diferenciadas por su función de activación. Algunos ejemplos podrían ser: \cite{Baheti} \cite{Gutpa_2022}
+Hay varios tipos de neuronas diferenciadas por su función de activación. Algunos ejemplos podrían ser \cite{Baheti, Gutpa_2022}:
 
 \textbf{Neurona umbral}: esta neurona aplica una función de umbral a las entradas. Si la suma ponderada de las entradas supera un cierto umbral, la neurona se activa.
 
@@ -267,7 +267,7 @@ f(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{N} e^{x_j}}
 Donde $x_i$ es el valor de entrada de la neurona y $N$ es el número total de entradas.
 
 \subsection{Capas}
-Una red neuronal artificial está compuesta por un conjunto de capas neuronales interconectadas. \cite{AGGARWAL_2023} \cite{Ognjanovski_2020}
+Una red neuronal artificial está compuesta por un conjunto de capas neuronales interconectadas \cite{AGGARWAL_2023, Ognjanovski_2020}.
 Cada capa consiste en un conjunto de neuronas las cuales reciben información de la capa anterior y envía su salida a las neuronas en la capa siguiente. Según su posición en la red neuronal las capas se pueden clasificar como:
 
 \textbf{Capa de entrada}: es la primera capa de la red. Cada neurona en la capa de entrada corresponde a una característica en el conjunto de datos de entrada.
@@ -321,7 +321,7 @@ En estas capas es donde se produce la mayor parte del cálculo de la red. Los pe
 
 \subsection{Tipos de capas}
 
-Las redes neuronales se componen de varias capas cada una con su funcionalidad específica. A continuación se exploran algunos tipos comunes de capas. \cite{Rosebrock_2023}
+Las redes neuronales se componen de varias capas cada una con su funcionalidad específica. A continuación se exploran algunos tipos comunes de capas \cite{Rosebrock_2023}.
 
 \textbf{Capas densas o totalmente conectadas}: cada neurona está conectada a todas las neuronas en la capa anterior y a todas las neuronas en la capa siguiente.
 
@@ -334,13 +334,13 @@ Las redes neuronales se componen de varias capas cada una con su funcionalidad e
 \textbf{Capas de normalización}: capas utilizadas para normalizar las entradas a una red o las salidas de una capa anterior. La normalización ayuda con el proceso de entrenamiento de la red y es un proceso fundamental para equilibrar la escala de características de entrenamiento y acelerar su convergencia. También desempeña una importante función como forma de regularización, previniendo el sobreajuste.
 
 \section{Proceso de entrenamiento}
-El entrenamiento de una red neuronal implica un proceso que, de forma iterativa, ajusta los pesos de cada una de las neuronas para minimizar la diferencia entre las salidas predichas y las salidas reales del conjunto de datos de entrenamiento. Este proceso se puede clasificar en varios pasos: \cite{Pramoditha_2022}
+El entrenamiento de una red neuronal implica un proceso que, de forma iterativa, ajusta los pesos de cada una de las neuronas para minimizar la diferencia entre las salidas predichas y las salidas reales del conjunto de datos de entrenamiento. Este proceso se puede clasificar en varios pasos \cite{Pramoditha_2022}:
 
 \textbf{Inicialización de pesos}: el primer paso en el entrenamiento es inicializar los pesos de las neuronas de la red. Normalmente se inicializan de manera aleatoria.
 
 \textbf{Propagación hacia adelante}: la propagación hacia adelante es el proceso por el cual la red neuronal transmite la información desde la capa de entrada hasta la capa de salida mediante la información calculada en cada función de activación neuronal.
 
-\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}, esta función es utilizada en problemas de clasificación multiclase dónde las etiquetas son datos enteros como es el caso del proyecto. \cite{Koech_2022}
+\textbf{Función de perdida}: proceso de medición de la calidad de las predicciones. La función de perdida (o función de coste) genera un valor indicando cuanta distancia existe entre las predicciones y las clases verdaderas. Existen distintos tipos de funciones de perdida, en el caso de este proyecto la función utilizada es \textit{Sparse Categorical Crossentropy}, esta función es utilizada en problemas de clasificación multiclase dónde las etiquetas son datos enteros como es el caso del proyecto \cite{Koech_2022}.
 La función es la siguiente:
 
 \begin{equation}
@@ -375,7 +375,7 @@ Donde:
 
 \section{Evaluación del modelo}
 La evaluación de un modelo de red neuronal es el proceso donde se determina la efectividad del modelo. Este proceso debe realizarse durante y después del entrenamiento.
-Durante el desarrollo de un modelo, los datos se dividen en conjuntos de entrenamiento, validación y prueba. El conjunto de entrenamiento se utiliza para ajustar los pesos de la red. El conjunto de validación, aunque no participa directamente en el entrenamiento, se utiliza para ajustar hiperparámetros y prevenir el sobreajuste. Finalmente, el conjunto de prueba se usa una vez que el modelo ha sido completamente entrenado. \cite{Jordan_2018}
+Durante el desarrollo de un modelo, los datos se dividen en conjuntos de entrenamiento, validación y prueba. El conjunto de entrenamiento se utiliza para ajustar los pesos de la red. El conjunto de validación, aunque no participa directamente en el entrenamiento, se utiliza para ajustar hiperparámetros y prevenir el sobreajuste. Finalmente, el conjunto de prueba se usa una vez que el modelo ha sido completamente entrenado \cite{Jordan_2018}.
 
 \textbf{Evaluación con el conjunto de prueba}: tras entrenar el modelo es imprescindible realizar una evaluación final con el conjunto de prueba. Esta evaluación da como resultado una evaluación más precisa de como se comportará el modelo con datos externos.
 

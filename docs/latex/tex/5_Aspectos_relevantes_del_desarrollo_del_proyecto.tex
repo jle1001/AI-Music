@@ -150,20 +150,49 @@ En este caso se ha producido un problema de memoria a la hora de procesar el con
 
 Las redes neuronales utilizadas para el entrenamiento consiste una serie de capas convolucionales que van transformando las entradas en representaciones cada vez más sencillas y abstractas hasta llegar a la capa final, una capa densa, que realiza la clasificación en las clases correspondientes.
 
-INSERTAR IMAGEN DEL RESUMEN DEL MODELO E IMAGEN DEL RESUMEN DE LAS CAPAS.
+Se han utilizado tres modelos con diferentes características:
+
+\begin{enumerate}
+\tightlist
+
+\item \textbf{Modelo 1}: Contiene 3 capas convolucionales y una capa densa como capa final.
+
+\item \textbf{Modelo 2}: Contiene 2 capas convolucionales y una capa densa como capa final. Además incluye reguladores del kernel L2 para prevenir el sobreajuste.
+
+\item \textbf{Modelo 3}: Contiene 3 capas densas.
+
+\end{enumerate}
 
 \section{Evaluación del rendimiento del modelo}
 
 \subsection{Entrenamiento}
 
-INSERTAR IMÁGENES DEL PROCESO DE ENTRENAMIENTO DEL MODELO.
+\textbf{Entrenamiento del modelo 1}
+
+\imagen{accuracy_17L}{Proceso de entrenamiento del modelo 1, mostrando la medida \textit{accuracy}}{0.75}
+\imagen{Loss_17L}{Proceso de entrenamiento del modelo 1, mostrando la medida \textit{loss}}{0.75}
+
+\textbf{Entrenamiento del modelo 2}
+
+\imagen{accuracy_11L}{Proceso de entrenamiento del modelo 2, mostrando la medida \textit{accuracy}}{0.75}
+\imagen{Loss_11L}{Proceso de entrenamiento del modelo 2, mostrando la medida \textit{loss}}{0.75}
+
+\textbf{Entrenamiento del modelo 3}
+
+\imagen{accuracy_8L}{Proceso de entrenamiento del modelo 3, mostrando la medida \textit{accuracy}}{0.75}
+\imagen{Loss_8L}{Proceso de entrenamiento del modelo 3, mostrando la medida \textit{loss}}{0.75}
 
 \subsection{Explotación}
 
 Una vez que el modelo ha sido entrenado se prueba con el 30\% de datos restantes los cuales son datos que no se han tenido en cuenta en el proceso de entrenamiento. Este proceso proporciona una evaluación del rendimiento del modelo y da una ídea sobre como se comportará el modelo con datos que insertará el usuario en la aplicación.
-
-INSERTAR IMÁGENES DEL PROCESO DE EVALUACIÓN CON LOS DATOS DE TEST.
-
 Además se ha evaluado el comportamiento del modelo con diferentes métricas, vistas anteriormente en la sección \texttt{3.8. Evaluación del modelo}.
 
-INSERTAR MÉTRICAS DE RENDIMIENTO.
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Modelo & Precision & Recall & F1-score & Accuracy \\
+\hline
+1 & 0.2217 & 0.3301 & 0.2480 & 0.3301 \\
+2 & 0.1397 & 0.3738 & 0.2034 & 0.3738 \\
+3  & 0.3024 & 0.3592 & 0.3120 & 0.3592 \\
+\hline
+\end{tabular}
