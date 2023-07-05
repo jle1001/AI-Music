@@ -12,22 +12,28 @@ GENRES_LIST = './data/raw_genres.csv'
 # conv_model = tf.keras.models.load_model('app/models/model_7L_RMS.h5')
 
 def predict(audio=UPLOAD_TRACK, n_model=3):
-    # TODO: Documentate this function
-    # model = []
-    # if n_model == "1":
-    #     model = initial_model
-    # elif n_model == "2":
-    #     model = simple_conv_model
-    # elif n_model == "3":
-    #     model = conv_model
+    """Predicts the genre of an audio track using its MFCCs features into a trained deep learning model.
 
-    model = tf.keras.models.load_model('app/models/model_9L_RMS.h5')
+    Args:
+        audio: Path to the audio file to be analyzed.
+        n_model: Model number.
+    
+    Returns:
+        Top three predicted genres for the given audio track."""
+    if n_model == "1":
+        model = tf.keras.models.load_model('app/models/model_8L_Ada.h5')
+    elif n_model == "2":
+        model = tf.keras.models.load_model('app/models/model_11L_Ada.h5')
+    elif n_model == "3":
+        model = tf.keras.models.load_model('app/models/model_17L_Ada.h5')
+    else:
+        return
 
     # Extract MFCC of uploaded track
     y, sr = librosa.load(audio)
     y = y[:(25 * sr)]
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=10)
-    mfcc = tf.reshape(mfcc.ravel(), shape=(1,10770))
+    mfcc = tf.reshape(mfcc.ravel(), shape=(1, 1077, 10))
 
     # Predict output
     genres = []
@@ -35,7 +41,7 @@ def predict(audio=UPLOAD_TRACK, n_model=3):
     print(np.argmax(model.predict(mfcc)[0]))
     print(f"{np.argsort(model.predict(mfcc)[0])[-3:][::-1]}")
 
-    # return get_genre_name(np.argmax(model.predict(mfcc)[0]))
+    # Returns the top three predicted genres
     for i in np.argsort(model.predict(mfcc)[0])[-3:][::-1]:
         genres.append(get_genre_name(i))
     return f'{genres[0]}, {genres[1]}, {genres[2]}'
@@ -64,6 +70,13 @@ def get_model(n_model=1):
     return model
 
 def get_genre_name(genre_number):
+    """Returns the genre name from the identifier number.
+
+    Args:
+        genre_number: Genre identifier number.
+
+    Returns:
+        The name of the genre in string format."""
     genres_list = pd.read_csv(GENRES_LIST)
     return genres_list[genres_list["genre_id"] == genre_number]["genre_handle"].item()
 

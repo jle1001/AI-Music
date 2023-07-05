@@ -18,7 +18,7 @@ Esta sección describe la especificación de requisitos para el proyecto. Se pro
 \subsection{Requisitos funcionales}
 
 Un requisito funcional es una especificación que describe lo que un sistema debe hacer o cómo debe comportarse.
-Los requisitos funcionales pueden incluir detalles como cálculos, manipulación de datos, interacción con el usuario, etc. \cite{Blog_2018}
+Los requisitos funcionales pueden incluir detalles como cálculos, manipulación de datos, interacción con el usuario, etc \cite{Blog_2018}.
 A continuación se listan los requisitos funcionales extraidos para este proyecto:
 
 \begin{itemize}
@@ -29,7 +29,7 @@ A continuación se listan los requisitos funcionales extraidos para este proyect
 	\tightlist
 	\item \textbf{RF-1.1 Extracción de características de audio}: la aplicación debe ser capaz de extraer características relevantes de la canción que se utilizarán para predecir el estilo musical.
 
-	\item \textbf{RF-1.2 Implementar un modelo de machine learning para realizar la predicción}: la aplicación debe implementar un modelo de machine learning que se entrenará con las características de un conjunto de datos musical.
+	\item \textbf{RF-1.2 Implementar un modelo de machine learning para realizar la predicción}: la aplicación debe implementar un modelo de \emph{machine learning} que se entrenará con las características de un conjunto de datos musical.
 	\end{itemize}
 
 \item \textbf{RF-2 Presentación de la información}: la aplicación debe mostrar información relevante sobre la predicción realizada.
@@ -50,7 +50,7 @@ A continuación se listan los requisitos funcionales extraidos para este proyect
 \end{itemize}
 \subsection{Requisitos no funcionales}
 
-Los requisitos no funcionales se centran en las características del sistema que no están directamente relacionadas con su comportamiento, por ejemplo rendimiento o seguridad. \cite{Blog_2018}
+Los requisitos no funcionales se centran en las características del sistema que no están directamente relacionadas con su comportamiento, por ejemplo rendimiento o seguridad \cite{Blog_2018}.
 A continuación se listan los requisistos no funcionales extraídos para este proyecto:
 
 \begin{itemize}
@@ -191,7 +191,7 @@ A continuación se exponen las especificaciones de los casos de uso que forman l
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
 			\item El modelo procesa las características extraídas de la canción.
-			\item Se obtiene el resultado de la predicción, el cual consiste en un vector de probabilidades entre diferentes estilos musicales.
+			\item Se obtiene el resultado de la predicción, el cual consiste en un vector de probabilidades para diferentes estilos musicales.
 		\end{enumerate}\\
 		\textbf{Postcondiciones} &
 		\begin{enumerate}
@@ -222,7 +222,7 @@ A continuación se exponen las especificaciones de los casos de uso que forman l
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Ángel López \\
 		\textbf{Requisitos asociados} & RF-2.1, RF-2.2 \\
-		\textbf{Descripción}          & Tras la ejecución del modelo de machine learning, la aplicación muestra la predicción del estilo musical al usuario. \\
+		\textbf{Descripción}          & Tras la ejecución del modelo de \emph{machine learning}, la aplicación muestra la predicción del estilo musical al usuario. \\
 		\textbf{Precondiciones}        & 
 		\begin{enumerate}		    
 			\def\labelenumi{\arabic{enumi}.}
@@ -233,9 +233,9 @@ A continuación se exponen las especificaciones de los casos de uso que forman l
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item La aplicación muestra la predicción del estilo musical en la interfaz.
+			\item La aplicación muestra las tres predicciones más probables de los estilos musicales en la interfaz.
 			\item El usuario puede cambiar entre distintas visualizaciones de forma dinámica.
-			\item El usuario visualiza la predicción.
+			\item El usuario visualiza las predicciones.
 		\end{enumerate}\\
 		\textbf{Postcondiciones} &
 		\begin{enumerate}
@@ -318,7 +318,7 @@ A continuación se exponen las especificaciones de los casos de uso que forman l
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item El usuario hace selecciona el nombre de la aplicación, en la zona superior izquierda de la pantalla, para volver a la página inicial.
+			\item El usuario selecciona el nombre de la aplicación, en la zona superior izquierda de la pantalla, para volver a la página inicial.
 			\item El usuario pulsa el botón \textit{Upload File}.
 			\item El usuario busca y selecciona la nueva canción que desea cargar desde su almacenamiento.
 		\end{enumerate}\\

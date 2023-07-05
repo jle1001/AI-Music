@@ -9,8 +9,10 @@ UPLOAD_TRACK = './app/static/upload/upload.mp3'
 
 def show_waveform(audio=UPLOAD_TRACK):
     """Display the waveform of an audio file.
+
     Args:
         audio (str): Path to the audio file. Default is 'upload/upload.mp3'.
+
     Returns:
         str: Base64-encoded image data in PNG format.
     """
@@ -29,8 +31,10 @@ def show_waveform(audio=UPLOAD_TRACK):
 
 def show_spectogram(audio=UPLOAD_TRACK):
     """Display the Mel-frequency spectrogram of an audio file.
+
     Args:
         audio (str): Path to the audio file. Default is 'upload/upload.mp3'.
+
     Returns:
         str: Base64-encoded image data in PNG format.
     """
@@ -49,8 +53,10 @@ def show_spectogram(audio=UPLOAD_TRACK):
 
 def show_chromagram(audio=UPLOAD_TRACK):
     """Display the Chromagram of an audio file.
+
     Args:
         audio (str): Path to the audio file. Default is 'upload/upload.mp3'.
+
     Returns:
         str: Base64-encoded image data in PNG format.
     """
@@ -68,8 +74,10 @@ def show_chromagram(audio=UPLOAD_TRACK):
 
 def show_MFCC(audio=UPLOAD_TRACK):
     """Display the Mel-frequency cepstral coefficients (MFCC) of an audio file.
+
     Args:
         audio (str): Path to the audio file. Default is 'upload/upload.mp3'.
+        
     Returns:
         str: Base64-encoded image data in PNG format.
     """

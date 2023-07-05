@@ -1,6 +1,8 @@
 
 function openFeature(evt, featureName) {
-    // TODO: Documentate this function
+    /**
+     * openFeature manages the visibility of the tabbed UI based on the provided featureName.
+     */
     var i, featuresContent, featuresTab, featuresDesc;
     featuresContent = document.getElementsByClassName("features-content");
     featuresDesc = document.getElementsByClassName("features-description");

@@ -24,7 +24,7 @@ La estructura de directorios de la aplicación es la siguiente:
 
 \item \texttt{/app/}: Directorio con el código fuente de la aplicación. Además incluye en fichero \texttt{\textunderscore\textunderscore init\textunderscore\textunderscore .py} que lanza y define las rutas en la aplicación web utilizando \texttt{Flask}.
 
-\item \texttt{/app/models/}: Directorio donde se almacenan los modelos de machine learning entrenados que la aplicación utiliza para realizar las predicciones de los estilos musicales.
+\item \texttt{/app/models/}: Directorio donde se almacenan los modelos de \emph{machine learning} entrenados que la aplicación utiliza para realizar las predicciones de los estilos musicales.
 
 \item \texttt{/app/src/}: Directorio donde se encuentra el código fuente Python. Aquí es donde se realiza todo el procesamiento interno de la aplicación.
 
@@ -42,7 +42,7 @@ La estructura de directorios de la aplicación es la siguiente:
 
 \item \texttt{/docs/latex/}: Documentación del proyecto en formato \LaTeX.
 
-\item \texttt{/examples/}: Ejemplos de uso de las librerías.
+\item \texttt{/examples/}: Ejemplos de uso de las bibliotecas.
 
 \end{itemize}
 
@@ -52,6 +52,8 @@ Esta sección tiene como objetivo ser una guía para que los futuros programador
 
 Para el desarrollo del proyecto se utilizó Visual Studio Code con el lenguaje de programación Python. Además, se utilizó Git para el sistema de control de versiones. Se recomienda tener ciertos conocimientos en estos sistemas antes de empezar.
 
+Asimismo, para el diseño de la interfaz de usuario, se utilizó el lenguaje de marcado \texttt{HTML}, que proporciona la estructura básica de las páginas web. Para personalizar la apariencia de estas páginas, se aplicaron estilos mediante \texttt{CSS} y se implementaron funcionalidades interactivas a partir de \texttt{JavaScript}. Complementariamente, LaTeX se utilizó para la elaboración de la documentación, gracias a su capacidad para gestionar referencias y presentar ecuaciones y algoritmos de manera clara.
+
 \subsection{Herramientas recomendadas}
 
 Para contribuir al desarrollo del proyecto se recomienda utilizar las siguientes herramientas.
@@ -59,23 +61,21 @@ Para contribuir al desarrollo del proyecto se recomienda utilizar las siguientes
 \begin{itemize}
 \tightlist
 
-\item \textbf{Git}: Se trata del sistema de control de versiones utilizado para realizar un seguimiento de los cambios en el código fuente de la aplicación a lo largo del tiempo. Se puede combinar con GitHub. \cite{Git} \cite{GitHub}
+\item \textbf{Git}: Se trata del sistema de control de versiones utilizado para realizar un seguimiento de los cambios en el código fuente de la aplicación a lo largo del tiempo. Se puede combinar con GitHub. \cite{Git, GitHub}
 
 \imagen{Git_console}{Consola de Git.}
 
 \item \textbf{Visual Studio Code}: Es el editor de código fuente recomendado para continuar con el desarrollo del proyecto. Se trata de un editor de código simple y ligero pero con una gran cantidad de extensiones que facilitan el desarrollo.
-Por ejemplo, incluye linting de código, formateo automático del código y soporte con Jupyter Notebooks o Docker. \cite{Microsoft_2021}
+Por ejemplo, incluye \emph{linting} de código, formateo automático del código y soporte con Jupyter Notebooks o Docker \cite{Microsoft_2021}.
 
 \imagen{VSCode}{Visual Studio Code.}
 
-\item \textbf{Jupyter Notebooks}: Herramienta de desarrollo de código y visualizaciones. Es una herramienta muy útil para realizar experimentación ya que une la ejecución de código fuente con la visualización de datos y la documentación.
-No se trata de una herramienta para realizar una versión final del producto, pero es muy útil para probar y generar prototipos de una forma rápida. \cite{Jupyter}
+\item \textbf{Jupyter notebooks}: Herramienta de desarrollo de código y visualizaciones. Es una herramienta muy útil para realizar experimentación ya que une la ejecución de código fuente con la visualización de datos y la documentación.
+No se trata de una herramienta para realizar una versión final del producto, pero es muy útil para probar y generar prototipos de una forma rápida \cite{Jupyter}.
 
 \imagen{Jupyter_notebook}{Jupyter Notebook.}
 
 \end{itemize}
-
-\subsection{Explicación de aspectos relevantes de programación}
 
 \section{Compilación, instalación y ejecución del proyecto}
 
@@ -126,7 +126,7 @@ Las pruebas unitarias son un tipo de pruebas de software en las que se comprueba
 
 \subsection{Pruebas de integración}
 
-Las pruebas de integración son una fase de pruebas de software en la que se prueban varias partes del programa para verficiar que interactúan correctamente entre ellas. Estas pruebas se centran en la interfaz y en la interacción entre las diferentes partes.
+Las pruebas de integración son una fase de pruebas de software en la que se prueban varias partes del programa para verificar que interactúan correctamente entre ellas. Estas pruebas se centran en la interfaz y en la interacción entre las diferentes partes.
 
 \subsection{Pruebas de interfaz de usuario}
 

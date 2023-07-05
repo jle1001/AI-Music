@@ -17,7 +17,7 @@ Cada sprint implicó una serie de actividades que culminaron con una entrega inc
 
 \subsection{Sprint 1 (08/03/2023 - 15/03/2023)}
 
-En el Sprint 1, se realizó la configuración inicial del proyecto, añadiendo una descripción detallada en el archivo README.md y estableciendo las bases de la documentación. Asimismo, se implementaron componentes básicos y se trabajó en el diseño de la aplicación, aprovechando las funcionalidades de la biblioteca librosa para el procesamiento de audio.
+En el Sprint 1, se realizó la configuración inicial del proyecto, añadiendo una descripción detallada en el archivo \texttt{README.md} y estableciendo las bases de la documentación. Asimismo, se implementaron componentes básicos y se trabajó en el diseño de la aplicación, aprovechando las funcionalidades de la biblioteca \textit{librosa} para el procesamiento de audio.
 
 \subsection{Sprint 2 (15/03/2023 - 22/03/2023)}
 
@@ -67,18 +67,15 @@ En el Sprint 12, se realizaron cambios en el diseño de la aplicación, mejorand
 
 En el Sprint 13, se realizaron varios cambios significativos. Por un lado se implementaron diferentes mejoras en el procesamiento y entrenamiento de los datos. De igual modo, se actualizaron el reproductor de audio y la información de las pistas. Además, se realizaron múltiples actualizaciones en la memoria, los anexos y la aplicación web. Eventualmente, se llevaron a cabo correcciones menores de estilo para mejorar la presentación general.
 
-\subsection{Sprint 14 (23/06/2023 - 04/06/2023)}
+\subsection{Sprint 14 (23/06/2023 - 05/06/2023)}
 
-En el Sprint 14, se continuaron realizando actualizaciones y mejoras en la documentación. Se realizaron cambios específicos en la sección B de los anexos, relacionada con los requisitos funcionales y no funcionales. También se actualizaron las secciones A, D y E de los anexos, que incluyen el plan del proyecto, el manual del programador y el manual de usuario, respectivamente. Se agregó un diagrama general de casos de uso y se llevaron a cabo actualizaciones adicionales en la documentación, la aplicación web y los anexos.
+En el Sprint 14, se continuaron realizando actualizaciones y mejoras en la documentación. Se realizaron cambios específicos en la sección B de los anexos, relacionada con los requisitos funcionales y no funcionales. También se actualizaron las secciones A, D y E de los anexos, que incluyen el plan del proyecto, el manual del programador y el manual de usuario, respectivamente. Se agregó un diagrama general de casos de uso y se llevaron a cabo actualizaciones adicionales en la documentación, la aplicación web y los anexos. Además se desplegó la aplicación web en un servidor en la nube, concretamente en la plataforma \texttt{PythonAnywhere}.
 
 \section{Estudio de viabilidad}
 
 \subsection{Viabilidad económica}
 
 La viabilidad económica de un proyecto de software se refiere a la capacidad para generar ingresos tanto para cubrir el desarrollo como para proporcionar una rentabilidad a medio y largo plazo. El presente proyecto no está planteado con un objetivo económico, por lo que esta sección se va a dedicar a explorar un posible plan de monetización de forma ficticia, explorando los costes totales de desarrollo de software y potenciales métodos de monetización.
-
-\subsection{Costes}
-Esta sección detalla los costes económicos a los que hay que hacer frente para diseñar, implementar y desplegar el software.
 
 \subsection{Costes de hardware}
 Los costes de hardware se refieren al gasto económico que se realiza para obtener los diferentes elementos hardware que se necesitan para poder llevar a cabo el desarrollo del proyecto. Los elementos hardware pueden ser ordenadores, periféricos o componentes internos por ejemplo.
@@ -115,7 +112,7 @@ Los costes de software se refieren al gasto económico que se realiza en la adqu
 \tightlist
 \item \textbf{Sistema Operativo}: Se ha elegido el sistema operativo Windows 11 Home como base para realizar el desarrollo del proyecto. Se podrían plantear alternativas gratuitas como alguna distribución de Linux pero por sencillez y extensión de uso se ha elegido Windows.
 
-\item \textbf{Servicios en la nube}: Durante las etapas intensivas de entrenamiento de modelos y almacenamiento de datos, podría llegar a ser necesario el uso de servicios de computación en la nube como AWS \cite{AWS} o Microsoft Azure \cite{Kcpitt}. El coste puede variar según el uso necesario. En este caso ficticio se estima que el gasto será de 100€.
+\item \textbf{Servicios en la nube}: Durante las etapas intensivas de entrenamiento de modelos y almacenamiento de datos, podría llegar a ser necesario el uso de servicios de computación en la nube como AWS \cite{AWS} o Microsoft Azure \cite{Kcpitt}. El coste puede variar según el uso necesario. Por ejemplo en un proyecto de estas características, contando con unos 100 GB de datos en AWS, se estimaría un costo de almacenamiento de unos 2€/mensuales y un costo de procesamiento de unos 30€/mensuales, utilizando 10 horas en una instancia \texttt{p3.2xlarge}, la cual es comúnmente utilizada para labores de aprendizaje automático. En total, el coste de la computación en la nube a lo largo del proyecto ha sido de 192€.
 \end{itemize}
 
 \begin{table}[h]
@@ -125,9 +122,9 @@ Los costes de software se refieren al gasto económico que se realiza en la adqu
 \textbf{Concepto} & \textbf{Coste} \\
 \hline
 Windows 11 Home \cite{win11} & 145€ \\
-Computación en la nube & 100€ \\
+Computación en la nube & 192€ \\
 \hline
-\textbf{Total} & \textbf{245€} \\
+\textbf{Total} & \textbf{337€} \\
 \hline
 \end{tabular}
 \caption{Costes de software para el desarrollo del proyecto}
@@ -163,10 +160,10 @@ Teniendo en cuenta una duración de desarrollo de proyecto de 6 meses, el coste 
 \textbf{Concepto} & \textbf{Coste} \\
 \hline
 Costes de hardware & 50€ \\
-Costes de software & 35€ \\
+Costes de software & 32€ \\
 Otros costes & 2610€ \\
 \hline
-\textbf{Total} & \textbf{2695€} \\
+\textbf{Total} & \textbf{2692€} \\
 \hline
 \end{tabular}
 \caption{Costes totales de desarrollo del proyecto}
@@ -196,17 +193,17 @@ Existen diversas formas en las que la aplicación podría generar ingresos como 
 
 \subsection{Viabilidad legal}
 
-La viabilidad económica del proyecto se refiere al cumplimiento de diversas leyes y obligaciones a la hora de desarrollar el software.
+La viabilidad legal del proyecto se refiere al cumplimiento de diversas leyes y obligaciones a la hora de desarrollar el software.
 
 \subsection{Derechos de autor}
 
 El tema de los derechos de autor en el mundo de la música es un tema complicado. Los derechos de autor de la música son un área legal compleja que envuelve partes como artistas, productores y discografías. Este proyecto va a utilizar un conjunto de datos musicales libres de derechos de autor lo que facilita el trabajo eliminando esta parte del proceso de desarrollo.
 
-A la hora de la subida de archivos musicales para su clasificación existe un problema, el usuario final puede subir cualquier fichero de audio tenga derechos de autor o no. Por lo tanto el procedimiento a realizar será la eliminación de cualquier fichero musical de la aplicación tras realizar el proceso de predicción.
+A la hora de la subida de archivos musicales para su clasificación existe un problema, el usuario final puede subir cualquier fichero de audio, tenga derechos de autor o no. Por lo tanto, el procedimiento a realizar será la eliminación de cualquier fichero musical de la aplicación tras realizar el proceso de predicción.
 
 \subsection{Licencias de software}
 
-Según el software utilizado se tienen en cuenta las siguientes licencias: \cite{Creative_Commons} \cite{Open_Source_Initiative_2023}
+Según el software utilizado, se tienen en cuenta las siguientes licencias: \cite{Creative_Commons, Open_Source_Initiative_2023}
 
 \begin{table}[h]
 \centering
@@ -222,6 +219,8 @@ ScikitLearn \cite{scikit} & BSD-3-Clause \\
 Flask \cite{Flask} & BSD-3-Clause \\
 FMA Dataset \cite{fma_dataset} & CC BY-NC-SA 4.0 \\
 Matplotlib \cite{matplotlib} & PSF \\
+Pandas \cite{pandas} & BSD-3-Clause \\
+Numpy \cite{NumPy} & BSD-3-Clause \\
 \hline
 \end{tabular}
 \end{table}

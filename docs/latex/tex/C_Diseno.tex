@@ -13,14 +13,14 @@ La aplicación maneja varios tipos de datos, que se describen a continuación:
 \begin{itemize}
 \tightlist
 
-\item \textbf{Archivos CSV}: Los archivos CSV son utilizados para almacenar información sobre los metadatos de los archivos de audio. \cite{CSV_documentation}
+\item \textbf{Archivos CSV}: Los archivos CSV son utilizados para almacenar información sobre los metadatos de los archivos de audio \cite{CSV_documentation}.
 En concreto, se trabaja con el fichero \texttt{tracks.csv} que contiene una gran cantidad de información sobre cada pista de audio y con el fichero \texttt{raw\textunderscore genres.csv} que contiene información sobre cada género musical.
 Estos ficheros se procesan para generar el archivo \texttt{track\textunderscore genres.csv}, que contiene el identificador de la pista de audio y sus géneros, y es más sencillo para su uso a la hora de introducir las características y entrenar el modelo.
 
-\item \textbf{Archivos de audio}: Los archivos de audio, en formato .mp3 \cite{MP3}, son los datos de entrada principales en la aplicación. Estos son analizados y procesados para extraer las características necesarias para su predicción.
+\item \textbf{Archivos de audio}: Los archivos de audio, en formato \texttt{.mp3} \cite{MP3}, son los datos de entrada principales en la aplicación. Estos son analizados y procesados para extraer las características necesarias para su predicción.
 
 \item \textbf{Archivos pickle}: Se ha optado por el uso de este tipo de ficheros para almacenar el conjunto de datos de entrenamiento procesado, \texttt{track\textunderscore genres\textunderscore mfcc.pkl}, debido a que mantiene mejor la información de las características que un fichero CSV tradicional.
-Este fichero se utiliza para entrenar el modelo de aprendizaje automático. \cite{Selvaraj_2023}
+Este fichero se utiliza para entrenar el modelo de aprendizaje automático \cite{Selvaraj_2023}.
 
 \end{itemize}
 
@@ -35,11 +35,11 @@ El diseño procedimental de la aplicación sigue un flujo de trabajo definido de
 
 \item \textbf{Carga de datos}: El usuario carga un fichero de audio que se desea clasificar.
 
-\item \textbf{Procesamiento de audio}: La aplicación procesa el audio extrayéndo características necesarias para su clasificación.
+\item \textbf{Procesamiento de audio}: La aplicación procesa el audio extrayendo características necesarias para su clasificación.
 
 \item \textbf{Clasificación de audio}: El modelo de aprendizaje automático realiza la predicción del género musical del fichero de audio.
 
-\item \textbf{Visualización del resultado}: La aplicación devuelve el resultado de la clasificación al usuario.
+\item \textbf{Visualización del resultado}: La aplicación devuelve el resultado de las predicciones al usuario.
 
 \end{enumerate}
 
@@ -121,17 +121,17 @@ El diseño procedimental de la aplicación sigue un flujo de trabajo definido de
 
 \section{Diseño arquitectónico}
 
-El diseño arquitectónico de la aplicación sigue un modelo de capas. \cite{Blancarte}
+El diseño arquitectónico de la aplicación sigue un modelo de capas \cite{Blancarte}.
 El modelo de capas es un arquitectura de software en las que las responsabilidades del software se dividen en capas apiladas. Cada capa ofrece servicios a la capa superior y los recibe de la capa inferior.
 
 \subsection{Capa de presentación}
 
-La capa de presentación se ocupa de la interacción e interfaz de usuario. Utiliza la librería \texttt{Flask} para funcionar y permite a los usuarios cargar archivos musicales, iniciar el proceso de predicción y visualizar los resultados finales.
+La capa de presentación se ocupa de la interacción e interfaz de usuario. Utiliza la biblioteca \texttt{Flask} para funcionar y permite a los usuarios cargar archivos musicales, iniciar el proceso de predicción y visualizar los resultados finales.
 Es en esta capa donde se renderizan los archivos HTML \cite{HTML_tutorial} y donde se realiza el intercambio de mensajes mediante el protocolo HTTP \cite{MozDevNet}. Esta capa está comunicada con la capa de lógica, que le devolverá la información para poder mostrar los resultados.
 
 \subsection{Capa de lógica}
 
-La capa de lógica o lógica de negocio es donde se produce el funcionamiento interno de la aplicación. El funcionamiento de la lógica de la aplicación funciona bajo el lenguaje de programación \texttt{Python} y varias librerías. En concreto se ejecutan las siguientes funcionalidades:
+La capa de lógica o lógica de negocio es donde se produce el funcionamiento interno de la aplicación. El funcionamiento de la lógica de la aplicación funciona bajo el lenguaje de programación \texttt{Python} y varias bibliotecas. En concreto se ejecutan las siguientes funcionalidades:
 
 \begin{itemize}
 \tightlist
@@ -158,13 +158,14 @@ La interfaz de usuario proporciona la interacción directa entre el usuario y el
 
 \subsection{Interfaz de usuario}
 
-El diseño de la interfaz de usuario está construido utilizando \texttt{Flask}. \texttt{Flask} se utiliza para renderizar los archivos HTML que forman la interfaz de usuario. Las imágenes utilizadas en la interfaz de usuario se han obtenido de la plataforma \textit{Flaticon} \cite{Flaticon}, la fuente utilizada es \texttt{Poppins} y ha sido extraída de \textit{Google Fonts}. \cite{Google_Fonts}
+El diseño de la interfaz de usuario está construido utilizando el lenguaje de marcado \texttt{HTML}. \texttt{Flask} se utiliza para definir las solicitudes y las respuestas \texttt{HTTP} y que de este modo, el navegador pueda renderizar los archivos HTML que forman la interfaz de usuario. 
+Las imágenes utilizadas en la interfaz de usuario se han obtenido de la plataforma \textit{Flaticon} \cite{Flaticon}, la fuente utilizada es \texttt{Poppins} y ha sido extraída de \textit{Google Fonts} \cite{Google_Fonts}.
 
 Incluye los siguientes elementos:
 
 \textbf{Pantalla de inicio}: La pantalla de inicio es lo primero que ve el usuario al iniciar la aplicación. Proporciona una breve introducción sobre el propósito y funcionamiento de la aplicación y permite cargar un archivo de audio para iniciar el proceso de predicción musical.
 
-\imagen{inicio}{Pantalla de inicio de la aplciación.}
+\imagen{inicio}{Pantalla de inicio de la aplicación.}
 
 \textbf{Selección de modelos y reproducción de audio}: Esta sección permite al usuario ver información básica sobre la pista de audio subida, como la duración o la frecuencia de muestreo, y elegir qué modelo entrenado se va a utilizar para realizar la predicción musical.
 

@@ -3,10 +3,13 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
 from keras.regularizers import l2
 import matplotlib.pyplot as plt
+
+#######################################################################
+# Python script for loading, process and train a neural network model #
+#######################################################################
 
 # Load MFCC features
 track_genres_mfcc = pd.read_pickle('data/processed/track_genres_mfcc.pkl')
@@ -15,7 +18,7 @@ track_genres_mfcc = pd.read_pickle('data/processed/track_genres_mfcc.pkl')
 X = track_genres_mfcc['mfcc'].apply(lambda x: np.array(x).reshape(-1, 10))
 y = np.array(track_genres_mfcc['genres'])
 
-# Get only the main genre
+# Extraction of the main genre of each track. This approach focuses on classifying the main genre, making the problem more manageable.
 processed_y = []
 for i in y:
     if i == "[]":
@@ -25,37 +28,49 @@ for i in y:
     processed_y.append(converted_list[0])
 print(np.unique(processed_y, return_counts=True))
 
-# y = track_genres_mfcc['genre_top']
-print(np.unique(y, return_counts=True))
+# print(np.unique(y, return_counts=True))
 
+# Get 8 more important music genres in the dataset.
+# 38: Experimental
+# 15: Electronic
+# 12: Rock
+# 10: Pop
+# 17: Folk
+# 25: Punk
+# 21: Hip-Hop
 converted_x = []
 converted_y = []
 target_styles = [38, 15, 12, 10, 17, 25, 21]
 target_counts = {style: 0 for style in target_styles}
 
 for i, j in zip(X, processed_y):
-    # Selection of certain genres
     if j not in target_styles:
         continue
-    # if target_counts[j] >= 150:
-    #     continue
     converted_y.append(j)
     converted_x.append(i)
     target_counts[j] += 1
 
-    # if all(count == 150 for count in target_counts.values()):
-    #     break
-print(np.unique(converted_y, return_counts=True))
-print(len(converted_y))
-print(len(converted_x))
+# print(np.unique(converted_y, return_counts=True))
+# print(len(converted_y))
+# print(len(converted_x))
 
 # Split data into train, validation and test.
 X_train, X_test, y_train, y_test = train_test_split(converted_x, converted_y, test_size=0.2, random_state=42)
 X_test, X_val, y_test, y_val = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
 
-# Temp method, change later
 def get_model(n_model):
+    """Function that returns a deep learning model based on the parameter input. 
+    There are three types of models that can be generated: two types of Convolutional Neural Networks (CNN) and a Dense Network. 
+
+    Args:
+        n_model (int): An integer to specify the type of model to generate. 
+            Accepts 1, 2 or 3, refering to the first CNN model, the second CNN model, or the Dense network respectively.
+
+    Returns:
+        model (tf.keras.Sequential): Returns a deep learning model. The output model depends on the n_model parameter."""
+    
     if (n_model == 1):
+        # First CNN Model.
         model = tf.keras.Sequential([
             tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal"),
             tf.keras.layers.Conv1D(128, 3, activation='relu', padding="same"),
@@ -79,27 +94,32 @@ def get_model(n_model):
             tf.keras.layers.Dense(max(converted_y) + 1, activation='softmax')
         ])
     elif (n_model == 2):
+        # Second CNN Model. Includes kernel regularization to prevent overfitting.
         model = tf.keras.Sequential([
-            # tf.keras.layers.Reshape((10770, 1), input_shape=(None, 10770)),
             tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal"),
             tf.keras.layers.Conv1D(128, (3), activation='relu', kernel_regularizer=l2(0.01)),
             tf.keras.layers.Dropout(0.5),
             tf.keras.layers.MaxPooling1D((2)),
+
             tf.keras.layers.Conv1D(64, (3), activation='relu', kernel_regularizer=l2(0.01)),
-            tf.keras.layers.Dropout(0.5),  # 50% dropout
+            tf.keras.layers.Dropout(0.5), 
             tf.keras.layers.MaxPooling1D((2)),
+
             tf.keras.layers.Dense(64, activation='relu'),
             tf.keras.layers.Dropout(0.5),
             tf.keras.layers.Flatten(),
             tf.keras.layers.Dense(max(converted_y) + 1, activation='softmax')
         ])
-    else:
+    elif (n_model == 3):
+        # Dense Model.
         model = tf.keras.Sequential([
             tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal"),
             tf.keras.layers.Dense(256, activation='relu'),
             tf.keras.layers.Dropout(0.5),
+
             tf.keras.layers.Dense(128, activation='relu'),
             tf.keras.layers.Dropout(0.5),
+
             tf.keras.layers.Dense(64, activation="relu"),
             tf.keras.layers.Flatten(),
             tf.keras.layers.Dense(max(converted_y) + 1, activation="softmax")
@@ -108,7 +128,17 @@ def get_model(n_model):
     return model
 
 def generator(X, y, batch_size):
-    # TODO: Add documentation
+    """Generates batches of training data in a random order. 
+    This generator continuously generates batches of data indefinitely.
+
+    Args:
+        X: Feature matrix.
+        y: Target vector.
+        batch_size: The size of the batches to generate.
+
+    Yields:
+        (batch_X, batch_y): batch of features and batch of targets."""
+    
     num_samples = X.shape[0]
     print(len(y))
     num_batches = num_samples // batch_size 
@@ -127,7 +157,10 @@ def generator(X, y, batch_size):
             yield batch_X, batch_y
 
 def train(n_model):
-    # TODO: Add documentation
+    """Trains a neural network model and saves it and its training data to the disk.
+
+    Args:
+        n_model: A parameter to be passed to get_model() function to retrieve the model to be trained."""
 
     # Get the model
     model = get_model(n_model)
@@ -136,13 +169,13 @@ def train(n_model):
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.0001)
     model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-    # Data to tensor
+    # Data to tensor so TensorFlow can work with them.
     X_train_np = np.array(X_train)
     y_train_np = np.array(y_train)
     X_test_np = np.array(X_test)
     y_test_np = np.array(y_test)
 
-    # callbacks = [EarlyStopping(patience=5, restore_best_weights=True)]
+    # callbacks = [EarlyStopping(patience=5, restore_best_weights=True)] # Function to stop the training in a certain point when the performance stops improving.
     history = model.fit(X_train_np, y_train_np, epochs=10, validation_split=0.2, batch_size=5)
     loss, acc = model.evaluate(X_test_np, y_test_np, verbose=2)
     print(f'Loss: {loss}')
@@ -159,17 +192,23 @@ def train(n_model):
     model_name = f'model_{layer_count}L_{optimizer_name_short}'
     print(model_name)
 
-    # Save model
+    # Save model to the disk
     model.save(f'app/models/{model_name}.h5')
 
-    # Saving the history
+    # Save the training history to the disk to do analysis or create visualizations
     import pickle
     with open(f'app/models/{model_name}_history', 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
 
 def train_generators(n_model, train_data=1024, test_data=64, val_data=64):
-    # TODO: Add documentation
+    """Trains a neural network model using generators saves it to the disk.
 
+    Args:
+        n_model: A parameter to be passed to get_model() function to retrieve the model to be trained.
+        train_data: Batch size for the training dataset. Default is 1024.
+        test_data: Batch size for the testing dataset. Default is 64.
+        val_data: Batch size for the validation dataset. Default is 64."""
+    
     # Get the model
     model = get_model(n_model)
 
@@ -177,7 +216,10 @@ def train_generators(n_model, train_data=1024, test_data=64, val_data=64):
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.0001)
     model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-    # Dataset generation
+    # Dataset generation. Using tf.data.Dataset.from_generator() creates a dataset from a generator function.
+        # lambda: generator(X, y, train_data) returns batches data.
+        # output_signature: define the shape and type of the output from the generator function.
+
     train_data = train_data
     test_data = test_data
     val_data = val_data
@@ -207,11 +249,11 @@ def train_generators(n_model, train_data=1024, test_data=64, val_data=64):
     )
     
     # Model fit using generators
-    history = model.fit(train_dataset, 
-                steps_per_epoch=526,
-                validation_data=val_dataset,
-                validation_steps=4,
-                epochs=50)
+    model.fit(train_dataset, 
+              steps_per_epoch=526,
+              validation_data=val_dataset,
+              validation_steps=4,
+              epochs=50)
     
     # Model evaluation using generators
     loss, acc = model.evaluate(test_dataset, verbose=2)
@@ -219,37 +261,20 @@ def train_generators(n_model, train_data=1024, test_data=64, val_data=64):
     print(f'Accuracy: {acc}')
 
 def eval_model():
-    model = tf.keras.models.load_model('app/models/model_8L_Ada.h5')
+    """Loads a trained model and evaluate it."""
+    model = tf.keras.models.load_model('app/models/model_17L_Ada.h5')
+
+    # Selects the class with the highest probability.
     y_pred = model.predict(np.stack(X_test))
     y_pred = np.argmax(y_pred, axis=1)
 
+    # Provide classification metrics
     report = classification_report(y_test, y_pred, output_dict=True)
 
-    # You can then access the overall recall, precision, and f1-score as follows:
     print(f"Overall Precision: {report['weighted avg']['precision']}")
     print(f"Overall Recall: {report['weighted avg']['recall']}")
     print(f"Overall F1-score: {report['weighted avg']['f1-score']}")
     print(f"Accuracy: {report['accuracy']}")
 
-    plot_metrics(report, 'precision')
-    plot_metrics(report, 'recall')
-    plot_metrics(report, 'f1-score')
-
-# Define a function to plot metrics
-def plot_metrics(metrics_dict, metric):
-    # Exclude overall metrics, only keep per-class metrics
-    classes = [k for k in metrics_dict.keys() if isinstance(metrics_dict[k], dict)]
-    values = [metrics_dict[class_label][metric] for class_label in classes]
-
-    plt.figure(figsize=(10,5))
-    plt.bar(classes, values, color='blue')
-    plt.xlabel('Class')
-    plt.ylabel(metric)
-    plt.title(f'{metric} for different classes')
-
-    # Save the plot to a file
-    plt.savefig(f'app/plots/model_8L_{metric}_plot.png')
-
-# Change later
 train(1)
 # eval_model()

@@ -338,12 +338,26 @@
   \end{minipage}
   \vfill
   % Datos de alumno, curso y tutores ------------------
-  \begin{center}%
-  {%
+
+%  \begin{center}%
+%  {%
+%    \noindent\LARGE
+%    Presentado por \@author{}\\ 
+%    en Universidad de Burgos --- \@date{}\\
+%    Tutores: \@tutor{}\\
+%  }%
+%  \end{center}%
+\begin{center}%
+   {%
     \noindent\LARGE
     Presentado por \@author{}\\ 
-    en Universidad de Burgos --- \@date{}\\
-    Tutores: \@tutor{}\\
+    en Universidad de Burgos \\
+    el \@date{}\\
+    \begin{tabbing}
+    Tutores: \= \kill
+    Tutores: César García Osorio\\
+           \> Alicia Olivares Gil\\
+    \end{tabbing}
   }%
   \end{center}%
   \null
