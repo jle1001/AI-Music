@@ -19,6 +19,21 @@ Tutores: César Ignacio García Osorio, Alicia Olivares Gil
 
 AI-Music is an application that predicts music genres from audio files. The application includes a user-friendly interface that enables the users to upload files and visualizate the predicted genres with the main features of the song.
 
+## External files
+
+Dataset and metadata used to train the model is availiable in this repository: <a href="https://github.com/mdeff/fma">FMA: A Dataset For Music Analysis</a>
+
+The latest version of the application has been trained using: 
+1. **`fma_small.zip`**: audio tracks used to train the model.
+2. **`fma_metadata.zip`**: audio tracks information to obtain the genres asociated with the audio files.
+
+## Information about training process
+To begin with the training process the first step is process the data and extract features using /app/src/extract_features.py script.
+
+Later, to train the model it is neccesary to download and extract a dataset from <a href="https://github.com/mdeff/fma">FMA: A Dataset For Music Analysis</a> in /data/raw/<dataset information>
+
+It can be used fma_small.zip, fma_medium.zip, fma_large.zip or fma_full.zip. The latest version of the application has been trained using **`fma_small.zip`**.
+
 ## Usage
 
 AI-Music project can be used <a href="https://jle1001.pythonanywhere.com/">online</a> or locally. For local use, follow the next steps:
@@ -58,14 +73,6 @@ pip install -r requirements.txt
 ```bash
 flask run
 ```
-
-## External files
-
-Dataset and metadata used to train the model is availiable in this repository: <a href="https://github.com/mdeff/fma">FMA: A Dataset For Music Analysis</a>
-
-Last version of the application has been trained using: 
-1. **`fma_small.zip`**: audio tracks used to train the model.
-2. **`fma_metadata.zip`**: audio tracks information to obtain the genres asociated with the audio files.
 
 # License
 
