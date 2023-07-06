@@ -123,11 +123,42 @@ Una vez que el servidor está en funcionamiento, se puede acceder a la aplicaci�
 \subsection{Pruebas unitarias}
 
 Las pruebas unitarias son un tipo de pruebas de software en las que se comprueban individualmente las partes más pequeñas del sistema. Estas partes pueden ser funciones, métodos o clases.
+En este tipo de pruebas no se verifica el correcto funcionamiento del modelo de predicción, sino el funcionamiento de cada parte del código que se necesita para llegar hasta ahí. Por ejemplo:
 
-\subsection{Pruebas de integración}
+\begin{itemize}
+\tightlist
 
-Las pruebas de integración son una fase de pruebas de software en la que se prueban varias partes del programa para verificar que interactúan correctamente entre ellas. Estas pruebas se centran en la interfaz y en la interacción entre las diferentes partes.
+\item \textbf{Pruebas unitarias en la generación de predicciones}: verificación de que el uso del modelo entrenado genera una cantidad correcta de predicciones. Por ejemplo, se puede verificar que la capa de salida del modelo genera una cantidad de clases igual al número de géneros musicales en el conjunto de datos.
+
+\imagen{number_predictions_unit_test}{Código del test unitario que comprueba el número correcto de generación de predicciones.}
+
+\imagen{number_predictions_unit_test_OK}{Resultado de la ejecución del test unitario.}
+
+\end{itemize}
 
 \subsection{Pruebas de interfaz de usuario}
 
-Las pruebas de interfaz de usuario son pruebas que se utilizan para verificar que la interacción entre el usuario y el software se realiza correctamente.
+Las pruebas de interfaz de usuario son aquellas que se utilizan para verificar que la interacción entre el usuario y el software se realiza correctamente. Por ejemplo:
+
+\begin{itemize}
+\tightlist
+
+\item \textbf{Prueba de carga de archivos}: esta prueba verifica que la aplicación puede cargar correctamente los archivos deseados por el usuario.
+	\begin{enumerate}
+	\tightlist
+
+	\item \textbf{El usuario carga el archivo}: \texttt{06. Give.mp3}
+	\item \textbf{Resultado esperado}: se muestra en pantalla información básica sobre el fichero de audio, un menú de selección de modelos para realizar la predicción y un reproductor para escuchar el fichero de audio.
+	\imagen{upload_track_test}{Resultado obtenido. Es correcto.}
+
+	\end{enumerate}
+\item \textbf{Prueba de visualización de resultados}: esta prueba verifica que, una vez realizada la predicción, los resultados se muestran correctamente para el usuario.
+	\begin{enumerate}
+	\tightlist
+
+	\item \textbf{El usuario presiona el botón \textit{Submit}}
+	\item \textbf{Resultado esperado}: se muestra en pantalla una lista de tres predicciones con su probabilidad asociada, además de un menú interactivo donde se pueden ver distintas visualizaciones de las características del fichero de audio en concreto
+	\imagen{analysis_track_test}{Resultado obtenido. Es correcto.}
+
+	\end{enumerate}
+\end{itemize}

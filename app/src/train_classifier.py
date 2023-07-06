@@ -276,5 +276,5 @@ def eval_model():
     print(f"Overall F1-score: {report['weighted avg']['f1-score']}")
     print(f"Accuracy: {report['accuracy']}")
 
-train(1)
+train(3)
 # eval_model()
