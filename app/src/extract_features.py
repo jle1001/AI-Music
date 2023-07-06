@@ -44,7 +44,7 @@ def extract_mfccs():
     print(track_genres_mfcc.head())
 
     # Save as object. CSV files converts lists to str and loses precision.
-    track_genres_mfcc.to_pickle('data/processed/track_genres_mfcc-SMALL.pkl')
+    track_genres_mfcc.to_pickle('data/processed/track_genres_mfcc.pkl')
 
 def extract_spectograms():
     """Extracts spectograms from audio files and saves them with corresponding track genre information."""
@@ -79,7 +79,7 @@ def extract_spectograms():
     print(track_genres_spectograms.head())
 
     # Save as object. CSV files converts lists to str and loses precision.
-    track_genres_spectograms.to_pickle('data/processed/track_genres_spectograms-SMALL.pkl')
+    track_genres_spectograms.to_pickle('data/processed/track_genres_spectograms.pkl')
 
 def extract_chromagrams():
     """Extracts chromagrams from audio files and saves them with corresponding track genre information."""
@@ -113,7 +113,7 @@ def extract_chromagrams():
     print(track_genres_chromagrams.head())
 
     # Save as object. CSV files converts lists to str and loses precision.
-    track_genres_chromagrams.to_pickle('data/processed/track_genres_chromagrams-SMALL.pkl')
+    track_genres_chromagrams.to_pickle('data/processed/track_genres_chromagrams.pkl')
 
 extract_mfccs()
 # extract_spectograms()
