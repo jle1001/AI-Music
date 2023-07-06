@@ -59,6 +59,14 @@ pip install -r requirements.txt
 flask run
 ```
 
+## External files
+
+Dataset and metadata used to train the model is availiable in this repository: <a href="https://github.com/mdeff/fma">FMA: A Dataset For Music Analysis</a>
+
+Last version of the application has been trained using: 
+1. **`fma_small.zip`**: audio tracks used to train the model.
+2. **`fma_metadata.zip`**: audio tracks information to obtain the genres asociated with the audio files.
+
 # License
 
 <img alt="GitHub" src="https://img.shields.io/github/license/jle1001/AI-Music">
