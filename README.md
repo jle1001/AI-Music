@@ -13,11 +13,51 @@ Tutores: César Ignacio García Osorio, Alicia Olivares Gil
 
 ---
 
-El TFG pretende ser una primera incursión en la intersección entre la inteligencia artificial y la música. 
-La idea es explorar este área realizando una investigación de las distintos desarrollos en este ámbito, eligiendo alguno de ellos para su implementación:
+<img src="https://i.imgur.com/MpiFtzq.png"/>
 
-- Clasificación de estilos musicales.
-- Extracción de acordes.
+## Description
+
+AI-Music is an application that predicts music genres from audio files. The application includes a user-friendly interface that enables the users to upload files and visualizate the predicted genres with the main features of the song.
+
+## Usage
+
+AI-Music project can be used <a href="https://jle1001.pythonanywhere.com/">online</a> or locally. For local use, follow the next steps:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/jle1001/AI-Music.git
+```
+
+### 2. Create a virtual environment
+
+```bash
+python3 -m venv venv
+```
+
+### 3. Activate the virtual environment
+
+**Linux**
+```bash
+source venv/bin/activate
+```
+
+**Windows**
+```bash
+venv\Scripts\activate
+```
+
+### 4. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the application
+
+```bash
+flask run
+```
 
 # License
 
